@@ -1,0 +1,21 @@
+@use "sass:map";
+
+$layers: (
+  'flow-': -1,
+  'flow-1': 1,
+  'flow-2': 2,
+  'dropdown': 3,
+  'tooltip': 4,
+  'overlay': 5,
+  'too-much': 6,
+);
+
+@mixin index($layer) {
+  @if map.has-key($layers, $layer) {
+    z-index: map.get($layers, $layer);
+  }
+
+  @else {
+    @error 'Not valid value layer #{$layer}';
+  }
+}

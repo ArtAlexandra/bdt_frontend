@@ -1,1 +1,19 @@
 @use 'tailwindcss';
+
+@use './colors.scss';
+@use './sizes.scss';
+@use './text.scss';
+
+:root {
+    --background: var(--color-blue-200);
+    --foreground: var(--color-black);
+}
+
+body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-open-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    min-width: 340px;
+}
