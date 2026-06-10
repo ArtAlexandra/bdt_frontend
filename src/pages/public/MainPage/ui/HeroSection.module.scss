@@ -1,6 +1,6 @@
 @use '@bdt/shared/styles/breakpoints' as breakpoints;
 
-.hero {
+.heroSection {
     position: relative;
     width: 100%;
     height: 80vh;
@@ -85,7 +85,7 @@
 }
 
 @include breakpoints.breakpoint-min('md') {
-    .hero {
+    .heroSection {
         max-height: 1000px;
 
         &__container {
