@@ -1,0 +1,68 @@
+@use '@bdt/shared/styles/breakpoints' as breakpoints;
+
+.locationSection {
+    background-color: var(--color-gray-700);
+    display: flex;
+    flex-direction: column;
+
+    &__map {
+        width: 100%;
+        height: 400px;
+        order: 2;
+    }
+
+    &__container {
+        padding: 50px 20px;
+        color: var(--color-white);
+        order: 1;
+        display: grid;
+        gap: 30px;
+        justify-content: center;
+    }
+
+    &__info {
+        display: grid;
+        gap: 15px;
+    }
+
+    &__contact {
+        display: flex;
+        gap: 10px;
+
+        &-icon {
+            font-size: 20px;
+        }
+    }
+
+    &__contacts {
+        display: flex;
+        gap: 15px;
+    }
+
+    &__subtitle {
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+
+@include breakpoints.breakpoint-min('md') {
+    .locationSection {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+
+        &__map {
+            order: 1;
+            height: 100%;
+        }
+
+        &__container {
+            order: 2;
+            justify-content: start;
+        }
+
+        &__subtitle {
+            font-size: 24px;
+        }
+    }
+}
