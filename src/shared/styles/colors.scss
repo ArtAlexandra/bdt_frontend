@@ -1,0 +1,29 @@
+:root {
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    --color-primary: #08B4FB;
+
+    --color-blue-200: #E0F5FE;
+
+    /* Gray colors */
+    --color-gray-50: #f6f4f9;
+    --color-gray-100: #f8f6f6;
+    --color-gray-150: #eeeef0;
+    --color-gray-200: #dfdfdf;
+    --color-gray-300: #bfbfbf;
+    --color-gray-400: #9f9f9f;
+    --color-gray-500: #5b5b5b;
+    --color-gray-600: #4b4b4b;
+    --color-gray-700: #333333;
+    --color-gray-800: #1a1a1a;
+    --color-gray-900: #101010;
+
+    /* Button colors */
+    --color-button-light: var(--color-white);
+    --color-button-light-hover: var(--color-gray-100);
+    --color-button-light-text: var(--color-gray-800);
+    --color-button-transparent: var(--color-gray-800);
+    --color-button-transparent-hover: var(--color-gray-900);
+    --color-button-spiner: var(--color-white);
+}

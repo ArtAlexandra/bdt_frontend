@@ -7,7 +7,7 @@ import '../src/shared/styles/globals.scss';
 const openSans = Open_Sans({
     variable: '--font-open-sans',
     subsets: ['latin', 'cyrillic'],
-    weight: ['300', '400', '600'],
+    weight: ['300', '400', '600', '800'],
 });
 
 const righteous = Righteous({
@@ -28,11 +28,11 @@ const playfairDisplay = Playfair_Display({
     weight: '400',
 });
 
-interface IMainPageLayoutProps {
+interface IRootLayoutProps {
     children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: IMainPageLayoutProps) {
+export default function RootLayout({ children }: IRootLayoutProps) {
     return <html lang="ru">
         <body className={clsx(openSans.variable, righteous.variable, comfortaa.variable, playfairDisplay.variable)}>
             <React.Suspense>

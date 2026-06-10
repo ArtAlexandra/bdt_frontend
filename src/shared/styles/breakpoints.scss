@@ -1,0 +1,21 @@
+@use "sass:map";
+
+$breakpoints: (
+  'sm': 320px,
+  'md': 480px,
+  'lg': 768px,
+  'xl': 1024px,
+  '2xl': 1280px,
+  '3xl': 1440px,
+  '4xl': 1920px,
+);
+
+@mixin breakpoint-min($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @error 'Not valid value breakpoint #{$breakpoint}';
+  }
+}

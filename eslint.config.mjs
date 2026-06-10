@@ -32,8 +32,9 @@ export default [
             globals: {
                 React: 'readonly',
                 JSX: 'readonly',
+                NodeJS: 'readonly',
                 ...globals.browser,
-                ...globals.node,  
+                ...globals.node,
             },
         },
         settings: {
@@ -51,10 +52,10 @@ export default [
         rules: {
             // Базовые правила
             ...js.configs.recommended.rules,
-            
+
             // TypeScript правила
             ...tsPlugin.configs.recommended.rules,
-            
+
             // React правила (кроме react-in-jsx-scope)
             'react/react-in-jsx-scope': 'off',
             'react/jsx-uses-react': 'off',
@@ -64,16 +65,16 @@ export default [
                 attributes: { when: 'never' },
             }],
             'react/display-name': 'off',
-            
+
             // React Hooks правила
             'react-hooks/rules-of-hooks': 'error',
             'react-hooks/exhaustive-deps': 'warn',
-            
+
             // Next.js правила
             ...nextPlugin.configs.recommended.rules,
             '@next/next/no-html-link-for-pages': 'error',
             '@next/next/no-img-element': 'warn',
-            
+
             // Сортировка импортов
             'simple-import-sort/imports': ['error', {
                 groups: [
@@ -92,7 +93,7 @@ export default [
                     ['^@?\\w.*\\u0000$', '^[^.].*\\u0000$', '^\\..*\\u0000$'],
                 ],
             }],
-            
+
             // Стиль кода
             'indent': ['error', 4, { SwitchCase: 1 }],
             'quotes': ['error', 'single', { avoidEscape: true }],
@@ -108,13 +109,13 @@ export default [
             'brace-style': ['error', '1tbs', { allowSingleLine: true }],
             'curly': ['error', 'multi-line', 'consistent'],
             'no-else-return': ['error', { allowElseIf: false }],
-            
+
             // TypeScript специфичные
             '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }],
             '@typescript-eslint/no-empty-function': 'off',
-            '@typescript-eslint/no-unused-vars': ['error', { 
+            '@typescript-eslint/no-unused-vars': ['error', {
                 argsIgnorePattern: '^_',
-                varsIgnorePattern: '^_' 
+                varsIgnorePattern: '^_'
             }],
             '@typescript-eslint/naming-convention': [
                 'error',
