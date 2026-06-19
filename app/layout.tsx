@@ -2,6 +2,8 @@ import React from 'react';
 import { Comfortaa, Open_Sans, Playfair_Display, Righteous } from 'next/font/google';
 import clsx from 'clsx';
 
+import StoreProvider from '@bdt/app/StoreProvider';
+
 import '../src/shared/styles/globals.scss';
 
 const openSans = Open_Sans({
@@ -36,7 +38,9 @@ export default function RootLayout({ children }: IRootLayoutProps) {
     return <html lang="ru">
         <body className={clsx(openSans.variable, righteous.variable, comfortaa.variable, playfairDisplay.variable)}>
             <React.Suspense>
-                { children }
+                <StoreProvider>
+                    { children }
+                </StoreProvider>
             </React.Suspense>
         </body>
     </html>;
