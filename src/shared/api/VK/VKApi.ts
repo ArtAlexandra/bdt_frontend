@@ -1,4 +1,4 @@
-import vkApi from '@bdt/shared/helpers/VKFetchHelpers';
+import vkApi from '@bdt/shared/helpers/VKAxiosHelpers';
 
 import { BDT_VK_DOMAIN, VK_SERVICE_KEY, VK_VERSION } from '@bdt/shared/config/AppEnvironment';
 
