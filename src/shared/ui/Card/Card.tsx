@@ -1,12 +1,14 @@
 'use client';
 
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import clsx from 'clsx';
 
 import Button from '@bdt/shared/ui/Button';
 import ExpandableText from '@bdt/shared/ui/ExpandableText';
 import Icon from '@bdt/shared/ui/Icon';
+import Skeleton, { SkeletonType } from '@bdt/shared/ui/Skeleton';
 
 import style from './Card.module.scss';
 
@@ -23,24 +25,40 @@ interface ICardProps {
 };
 
 function Card({ imageSrc, videoSrc, date, title, href, isPinned, isRepost, onClick }: ICardProps) {
+    const [mediaLoaded, setMediaLoaded] = useState<boolean>(false);
+    const showImage = imageSrc && !videoSrc;
+
     return (
         <div className={style.card}>
 
-            { imageSrc && !videoSrc &&
+            { showImage && (
                 <div className={style.card__mediaWrapper}>
+                    { !mediaLoaded && (
+                        <div className={style.card__mediaSkeleton}>
+                            <Skeleton active type={SkeletonType.Node} height={200} width={280} />
+                        </div>
+                    ) }
+
                     <Image
                         src={imageSrc}
                         alt={title}
-                        width={100}
-                        height={100}
-                        className={style.card__image}
+                        width={280}
+                        height={200}
+                        className={clsx(style.card__image, { [style['card__image-loaded']]: mediaLoaded })}
                         loading="eager"
+                        onLoad={() => setMediaLoaded(true)}
                     />
                 </div>
-            }
+            ) }
 
             { videoSrc && (
                 <div className={style.card__mediaWrapper}>
+                    { !mediaLoaded && (
+                        <div className={style.card__mediaSkeleton}>
+                            <Skeleton active type={SkeletonType.Node} height={200} width={280} />
+                        </div>
+                    ) }
+
                     <iframe
                         src={videoSrc}
                         loading="lazy"
@@ -50,6 +68,7 @@ function Card({ imageSrc, videoSrc, date, title, href, isPinned, isRepost, onCli
                         allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
                         className={style.card__video}
                         allowFullScreen
+                        onLoad={() => setMediaLoaded(true)}
                     />
                 </div>
             ) }

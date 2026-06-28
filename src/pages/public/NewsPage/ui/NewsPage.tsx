@@ -25,7 +25,8 @@ function NewsPage({ posts, currentPage = 1, totalPages = 0 }: INewsPageProps) {
 
     const handlePageSize = (page: number) => {
         updateUrlParams({
-            params: { page }
+            params: { page },
+            scroll: true
         });
     };
 

@@ -21,8 +21,16 @@ type TAttachmentsType = {
         title: string;
     };
     video?: {
-        first_frame: [
+        first_frame?: [
             {
+                url: string;
+                height: number;
+                width: number;
+            }
+        ];
+
+        image: [
+             {
                 url: string;
                 height: number;
                 width: number;

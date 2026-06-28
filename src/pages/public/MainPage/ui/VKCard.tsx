@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import { VKAttachmentType } from '@bdt/shared/api/VKServer';
 import { formatUnixToDate } from '@bdt/shared/helpers/Date';
 
-import { VK_PUBLIC_WALL_URL } from '@bdt/shared/config/AppEnvironment';
 import { ROUTES } from '@bdt/shared/config/Routes';
 
 import Card from '@bdt/shared/ui/Card';
@@ -31,7 +30,7 @@ function VKCard({ post }: IVKCardProps) {
         videoSrc={isFirstVideo ? post.firstLink : undefined}
         title={post.title}
         date={date}
-        href={`${VK_PUBLIC_WALL_URL}${post.ownerId}_${post.id}`}
+        href={post.href}
         isPinned={post.isPinned}
         isRepost={post.isRepost}
         onClick={handleReadMore} />;

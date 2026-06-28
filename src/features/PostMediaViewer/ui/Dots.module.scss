@@ -17,10 +17,19 @@
             transform: scale(1.2);
         }
 
+        &:active {
+            transform: scale(0.9);
+        }
+
         &--active {
             background-color: var(--color-primary);
             width: 24px;
             border-radius: 5px;
+
+            &:hover {
+                background-color: var(--color-primary);
+                transform: scale(1);
+            }
         }
     }
 }

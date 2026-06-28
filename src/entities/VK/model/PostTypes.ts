@@ -18,4 +18,5 @@ export type TPost = {
     isRepost: boolean;
     firstLink: string;
     firstType: VKAttachmentType;
+    href: string;
 };

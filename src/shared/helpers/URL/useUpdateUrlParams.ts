@@ -4,6 +4,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 interface IUseUpdateUrlParamsProps {
     params: Record<string, string | string[] | number | null | undefined>;
+    scroll?: boolean;
 };
 
 export function useUpdateUrlParams() {
@@ -11,7 +12,7 @@ export function useUpdateUrlParams() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    return function updateUrlParams({ params }: IUseUpdateUrlParamsProps) {
+    return function updateUrlParams({ params, scroll = false }: IUseUpdateUrlParamsProps) {
         const newParams = new URLSearchParams(searchParams?.toString() || '');
 
         Object.entries(params).forEach(([key, value]) => {
@@ -38,6 +39,6 @@ export function useUpdateUrlParams() {
         });
 
         const newUrl = `${pathname}?${newParams.toString()}`;
-        router.push(newUrl, { scroll: false });
+        router.push(newUrl, { scroll });
     };
 }

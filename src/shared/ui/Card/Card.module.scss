@@ -1,4 +1,5 @@
 .card {
+    position: relative;
     background-color: var(--color-white);
     width: 280px;
     height: 400px;
@@ -13,6 +14,15 @@
         height: 200px;
         border-radius: 30px 30px 0 0;
         overflow: hidden;
+    }
+
+    &__mediaSkeleton {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
     }
 
     &__video {
@@ -31,6 +41,12 @@
         height: 200px;
         border-radius: 30px 30px 0 0;
         object-fit: cover;
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+
+        &-loaded {
+            opacity: 1;
+        }
     }
 
     &__title {

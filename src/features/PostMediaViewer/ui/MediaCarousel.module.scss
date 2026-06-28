@@ -21,13 +21,30 @@
         position: relative;
         width: 100%;
         height: 100%;
+        background: var(--color-gray-100);
+    }
+
+    &__skeletonWrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
     }
 
     &__image {
+        position: relative;
         object-fit: cover;
         width: 100%;
         height: 100%;
         display: block;
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+
+        &-loaded {
+            opacity: 1;
+        }
     }
 
     &__videoWrapper {
@@ -39,10 +56,17 @@
     }
 
     &__video {
+        position: relative;
         width: 100%;
         height: 100%;
         border: none;
         display: block;
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+
+        &-loaded {
+            opacity: 1;
+        }
     }
 
     &__button {
@@ -113,6 +137,7 @@
         opacity: 0;
         transform: scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: scale(1);

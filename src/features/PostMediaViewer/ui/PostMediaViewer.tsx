@@ -7,8 +7,6 @@ import clsx from 'clsx';
 
 import { formatUnixToDate } from '@bdt/shared/helpers/Date';
 
-import { VK_PUBLIC_WALL_URL } from '@bdt/shared/config/AppEnvironment';
-
 import ExpandableText from '@bdt/shared/ui/ExpandableText';
 import Icon from '@bdt/shared/ui/Icon';
 
@@ -27,7 +25,6 @@ interface IPostMediaViewerProps {
 
 function PostMediaViewer({ post, id, isTextFirst = false, className }: IPostMediaViewerProps) {
     const date = formatUnixToDate({ unixTimestamp: post.date, format: 'DD MMMM YYYY в HH:mm' });
-    const href = `${VK_PUBLIC_WALL_URL}${post.ownerId}_${post.id}`;
 
     return (
         <div
@@ -48,7 +45,7 @@ function PostMediaViewer({ post, id, isTextFirst = false, className }: IPostMedi
                 { post.description && <ExpandableText text={post.description} maxLines={5} isShowButton /> }
                 <div className={style.postMediaViewer__details}>
                     <Link
-                        href={href}
+                        href={post.href}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={style.postMediaViewer__link}

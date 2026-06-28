@@ -23,13 +23,15 @@
 
     &__list {
         display: grid;
-        gap: 40px;
+        gap: 60px;
     }
 }
 
 @include breakpoints.breakpoint-min('xl') {
     .newsPage {
         &__list {
+            gap: 40px;
+
             &-card {
                 max-width: 900px;
             }

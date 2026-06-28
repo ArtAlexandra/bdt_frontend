@@ -1,6 +1,6 @@
 import { type TVKPost, VKAttachmentType } from '@bdt/shared/api/VKServer';
 
-import { BDT_VK_DOMAIN } from '@bdt/shared/config/AppEnvironment';
+import { BDT_VK_DOMAIN, VK_PUBLIC_WALL_URL } from '@bdt/shared/config/AppEnvironment';
 
 import type { TContent, TPost } from './PostTypes';
 
@@ -16,6 +16,8 @@ const getTitle = (text: string) => {
 };
 
 const getVideoURL = (ownerId: number, videoId: number) => `https://vk.com/video_ext.php?oid=${ownerId}&id=${videoId}&autoplay=1&loop=1&mute=1`;
+
+const getPostHref = (postOwnerId: number, postId: number) => `${VK_PUBLIC_WALL_URL}${postOwnerId}_${postId}`;
 
 const getOwnerId = (post: TVKPost) => {
     if (post?.copy_history?.[0].owner_id) return post?.copy_history?.[0].owner_id;
@@ -40,8 +42,10 @@ const getPostByVK = (post: TVKPost): TPost | null => {
         const isPinned = Boolean(post.is_pinned);
         const isRepost = Boolean(post.copy_history);
         const date = post.date;
-        let ownerId = getOwnerId(post);
+        let ownerId = getOwnerId(post); // это owner_id хозяина контента (в случае репоста это owner_id другой группы)
+        const postOwerId = post.owner_id; // это owner_id хозяина группы (для ссылки на пост в группу)
         const attachments = post.copy_history?.[0]?.attachments || post.attachments || [];
+        let firstFrame = null;
 
         const content: TContent[] = [];
 
@@ -57,6 +61,7 @@ const getPostByVK = (post: TVKPost): TPost | null => {
                 let width = 0;
                 let videoId = 0;
 
+
                 if (attachment.photo?.orig_photo?.url) {
                     link = attachment.photo.orig_photo.url;
                     height = attachment.photo.orig_photo.height;
@@ -70,8 +75,9 @@ const getPostByVK = (post: TVKPost): TPost | null => {
                     videoId = attachment.video.id;
 
                     link = getVideoURL(ownerId, videoId);
-                    height = attachment.video.first_frame[0].height;
-                    width = attachment.video.first_frame[0].width;
+                    firstFrame = attachment.video.first_frame?.[0] ?? attachment.video.image[0];
+                    height = firstFrame.height;
+                    width = firstFrame.width;
 
                     // attachment.video - это общее "понятие" видео, в attachment.video.type хранится "short_video" и "video"
                     type = attachment.video.type;
@@ -93,11 +99,12 @@ const getPostByVK = (post: TVKPost): TPost | null => {
 
         if (!content.length) return null;
 
-        // firstType, firstLink нужны для отображения в карточках
+        // firstType, firstLink, firstFrame нужны для отображения в карточках
         const firstType = content[0].type;
         const isFirstShortVideo = firstType === VKAttachmentType.SHORT_VIDEO;
         const defaultTitle = isFirstShortVideo ? DEFAULT_TITLE_SHORT_VIDEO : DEFAULT_TITLE_POST;
-        const firstLink = isFirstShortVideo ? (attachments[0].video?.first_frame[0].url ?? DEFAULT_IMAGE_SRC) : content[0].link;
+        const firstLink = isFirstShortVideo ? (firstFrame?.url ?? DEFAULT_IMAGE_SRC) : content[0].link;
+        const href = getPostHref(postOwerId, id);
 
         return {
             id,
@@ -110,6 +117,7 @@ const getPostByVK = (post: TVKPost): TPost | null => {
             isRepost,
             firstType,
             firstLink,
+            href,
         };
     } catch (error) {
         console.error(`Error processing post ${post.id}:`, error);

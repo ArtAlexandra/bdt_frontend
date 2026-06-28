@@ -8,6 +8,7 @@ import { VKAttachmentType } from '@bdt/shared/api/VKServer';
 
 import Button from '@bdt/shared/ui/Button';
 import Icon from '@bdt/shared/ui/Icon';
+import Skeleton, { SkeletonType } from '@bdt/shared/ui/Skeleton';
 
 import Dots from './Dots';
 
@@ -22,13 +23,16 @@ interface IMediaCarouselProps {
 
 function MediaCarousel({ media, className }: IMediaCarouselProps) {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
+    const [mediaLoaded, setMediaLoaded] = useState<boolean>(false);
 
     const handlePrevious = useCallback(() => {
         setCurrentIndex(prev => (prev === 0 ? media.length - 1 : prev - 1));
+        setMediaLoaded(false);
     }, [media.length]);
 
     const handleNext = useCallback(() => {
         setCurrentIndex(prev => (prev === media.length - 1 ? 0 : prev + 1));
+        setMediaLoaded(false);
     }, [media.length]);
 
     const currentMedia = media[currentIndex];
@@ -54,24 +58,43 @@ function MediaCarousel({ media, className }: IMediaCarouselProps) {
                 >
                     { isPhoto ? (
                         <div className={style.mediaCarousel__imageWrapper}>
+                            { !mediaLoaded && (
+                                <div className={style.mediaCarousel__skeletonWrapper}>
+                                    <Skeleton active type={SkeletonType.Node} height={currentMedia.height} width={currentMedia.width} />
+                                </div>
+                            ) }
+
                             <Image
                                 src={currentMedia.link}
                                 alt={currentMedia.link}
-                                className={style.mediaCarousel__image}
+                                className={clsx(
+                                    style.mediaCarousel__image,
+                                    mediaLoaded && style['mediaCarousel__image-loaded']
+                                )}
                                 fill
                                 loading="eager"
-                                priority={currentIndex === 0}
                                 sizes="(max-width: 400px) 100vw, 400px"
+                                onLoad={() => setMediaLoaded(true)}
                             />
                         </div>
                     ) : (
                         <div className={style.mediaCarousel__videoWrapper}>
+                            { !mediaLoaded && (
+                                <div className={style.mediaCarousel__skeletonWrapper}>
+                                    <Skeleton active type={SkeletonType.Node} height={currentMedia.height} width={currentMedia.width} />
+                                </div>
+                            ) }
                             <iframe
                                 src={currentMedia.link}
-                                className={style.mediaCarousel__video}
+                                className={clsx(
+                                    style.mediaCarousel__video,
+                                    mediaLoaded && style['mediaCarousel__video-loaded']
+                                )}
                                 title="Video player"
                                 allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
                                 allowFullScreen
+                                loading="lazy"
+                                onLoad={() => setMediaLoaded(true)}
                             />
                         </div>
                     ) }
