@@ -11,5 +11,6 @@ export const VK_API_URL = '/vk-api';
 export const VK_API_PUBLIC_URL = 'https://api.vk.ru/method';
 export const VK_SERVICE_KEY = process.env.NEXT_PUBLIC_VK_SERVICE_KEY || '';
 export const VK_VERSION = '5.199';
+export const VK_PUBLIC_WALL_URL = 'https://vk.com/wall';
 
 export const PUBLIC_API_URL = '';

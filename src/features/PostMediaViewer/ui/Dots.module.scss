@@ -1,0 +1,26 @@
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    &__dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: none;
+        background-color: var(--color-gray-400);
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--color-gray-700);
+            transform: scale(1.2);
+        }
+
+        &--active {
+            background-color: var(--color-primary);
+            width: 24px;
+            border-radius: 5px;
+        }
+    }
+}

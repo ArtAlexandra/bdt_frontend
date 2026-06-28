@@ -1,0 +1,39 @@
+@use '@bdt/shared/styles/breakpoints' as breakpoints;
+
+.vkWallSection {
+    padding: 100px 0;
+    display: grid;
+    justify-items: center;
+    gap: 30px;
+
+    &__title {
+        font-weight: 800;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        justify-items: center;
+    }
+}
+
+@include breakpoints.breakpoint-min('md') {
+    .vkWallSection {
+        &__content {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+    }
+}
+
+@include breakpoints.breakpoint-min('xl') {
+    .vkWallSection {
+        &__content {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 900px;
+        }
+    }
+}

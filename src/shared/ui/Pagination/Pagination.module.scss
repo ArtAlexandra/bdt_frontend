@@ -1,0 +1,5 @@
+.paginationContainer {
+    :global(.ant-pagination .ant-pagination-item-active) {
+        background: transparent !important;
+    }
+}

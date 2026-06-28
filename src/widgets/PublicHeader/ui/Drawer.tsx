@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
 
 import { useBodyScrollLock } from '@bdt/shared/hooks/useBodyScrollLock';
@@ -22,6 +23,12 @@ function Drawer({ isOpen, onClose }: IDrawerProps) {
     useClickButton({ isEnabled: isOpen, type: 'Escape', onClick: onClose });
     useBodyScrollLock({ isEnabled: isOpen });
 
+    const router = useRouter();
+
+    const handlePushToPage = (url: string) => {
+        router.push(url);
+    };
+
     return (
         <div className={clsx(style.drawer, { [style['drawer-open']]: isOpen })}>
             <div className={style.drawer__overlay} onClick={onClose} />
@@ -35,7 +42,7 @@ function Drawer({ isOpen, onClose }: IDrawerProps) {
 
                 <div className={style.drawer__nav}>
                     { MENU.map(((item, index) => (
-                        <div key={`menu_item_${index}`} className={style.drawer__navItem} onClick={onClose}>
+                        <div key={`menu_item_${index}`} className={style.drawer__navItem} onClick={() => handlePushToPage(item.path.path)}>
                             { item.name }
                         </div>
                     ))) }
