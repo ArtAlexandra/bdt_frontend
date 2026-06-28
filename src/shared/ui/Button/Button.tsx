@@ -10,6 +10,8 @@ import style from './Button.module.scss';
 export enum BUTTON_VARIANT {
     light = 'light',
     transparent = 'transparent',
+    secondaryOutline = 'secondaryOutline',
+    link = 'link',
 };
 
 export enum BUTTON_SIZE {
@@ -64,6 +66,8 @@ function Button({
     const cssClassName = clsx(className, style.button, {
         [style.button_light]: variant === BUTTON_VARIANT.light,
         [style.button_transparent]: variant === BUTTON_VARIANT.transparent,
+        [style.button_secondaryOutline]: variant === BUTTON_VARIANT.secondaryOutline,
+        [style.button_link]: variant === BUTTON_VARIANT.link,
         [style.button_small]: size === BUTTON_SIZE.small,
         [style.button_medium]: size === BUTTON_SIZE.medium,
         [style.button_large]: size === BUTTON_SIZE.large,

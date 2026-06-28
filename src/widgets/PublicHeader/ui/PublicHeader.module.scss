@@ -11,6 +11,18 @@
     color: var(--color-white);
     background-color: transparent;
 
+    &-black {
+        color: var(--color-black);
+
+        .publicHeader__burgerButton-icon {
+            color: var(--color-black);
+        }
+
+        .publicHeader__items-button {
+            color: var(--color-black);
+        }
+    }
+
     &-scrolled {
         background-color: var(--color-white);
         color: var(--color-black);
@@ -22,6 +34,13 @@
                     color: var(--color-black);
                 }
             }
+
+            &__items {
+                &-button {
+                    color: var(--color-black);
+                }
+            }
+
         }
     }
 
@@ -53,6 +72,11 @@
 
     &__items {
         display: flex;
+
+        &-button {
+            font-size: 16px;
+            line-height: 24px;
+        }
     }
 }
 

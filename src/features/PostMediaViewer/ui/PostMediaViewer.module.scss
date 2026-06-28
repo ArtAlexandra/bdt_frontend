@@ -1,0 +1,89 @@
+@use '@bdt/shared/styles/breakpoints' as breakpoints;
+
+.postMediaViewer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    scroll-margin-top: 95px;
+
+    &__media {
+        grid-row: 1;
+    }
+
+    &__textBlock {
+        width: 100%;
+        white-space: pre-wrap;
+        word-break: break-word;
+        line-height: 1.6;
+        grid-row: 2;
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+
+    &__badge {
+        background-color: rgba(0, 0, 0, 0.4);
+        color: var(--color-white);
+        padding: 6px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        aspect-ratio: 1/1;
+    }
+
+    &__details {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+    &__date {
+        color: var(--color-gray-500);
+    }
+}
+
+@include breakpoints.breakpoint-min('md') {
+    .postMediaViewer {
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+
+        &__media {
+            grid-row: 1;
+            grid-column: 1;
+            width: 100%;
+        }
+
+        &__textBlock {
+            grid-row: 1;
+            grid-column: 2;
+        }
+
+        &_textFirst {
+            .postMediaViewer__media {
+                grid-column: 2;
+            }
+
+            .postMediaViewer__textBlock {
+                grid-column: 1;
+            }
+        }
+    }
+}

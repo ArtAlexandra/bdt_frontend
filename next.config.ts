@@ -1,4 +1,4 @@
-import { PUBLIC_URL } from '@bdt/shared/config/AppEnvironment';
+import { PUBLIC_URL, VK_API_PUBLIC_URL, VK_API_URL } from '@bdt/shared/config/AppEnvironment';
 
 import type { NextConfig } from 'next';
 
@@ -7,6 +7,7 @@ const cspSources = {
         '\'self\'',
         '\'unsafe-inline\'',
         'blob:',
+        'https:',
     ],
     styleSrc: [
         '\'self\'',
@@ -28,6 +29,7 @@ const cspSources = {
         'wss:',
         'https:',
         PUBLIC_URL,
+        VK_API_PUBLIC_URL,
     ],
     frameSrc: [
         '\'self\'',
@@ -72,6 +74,14 @@ const nextConfig: NextConfig = {
     } : {}),
     distDir: 'out',
     images: { unoptimized: true },
+    async rewrites() {
+        return [
+            {
+                source: `${VK_API_URL}/:path*`,
+                destination: `${VK_API_PUBLIC_URL}/:path*`,
+            },
+        ];
+    },
     // Настройки только для production сборки
     ...(process.env.NODE_ENV === 'production' ? {
         output: 'standalone',

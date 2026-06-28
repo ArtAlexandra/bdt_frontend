@@ -16,7 +16,11 @@ import Drawer from './Drawer';
 
 import style from './PublicHeader.module.scss';
 
-function PublicHeader() {
+interface IPublicHeaderProps {
+    variant?: 'white' | 'black';
+};
+
+function PublicHeader({ variant = 'white' }: IPublicHeaderProps) {
     const isScrolled = useScrollPosition();
     const { copy: handleCopy } = useCopyToClipboard();
     const [isOpenDrawer, setIsOpenDrawer] = useState<boolean>(false);
@@ -26,18 +30,18 @@ function PublicHeader() {
     return (
         <>
             <Drawer onClose={handleCloseDrawer} isOpen={isOpenDrawer} />
-            <div className={clsx(style.publicHeader, { [style['publicHeader-scrolled']]: isScrolled })}>
+            <div className={clsx(style.publicHeader, { [style['publicHeader-scrolled']]: isScrolled, [style['publicHeader-black']]: variant === 'black' })}>
                 <div className={style.publicHeader__topRow}>
                     <Button className={style.publicHeader__burgerButton} onClick={() => setIsOpenDrawer(true)} variant="transparent" >
                         <Icon name="burger" className={style['publicHeader__burgerButton-icon']} />
                     </Button>
 
                     <div className={style.publicHeader__items}>
-                        <Button className="!text-base" aria-label={`Copy email ${BDT_EMAIL}`} onClick={() => handleCopy(BDT_EMAIL)}>
+                        <Button className={style['publicHeader__items-button']} aria-label={`Copy email ${BDT_EMAIL}`} onClick={() => handleCopy(BDT_EMAIL)}>
                             <Icon name="email" />
                             { BDT_EMAIL }
                         </Button>
-                        <Button className="!text-base" aria-label={`Copy phone ${BDT_PHONE}`} onClick={() => handleCopy(BDT_PHONE)}>
+                        <Button className={style['publicHeader__items-button']} aria-label={`Copy phone ${BDT_PHONE}`} onClick={() => handleCopy(BDT_PHONE)}>
                             <Icon name="phone" />
                             { BDT_PHONE }
                         </Button>
