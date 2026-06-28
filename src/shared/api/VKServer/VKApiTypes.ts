@@ -39,7 +39,7 @@ type TAttachmentsType = {
         title: string;
         description: string;
         id: number;
-        type: VKAttachmentType; //?
+        type: VKAttachmentType;
         owner_id?: number;
         processing?: number;
     };
