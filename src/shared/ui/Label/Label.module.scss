@@ -1,0 +1,13 @@
+.label {
+    display: flex;
+    text-align: left;
+    font-size: var(--size-input-font);
+    line-height: var(--size-input-line-height);
+    font-weight: 600;
+    margin-bottom: 5px;
+    gap: 4px;
+
+    &__required {
+        color: var(--color-danger);
+    }
+}
