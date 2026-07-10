@@ -1,4 +1,4 @@
-import { PUBLIC_URL, VK_API_PUBLIC_URL, VK_API_URL } from '@bdt/shared/config/AppEnvironment';
+import { PUBLIC_API_URL, PUBLIC_URL, VK_API_PUBLIC_URL, VK_API_URL } from '@bdt/shared/config/AppEnvironment';
 
 import type { NextConfig } from 'next';
 
@@ -30,6 +30,7 @@ const cspSources = {
         'https:',
         PUBLIC_URL,
         VK_API_PUBLIC_URL,
+        PUBLIC_API_URL,
     ],
     frameSrc: [
         '\'self\'',

@@ -2,7 +2,7 @@
  * https://react-icons.github.io/react-icons/
  */
 
-import { AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlineExclamationCircle } from 'react-icons/ai';
 import { MdOutlineEmail, MdPhone } from 'react-icons/md';
 import { PiArrowArcLeft } from 'react-icons/pi';
 import { RxHamburgerMenu } from 'react-icons/rx';
@@ -12,6 +12,7 @@ import { VscPinned } from 'react-icons/vsc';
 export const ICON_LIST = {
     // Ant Design icons
     close: AiOutlineClose,
+    error: AiOutlineExclamationCircle,
 
     //Md
     email: MdOutlineEmail,

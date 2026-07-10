@@ -2,6 +2,8 @@ import React from 'react';
 import { Comfortaa, Open_Sans, Playfair_Display, Righteous } from 'next/font/google';
 import clsx from 'clsx';
 
+import Toaster from '@bdt/shared/ui/Toaster';
+
 import StoreProvider from '@bdt/app/StoreProvider';
 
 import '../src/shared/styles/globals.scss';
@@ -40,6 +42,7 @@ export default function RootLayout({ children }: IRootLayoutProps) {
             <React.Suspense>
                 <StoreProvider>
                     { children }
+                    <Toaster />
                 </StoreProvider>
             </React.Suspense>
         </body>

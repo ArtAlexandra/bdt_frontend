@@ -1,0 +1,19 @@
+.loginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  &__content {
+    display: grid;
+    gap: 20px;
+    justify-items: center;
+    width: 80vw;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 24px;
+    text-align: center;
+  }
+}

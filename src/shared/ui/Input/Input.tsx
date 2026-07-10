@@ -3,6 +3,7 @@
 import { ChangeEvent } from 'react';
 import { Input as AntInput } from 'antd';
 
+import Error from '@bdt/shared/ui/Error';
 import Label from '@bdt/shared/ui/Label';
 
 import style from './Input.module.scss';
@@ -22,12 +23,14 @@ interface IInputProps {
     type?: TInputType;
     status?: TInputStatus;
     label?: string;
+    placeholder?: string;
+    error?: string;
     className?: string;
 
     onChange: (value: string) => void;
 };
 
-function Input({ value, status, type, label, className, onChange }: IInputProps) {
+function Input({ value, status, type, label, placeholder, error, className, onChange }: IInputProps) {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         onChange(e.target.value);
@@ -36,13 +39,15 @@ function Input({ value, status, type, label, className, onChange }: IInputProps)
     if (type === INPUT_TYPE.PASSWORD) {
         return <div className={className}>
             { label && <Label text={label} /> }
-            <AntInput.Password status={status} type={type} value={value} onChange={handleChange} className={style.input} />
+            <AntInput.Password status={error ? 'error' : status} type={type} value={value} placeholder={placeholder} onChange={handleChange} className={style.input} />
+            { error && <Error error={error} className="mt-[5px]" /> }
         </div>;
     }
 
     return <div className={className}>
         { label && <Label text={label} /> }
-        <AntInput status={status} type={type} value={value} onChange={handleChange} className={style.input} />
+        <AntInput status={error ? 'error' : status} type={type} value={value} placeholder={placeholder} onChange={handleChange} className={style.input} />
+        { error && <Error error={error} className="mt-[5px]" /> }
     </div>;
 }
 

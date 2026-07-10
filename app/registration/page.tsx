@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { ADMIN_SECRET_KEY } from '@bdt/shared/config/AppEnvironment';
 import { ROUTES } from '@bdt/shared/config/Routes';
 
-import LoginPage from '@bdt/pages/admin/LoginPage';
+import RegistrationPage from '@bdt/pages/admin/RegistrationPage';
 
 interface IPageProps {
     searchParams: {
@@ -18,5 +18,5 @@ export default async function Page({ searchParams }: IPageProps) {
 
     if (!isValidKey) redirect(ROUTES.public.home.path);
 
-    return <LoginPage />;
+    return <RegistrationPage />;
 }

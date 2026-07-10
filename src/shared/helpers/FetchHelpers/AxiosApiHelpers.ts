@@ -7,40 +7,44 @@ import { PUBLIC_API_URL } from '@bdt/shared/config/AppEnvironment';
 import type { TApiError } from './ApiResponseTypes';
 
 export const handleError = (error: AxiosError<TApiError>): TApiError['error'] => {
-    // Проверяем, есть ли ответ от сервера с данными об ошибке
     if (error.response?.data) {
-        const data = error.response.data as unknown as { error?: { message: string; code: number }; message?: string; statusCode?: number };
+        const data = error.response.data as unknown as {
+            statusCode?: number;
+            message?: string | string[];
+            error?: string;
+        };
 
-        if (data?.error) return data.error;
+        if (data.statusCode && data.message) {
+            const message = Array.isArray(data.message)
+                ? data.message.join(', ')
+                : data.message;
 
-        if (typeof data?.message === 'string') {
             return {
-                message: data.message,
-                code: typeof data.statusCode === 'number' ? data.statusCode : (error.response?.status ?? 500),
+                message: message || 'Произошла ошибка',
+                code: data.statusCode || error.response?.status || 500,
             };
         }
 
-        return {
-            message: 'Произошла неизвестная ошибка',
-            code: error.response?.status ?? 500,
-        };
+        if (data.error && typeof data.error === 'string') {
+            return {
+                message: data.error,
+                code: error.response?.status || 500,
+            };
+        }
     }
 
-    // Если нет ответа от сервера, но есть сообщение об ошибке в объекте ошибки
     if (error.message) {
         return {
             message: error.message,
-            code: 500,
+            code: error.response?.status || 500,
         };
     }
 
-    // Запасной вариант, если нет никакой информации об ошибке
     return {
         message: 'Произошла неизвестная ошибка',
         code: 500,
     };
 };
-
 
 export const refreshToken = async (): Promise<string | null> => {
     try {

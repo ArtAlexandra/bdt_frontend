@@ -39,6 +39,25 @@ export const ROUTES = {
         },
     },
     /**
+     * Закрытые маршруты
+     */
+    admin: {
+        login: {
+            path: '/login',
+            access: RouteAccessType.PROTECTED_ADMIN,
+        },
+        registration: {
+            path: '/registration',
+            access: RouteAccessType.PROTECTED_ADMIN,
+        },
+        dashboard: {
+            index: {
+                path: '/dashboard',
+                access: RouteAccessType.PROTECTED_ADMIN,
+            }
+        }
+    },
+    /**
      * Служебные маршруты
      */
     service: {
