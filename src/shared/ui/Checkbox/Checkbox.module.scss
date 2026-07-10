@@ -1,0 +1,7 @@
+.checkbox {
+    display: inline-block;
+
+    &_readonly {
+        pointer-events: none;
+    }
+}

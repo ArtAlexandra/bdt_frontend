@@ -12,6 +12,7 @@ export enum BUTTON_VARIANT {
     transparent = 'transparent',
     secondaryOutline = 'secondaryOutline',
     link = 'link',
+    primary = 'primary',
 };
 
 export enum BUTTON_SIZE {
@@ -36,7 +37,6 @@ interface IButtonProps {
     isLoading?: boolean;
     fullWidth?: boolean;
     inline?: boolean;
-    testId?: string;
     ariaLabel?: string;
     title?: string;
 
@@ -57,13 +57,13 @@ function Button({
     isLoading = false,
     fullWidth = false,
     inline = false,
-    testId,
     ariaLabel,
     title,
 }: IButtonProps) {
     const displayLoading = useLoadingDelay(isLoading, 300);
 
     const cssClassName = clsx(className, style.button, {
+        [style.button_primary]: variant === BUTTON_VARIANT.primary,
         [style.button_light]: variant === BUTTON_VARIANT.light,
         [style.button_transparent]: variant === BUTTON_VARIANT.transparent,
         [style.button_secondaryOutline]: variant === BUTTON_VARIANT.secondaryOutline,
@@ -87,7 +87,7 @@ function Button({
     }
 
     return (
-        <button onClick={onClick} className={cssClassName} type={type} disabled={disabled || displayLoading} data-testid={testId} aria-label={ariaLabel} title={title}>
+        <button onClick={onClick} className={cssClassName} type={type} disabled={disabled || displayLoading} aria-label={ariaLabel} title={title}>
             { isLoading && <span className={style.spinner}></span> }
             { children }
         </button>

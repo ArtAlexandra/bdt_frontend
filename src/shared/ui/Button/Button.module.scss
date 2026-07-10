@@ -47,6 +47,15 @@
         line-height: 18px;
     }
 
+    &_primary {
+        background-color: var(--color-button-primary);
+        border: 1px solid var(--color-button-primary);
+
+        &:hover {
+            background-color: var(--color-button-primary-hover);
+        }
+    }
+
     &_light {
         background-color: var(--color-button-light);
         color: var(--color-button-light-text);

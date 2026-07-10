@@ -1,0 +1,12 @@
+.registrationForm {
+    width: 100%;
+    max-width: 450px;
+    display: grid;
+    gap: 16px;
+
+    &--page {
+        background-color: var(--color-white);
+        border-radius: 15px;
+        padding: 50px 30px;
+    }
+}
