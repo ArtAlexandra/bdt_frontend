@@ -1,0 +1,15 @@
+
+.placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: var(--size-input-font);
+    line-height: var(--size-input-line-height);
+    padding: var(--size-input-padding);
+    display: flex;
+    color: var(--color-toolbar-placeholder-text);
+    cursor: text;
+    user-select: none;
+    pointer-events: none;
+}

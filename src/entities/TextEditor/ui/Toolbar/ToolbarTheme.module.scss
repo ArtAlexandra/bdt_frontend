@@ -1,0 +1,129 @@
+.toolbarTheme {
+    &__text {
+        &-bold {
+            font-weight: bold;
+        }
+
+        &-italic {
+            font-style: italic;
+        }
+
+        &-underline {
+            text-decoration: underline;
+        }
+
+        &-strikethrough {
+            text-decoration: line-through;
+        }
+
+        &-uppercase {
+            text-transform: uppercase;
+        }
+
+        &-lowercase {
+            text-transform: lowercase;
+        }
+
+        &-capitalize {
+            text-transform: capitalize;
+        }
+    }
+
+    &__quote {
+        margin: 1rem 0;
+        padding: 1rem 1.25rem;
+        border-left: 4px solid var(--color-gray-500);
+        background-color: var(--color-gray-100);
+        color: var(--color-text-secondary);
+        border-radius: 0.25rem;
+    }
+
+    &__heading {
+        &-h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 1rem 0;
+        }
+
+        &-h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0.75rem 0;
+        }
+
+        &-h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.1;
+            margin: 0.5rem 0;
+        }
+    }
+
+    &__list {
+        &-ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+        }
+
+        &-ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        &-listitem {
+            display: list-item;
+        }
+
+        &-nested {
+            &-list {
+                padding-left: 20px;
+            }
+
+            &-listitem {
+                list-style-type: none;
+            }
+        }
+    }
+
+    &__link {
+        color: var(--color-toolbar-link-text);
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        margin: 1rem 0;
+    }
+
+    &__text-align {
+        &-left {
+            text-align: left;
+        }
+
+        &-center {
+            text-align: center;
+        }
+
+        &-right {
+            text-align: right;
+        }
+
+        &-justify {
+            text-align: justify;
+        }
+    }
+
+    &__colors {
+        &-primary {
+            color: var(--color-toolbar-colors-primary-text);
+        }
+    }
+}

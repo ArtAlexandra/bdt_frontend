@@ -2,6 +2,7 @@
     --color-white: #ffffff;
     --color-black: #000000;
     --color-red: #e5384f;
+    --color-red-dark: #9b1818;
 
     /* Blue colors */
     --color-blue-200: #E0F5FE;
@@ -47,7 +48,10 @@
     --color-button-link-hover: var(--color-blue-700);
     --color-button-primary: var(--color-primary);
     --color-button-primary-hover: var(--color-blue-400);
+    --color-button-danger: var(--color-red);
+    --color-button-danger-hover: var(--color-red-dark);
     --color-button-spiner: var(--color-white);
+    --color-button-disabled: var(--color-gray-300);
 
     /* Loader colors */
     --color-loader-primary: var(--color-gray-800);

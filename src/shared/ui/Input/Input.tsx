@@ -14,6 +14,7 @@ const INPUT_TYPE = {
     PASSWORD: 'password',
     TEXT: 'text',
     EMAIL: 'email',
+    NUMBER: 'number'
 } as const;
 
 type TInputType = typeof INPUT_TYPE[keyof typeof INPUT_TYPE];
@@ -25,12 +26,13 @@ interface IInputProps {
     label?: string;
     placeholder?: string;
     error?: string;
+    autoComplete?: string;
     className?: string;
 
     onChange: (value: string) => void;
 };
 
-function Input({ value, status, type, label, placeholder, error, className, onChange }: IInputProps) {
+function Input({ value, status, type, label, placeholder, error, autoComplete, className, onChange }: IInputProps) {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         onChange(e.target.value);
@@ -39,14 +41,14 @@ function Input({ value, status, type, label, placeholder, error, className, onCh
     if (type === INPUT_TYPE.PASSWORD) {
         return <div className={className}>
             { label && <Label text={label} /> }
-            <AntInput.Password status={error ? 'error' : status} type={type} value={value} placeholder={placeholder} onChange={handleChange} className={style.input} />
+            <AntInput.Password status={error ? 'error' : status} type={type} value={value} placeholder={placeholder} onChange={handleChange} className={style.input} autoComplete={autoComplete} />
             { error && <Error error={error} className="mt-[5px]" /> }
         </div>;
     }
 
     return <div className={className}>
         { label && <Label text={label} /> }
-        <AntInput status={error ? 'error' : status} type={type} value={value} placeholder={placeholder} onChange={handleChange} className={style.input} />
+        <AntInput status={error ? 'error' : status} type={type} value={value} placeholder={placeholder} onChange={handleChange} className={style.input} autoComplete={autoComplete} />
         { error && <Error error={error} className="mt-[5px]" /> }
     </div>;
 }

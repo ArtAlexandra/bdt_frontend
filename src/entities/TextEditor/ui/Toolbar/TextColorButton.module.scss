@@ -1,0 +1,10 @@
+.colorButton {
+    --text-color: var(--color-black);
+
+    &__line {
+        width: 20px;
+        height: 4px;
+        margin-top: 2px;
+        background-color: var(--text-color);
+    }
+}
