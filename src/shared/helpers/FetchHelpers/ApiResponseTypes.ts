@@ -11,3 +11,7 @@ export type TApiSuccess<T = unknown> = {
 }
 
 export type TApiResponse<T = unknown> = TApiError | TApiSuccess<T>;
+
+export type TMessage = {
+    message: string;
+};

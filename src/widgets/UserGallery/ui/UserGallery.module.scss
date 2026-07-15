@@ -1,0 +1,40 @@
+.userGallery {
+    position: relative;
+    container-type: inline-size;
+
+    &__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 8px;
+    }
+
+    &__empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 50px auto;
+    }
+
+    &__imageList {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    @container (min-width: 250px) {
+        &__imageList {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @container (min-width: 400px) {
+        &__imageList {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+}

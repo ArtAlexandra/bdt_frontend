@@ -2,7 +2,17 @@
  * https://react-icons.github.io/react-icons/
  */
 
-import { AiOutlineClose, AiOutlineDown, AiOutlineExclamationCircle, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import {
+    AiOutlineClose,
+    AiOutlineDelete,
+    AiOutlineDown,
+    AiOutlineExclamationCircle,
+    AiOutlineInbox,
+    AiOutlineMinus,
+    AiOutlinePlus,
+    AiOutlineUp,
+    AiOutlineUpload
+} from 'react-icons/ai';
 import { BiImageAdd, BiLink } from 'react-icons/bi';
 import { LuTextQuote } from 'react-icons/lu';
 import {
@@ -27,6 +37,10 @@ export const ICON_LIST = {
     minus: AiOutlineMinus,
     plus: AiOutlinePlus,
     arrowDown: AiOutlineDown,
+    arrowUp: AiOutlineUp,
+    upload: AiOutlineUpload,
+    emptyBox: AiOutlineInbox,
+    delete: AiOutlineDelete,
 
     //Md
     email: MdOutlineEmail,

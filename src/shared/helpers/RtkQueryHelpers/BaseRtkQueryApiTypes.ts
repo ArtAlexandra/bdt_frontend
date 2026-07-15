@@ -11,4 +11,7 @@ export const BASE_REDUCER_PATH = 'api' as const;
 export const API_TAGS = {
     //Auth
     AUTH: 'Auth',
+
+    //User
+    USER: 'User',
 } as const;
