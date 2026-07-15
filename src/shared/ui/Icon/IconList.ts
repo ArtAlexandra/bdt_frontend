@@ -8,10 +8,12 @@ import {
     AiOutlineDown,
     AiOutlineExclamationCircle,
     AiOutlineInbox,
+    AiOutlineLeft,
     AiOutlineMinus,
     AiOutlinePlus,
+    AiOutlinePlusCircle,
     AiOutlineUp,
-    AiOutlineUpload
+    AiOutlineUpload,
 } from 'react-icons/ai';
 import { BiImageAdd, BiLink } from 'react-icons/bi';
 import { LuTextQuote } from 'react-icons/lu';
@@ -23,7 +25,7 @@ import {
     MdOutlineFormatListBulleted,
     MdPhone,
 } from 'react-icons/md';
-import { PiArrowArcLeft, PiTextAlignCenter, PiTextAlignJustify, PiTextAlignLeft, PiTextAlignRight } from 'react-icons/pi';
+import { PiArrowArcLeft, PiMagicWand, PiTextAlignCenter, PiTextAlignJustify, PiTextAlignLeft, PiTextAlignRight } from 'react-icons/pi';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { TbLetterSpacing } from 'react-icons/tb';
 import { TfiArrowCircleLeft, TfiArrowCircleRight } from 'react-icons/tfi';
@@ -38,9 +40,11 @@ export const ICON_LIST = {
     plus: AiOutlinePlus,
     arrowDown: AiOutlineDown,
     arrowUp: AiOutlineUp,
+    arrowLeft: AiOutlineLeft,
     upload: AiOutlineUpload,
     emptyBox: AiOutlineInbox,
     delete: AiOutlineDelete,
+    plusCircle: AiOutlinePlusCircle,
 
     //Md
     email: MdOutlineEmail,
@@ -66,6 +70,7 @@ export const ICON_LIST = {
     textLeft: PiTextAlignLeft,
     textCenter: PiTextAlignCenter,
     textJustify: PiTextAlignJustify,
+    magicWand: PiMagicWand,
 
     //Bi
     addImage: BiImageAdd,

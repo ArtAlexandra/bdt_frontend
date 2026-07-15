@@ -14,4 +14,7 @@ export const API_TAGS = {
 
     //User
     USER: 'User',
+
+    //Article
+    ARTICLE: 'Article',
 } as const;

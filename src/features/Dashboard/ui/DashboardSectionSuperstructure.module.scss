@@ -1,0 +1,17 @@
+@use '@bdt/shared/styles/breakpoints.scss' as breakpoints;
+
+.sectionSuperstructure {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-gray-100);
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 20px 20px 60px;
+    margin-bottom: -40px;
+
+    @include breakpoints.breakpoint-min('lg') {
+        padding: 20px 40px 60px;
+        border-top-right-radius: 30px;
+        border-top-left-radius: 30px;
+    }
+}
