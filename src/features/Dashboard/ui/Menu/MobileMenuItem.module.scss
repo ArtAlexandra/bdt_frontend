@@ -1,0 +1,33 @@
+.item {
+    display: flex;
+    width: 100%;
+    align-items: start;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 10px;
+    gap: 15px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+
+    &__icon {
+        font-size: 30px;
+        position: relative;
+    }
+
+    &__tooltip {
+        font-size: 18px;
+    }
+
+    &_active {
+        background-color: var(--color-sidebar-hover);
+    }
+
+    &:active {
+        transition: background-color 0.3s ease;
+        background-color: var(--color-sidebar-hover);
+    }
+}

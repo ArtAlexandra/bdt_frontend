@@ -1,0 +1,36 @@
+@use '@bdt/shared/styles/breakpoints' as breakpoints;
+
+.header {
+    display: flex;
+    padding: 24px 0 0 0;
+    align-items: center;
+    z-index: 1;
+
+    &__right {
+        display: flex;
+        gap: 20px;
+        margin-left: auto;
+    }
+
+    &__burger {
+        cursor: pointer;
+        font-size: 26px;
+        width: 32px;
+        height: 32px;
+    }
+
+    @include breakpoints.breakpoint-min('lg') {
+        position: absolute;
+        padding: 24px 20px;
+        top: 0;
+        right: 0;
+
+        &__right {
+            margin-left: 20px;
+        }
+
+        &__burger {
+            display: none !important;
+        }
+    }
+}

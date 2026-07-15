@@ -3,6 +3,7 @@
     --color-black: #000000;
     --color-red: #e5384f;
     --color-red-dark: #9b1818;
+    --color-pink: #d82e5a;
 
     /* Blue colors */
     --color-blue-200: #E0F5FE;
@@ -56,4 +57,12 @@
     /* Loader colors */
     --color-loader-primary: var(--color-gray-800);
     --color-loader-background: var(--color-white);
+
+    /* Sidebar colors */
+    --color-sidebar-background: var(--color-white);
+    --color-sidebar-text: var(--color-gray-800);
+    --color-sidebar-hover: var(--color-gray-100);
+
+    /* Dashboard colors */
+    --color-dashboard-background: var(--color-blue-200);
 }

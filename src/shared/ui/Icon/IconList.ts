@@ -7,8 +7,10 @@ import {
     AiOutlineDelete,
     AiOutlineDown,
     AiOutlineExclamationCircle,
+    AiOutlineHome,
     AiOutlineInbox,
     AiOutlineLeft,
+    AiOutlineMenu,
     AiOutlineMinus,
     AiOutlinePlus,
     AiOutlinePlusCircle,
@@ -45,6 +47,8 @@ export const ICON_LIST = {
     emptyBox: AiOutlineInbox,
     delete: AiOutlineDelete,
     plusCircle: AiOutlinePlusCircle,
+    burgerMenu: AiOutlineMenu,
+    home: AiOutlineHome,
 
     //Md
     email: MdOutlineEmail,

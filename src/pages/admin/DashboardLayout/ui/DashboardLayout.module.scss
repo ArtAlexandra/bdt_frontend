@@ -1,0 +1,31 @@
+@use '@bdt/shared/styles/breakpoints' as breakpoints;
+
+.container {
+    padding: 0 20px 60px 20px;
+    background-color: var(--color-dashboard-background);
+    min-height: 100vh;
+
+    @include breakpoints.breakpoint-min('lg') {
+        padding-right: 40px;
+        padding-left: 20px;
+    }
+}
+
+.contentWrapper {
+    max-width: 1460px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    @include breakpoints.breakpoint-min('lg') {
+        gap: 20px;
+        align-items: flex-start;
+        flex-direction: row;
+    }
+}
+
+.content {
+    flex: 1;
+    min-width: 0;
+}

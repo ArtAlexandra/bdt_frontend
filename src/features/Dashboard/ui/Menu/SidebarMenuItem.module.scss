@@ -1,0 +1,32 @@
+.item {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    font-size: 20px;
+    color: var(--color-gray-800);
+    transition: all 0.3s;
+
+    &:hover {
+        scale: 1.1;
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+        scale: 1;
+        box-shadow: none;
+    }
+
+    &.active {
+        scale: 1;
+        box-shadow: none;
+        background-color: var(--color-pink);
+        color: var(--color-white);
+    }
+}
