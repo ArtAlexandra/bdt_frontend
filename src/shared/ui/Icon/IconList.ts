@@ -16,10 +16,12 @@ import {
     AiOutlinePlusCircle,
     AiOutlineUp,
     AiOutlineUpload,
+    AiOutlineUserAdd,
 } from 'react-icons/ai';
 import { BiImageAdd, BiLink } from 'react-icons/bi';
 import { LuTextQuote } from 'react-icons/lu';
 import {
+    MdCircle,
     MdFormatLineSpacing,
     MdFormatListNumbered,
     MdFormatStrikethrough,
@@ -49,6 +51,7 @@ export const ICON_LIST = {
     plusCircle: AiOutlinePlusCircle,
     burgerMenu: AiOutlineMenu,
     home: AiOutlineHome,
+    userAdd: AiOutlineUserAdd,
 
     //Md
     email: MdOutlineEmail,
@@ -57,6 +60,7 @@ export const ICON_LIST = {
     unorderingList: MdOutlineFormatListBulleted,
     orderingList: MdFormatListNumbered,
     strikethrough: MdFormatStrikethrough,
+    circle: MdCircle,
 
     //Rx
     burger: RxHamburgerMenu,

@@ -59,6 +59,10 @@ export const ROUTES = {
                 path: '/dashboard/create-post',
                 access: RouteAccessType.PROTECTED_ADMIN,
             },
+            posts: {
+                path: '/dashboard/posts',
+                access: RouteAccessType.PROTECTED_ADMIN,
+            },
         }
     },
     /**

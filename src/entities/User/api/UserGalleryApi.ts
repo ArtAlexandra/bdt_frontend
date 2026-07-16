@@ -19,6 +19,7 @@ export const userGalleryApi = baseRtkQueryApi.injectEndpoints({
             queryFn: createQueryFn(getImagesGallery),
         }),
     }),
+    overrideExisting: true,
 });
 
 export const {
