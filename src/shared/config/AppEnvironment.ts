@@ -17,3 +17,5 @@ export const PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localho
 
 export const ADMIN_SECRET_KEY = process.env.NEXT_PUBLIC_ADMIN_SECRET_KEY ?? 'test';
 export const ADMIN_VERIFICATION_KEY = process.env.NEXT_PUBLIC_ADMIN_VERIFICATION_KEY ?? 'test';
+
+export const VK_LOGO_URL = '/image/vk_logo.png';

@@ -1,16 +1,19 @@
 'use client';
 
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
 
 import { formatUnixToDate } from '@bdt/shared/helpers/Date';
 
-import ExpandableText from '@bdt/shared/ui/ExpandableText';
-import Icon from '@bdt/shared/ui/Icon';
+import { VK_LOGO_URL } from '@bdt/shared/config/AppEnvironment';
 
-import MediaCarousel from './MediaCarousel';
+import Badge from '@bdt/shared/ui/Badge';
+import ExpandableText from '@bdt/shared/ui/ExpandableText';
+import MediaCarousel from '@bdt/shared/ui/MediaCarousel';
+
+import { getMedia } from '../model/getMedia';
 
 import style from './PostMediaViewer.module.scss';
 
@@ -25,7 +28,7 @@ interface IPostMediaViewerProps {
 
 function PostMediaViewer({ post, id, isTextFirst = false, className }: IPostMediaViewerProps) {
     const date = formatUnixToDate({ unixTimestamp: post.date, format: 'DD MMMM YYYY в HH:mm' });
-
+    const media = useMemo(() => getMedia(post.content), [post.content]);
     return (
         <div
             className={clsx(style.postMediaViewer, className, {
@@ -33,13 +36,13 @@ function PostMediaViewer({ post, id, isTextFirst = false, className }: IPostMedi
             })}
             id={id}>
             <div className={style.postMediaViewer__media}>
-                <MediaCarousel media={post.content} />
+                <MediaCarousel media={media} defaultImageUrl="/image/logo.svg" isVK />
             </div>
             <div className={style.postMediaViewer__textBlock}>
                 <div className="flex gap-4">
                     <div className={style.postMediaViewer__title}>{ post.title }</div>
-                    { post.isPinned && <div className={style.postMediaViewer__badge}><Icon name="pinned" /></div> }
-                    { post.isRepost && <div className={style.postMediaViewer__badge}><Icon name="repost" /></div> }
+                    { post.isPinned && <Badge iconName="pinned" /> }
+                    { post.isRepost && <Badge iconName="repost" /> }
                 </div>
 
                 { post.description && <ExpandableText text={post.description} maxLines={5} isShowButton /> }
@@ -51,7 +54,7 @@ function PostMediaViewer({ post, id, isTextFirst = false, className }: IPostMedi
                         className={style.postMediaViewer__link}
                     >
                         <Image
-                            src="/image/vk_logo.png"
+                            src={VK_LOGO_URL}
                             alt="Логотип ВКонтакте"
                             width={25}
                             height={25}

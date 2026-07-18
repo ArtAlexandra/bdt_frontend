@@ -16,7 +16,7 @@ function SidebarMenu() {
                         icon={item.icon}
                         tooltip={item.tooltip}
                         path={item.path}
-                        isActive={isActivePath(item.path)}
+                        isActive={isActivePath(item.activePaths ?? item.path)}
                     />
                 );
             }) }

@@ -9,7 +9,7 @@ import { registrationSchema, type TRegistrationSchema } from '@bdt/shared/schema
 
 import Button from '@bdt/shared/ui/Button';
 import Checkbox from '@bdt/shared/ui/Checkbox';
-import Input from '@bdt/shared/ui/Input';
+import Input, { InputPassword } from '@bdt/shared/ui/Input';
 import Label from '@bdt/shared/ui/Label';
 
 import { useRegisterMutation } from '@bdt/entities/Auth';
@@ -31,7 +31,7 @@ interface IRegistrationFormProps {
 
 function RegistrationForm({ buttonTitle = 'Зарегистрироваться', isPageVariant = false, className, onClose, onSubmit }: IRegistrationFormProps) {
     const [registerUser, { isLoading }] = useRegisterMutation();
-    const { handleSubmit, formState: { errors }, setValue, watch, reset } = useForm<TRegistrationSchema>({
+    const { handleSubmit, formState: { errors }, setValue, watch, reset, register } = useForm<TRegistrationSchema>({
         resolver: zodResolver(registrationSchema),
         defaultValues: DEFAULT_VALUES
     });
@@ -53,10 +53,10 @@ function RegistrationForm({ buttonTitle = 'Зарегистрироваться'
 
     return (
         <form className={clsx(style.registrationForm, className, { [style['registrationForm--page']]: isPageVariant })} onSubmit={handleSubmit(handleSubmitForm)}>
-            <Input label="Имя" placeholder="Введите имя" onChange={(e) => setValue('name', e)} value={name} error={errors.name?.message} />
-            <Input label="Email" type="email" placeholder="Введите email" onChange={(e) => setValue('email', e)} value={email} error={errors.email?.message} />
-            <Input label="Пароль" type="password" placeholder="Введите пароль" onChange={(e) => setValue('password', e)} value={password} error={errors.password?.message} />
-            <Input label="Повторите пароль" type="password" placeholder="Введите пароль" onChange={(e) => setValue('confirmPassword', e)} value={confirmPassword} error={errors.confirmPassword?.message} />
+            <Input label="Имя" placeholder="Введите имя" register={register('name')} value={name} error={errors.name} />
+            <Input label="Email" type="email" placeholder="Введите email" register={register('email')} value={email} error={errors.email} />
+            <InputPassword label="Пароль" placeholder="Введите пароль" onChange={(e) => setValue('password', e)} value={password} error={errors.password?.message} />
+            <InputPassword label="Повторите пароль" placeholder="Введите пароль" onChange={(e) => setValue('confirmPassword', e)} value={confirmPassword} error={errors.confirmPassword?.message} />
             <Checkbox onChange={(e) => setValue('isAdmin', e)}><Label text="Сделать пользователя админом?" /></Checkbox>
             <div className="flex justify-end gap-2">
                 <Button variant="secondary" onClick={onClose}>Отмена</Button>

@@ -1,0 +1,81 @@
+@use '@bdt/shared/styles/breakpoints' as breakpoints;
+
+.sitePostViewer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    scroll-margin-top: 95px;
+
+    &__media {
+        grid-row: 1;
+    }
+
+    &__image {
+        border-radius: 30px;
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+
+    &__textBlock {
+        width: 100%;
+        white-space: pre-wrap;
+        word-break: break-word;
+        line-height: 1.6;
+        grid-row: 2;
+    }
+
+    &__details {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    &__date {
+        color: var(--color-gray-500);
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+
+}
+
+@include breakpoints.breakpoint-min('md') {
+    .sitePostViewer {
+        grid-template-columns: 1fr 1fr;
+        align-items: stretch;
+
+        &__media {
+            grid-row: 1;
+            grid-column: 1;
+            width: 100%;
+        }
+
+        &__textBlock {
+            grid-row: 1;
+            grid-column: 2;
+        }
+
+        &_textFirst {
+            .sitePostViewer__media {
+                grid-column: 2;
+            }
+
+            .sitePostViewer__textBlock {
+                grid-column: 1;
+            }
+        }
+    }
+}

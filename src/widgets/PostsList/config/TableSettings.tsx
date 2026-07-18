@@ -1,4 +1,7 @@
+import Link from 'next/link';
+
 import { ArticleStatus } from '@bdt/shared/config/ApiConstants';
+import { ROUTES } from '@bdt/shared/config/Routes';
 
 import { Status } from '@bdt/entities/Article';
 import { TextPreview } from '@bdt/entities/TextEditor';
@@ -12,9 +15,12 @@ export const COLUMNS: TTableColumnType<TArticle>[] = [
         title: 'Название',
         dataIndex: 'title',
         key: 'title',
+        render: (value, record) => {
+            return <Link className="text-base" href={ROUTES.admin.dashboard.posts.edit.generatePath(record.id)}>{ value }</Link>;
+        }
     },
     {
-        title: 'content',
+        title: 'Содержимое',
         dataIndex: 'content',
         key: 'content',
         render: (value: string) => <TextPreview data={value} />

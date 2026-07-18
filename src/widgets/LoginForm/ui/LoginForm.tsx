@@ -9,7 +9,7 @@ import { notifyPromise } from '@bdt/shared/lib/Notifications';
 import { loginSchema, type TLoginSchema } from '@bdt/shared/schemas/Auth';
 
 import Button from '@bdt/shared/ui/Button';
-import Input from '@bdt/shared/ui/Input';
+import Input, { InputPassword } from '@bdt/shared/ui/Input';
 
 import { useLoginMutation } from '@bdt/entities/Auth';
 
@@ -30,7 +30,7 @@ interface ILoginFormProps {
 
 function LoginForm({ buttonTitle = 'Войти', isPageVariant, className, onSubmit }: ILoginFormProps) {
     const [login, { isLoading }] = useLoginMutation();
-    const { handleSubmit, formState: { errors }, setValue, reset, watch } = useForm<TLoginSchema>({
+    const { handleSubmit, formState: { errors }, setValue, reset, watch, register } = useForm<TLoginSchema>({
         resolver: zodResolver(loginSchema),
         defaultValues: DEFAULT_VALUES
     });
@@ -53,8 +53,8 @@ function LoginForm({ buttonTitle = 'Войти', isPageVariant, className, onSub
 
     return (
         <form className={clsx(style.loginForm, className, { [style['loginForm--page']]: isPageVariant })} onSubmit={handleSubmit(handleSubmitForm)}>
-            <Input label="Email" type="email" placeholder="Введите email" onChange={(e) => setValue('email', e)} value={email} error={errors.email?.message} />
-            <Input label="Пароль" type="password" placeholder="Введите пароль" onChange={(e) => setValue('password', e)} value={password} error={errors.password?.message} />
+            <Input label="Email" type="email" placeholder="Введите email" register={register('email')} value={email} error={errors.email} />
+            <InputPassword label="Пароль" placeholder="Введите пароль" onChange={(e) => setValue('password', e)} value={password} error={errors.password?.message} />
             <Button fullWidth variant="primary" type="submit" isLoading={isLoading}>{ buttonTitle }</Button>
         </form>
     );

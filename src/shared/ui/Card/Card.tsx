@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
 
+import { VK_LOGO_URL } from '@bdt/shared/config/AppEnvironment';
+
 import Button from '@bdt/shared/ui/Button';
 import ExpandableText from '@bdt/shared/ui/ExpandableText';
 import Icon from '@bdt/shared/ui/Icon';
@@ -94,7 +96,7 @@ function Card({ imageSrc, videoSrc, date, title, href, isPinned, isRepost, onCli
                         className={style.card__link}
                     >
                         <Image
-                            src="/image/vk_logo.png"
+                            src={VK_LOGO_URL}
                             alt="Логотип ВКонтакте"
                             width={25}
                             height={25}

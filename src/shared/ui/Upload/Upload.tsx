@@ -11,7 +11,7 @@ import Label from '@bdt/shared/ui/Label';
 
 import type { TError } from '@bdt/shared/helpers/ErrorHelpers';
 
-const DEFAULT_ACCEPT = '.jpeg,.jpg,.png';
+const DEFAULT_ACCEPT = '.jpeg,.jpg,.png,.mp4,.mov';
 
 interface IUploadProps {
     text?: string;

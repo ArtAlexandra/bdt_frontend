@@ -14,12 +14,13 @@ import {
     AiOutlineMinus,
     AiOutlinePlus,
     AiOutlinePlusCircle,
+    AiOutlineSearch,
     AiOutlineUp,
     AiOutlineUpload,
     AiOutlineUserAdd,
 } from 'react-icons/ai';
 import { BiImageAdd, BiLink } from 'react-icons/bi';
-import { LuTextQuote } from 'react-icons/lu';
+import { LuPencil, LuTextQuote } from 'react-icons/lu';
 import {
     MdCircle,
     MdFormatLineSpacing,
@@ -31,7 +32,7 @@ import {
 } from 'react-icons/md';
 import { PiArrowArcLeft, PiMagicWand, PiTextAlignCenter, PiTextAlignJustify, PiTextAlignLeft, PiTextAlignRight } from 'react-icons/pi';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { TbLetterSpacing } from 'react-icons/tb';
+import { TbLetterSpacing, TbWorldWww } from 'react-icons/tb';
 import { TfiArrowCircleLeft, TfiArrowCircleRight } from 'react-icons/tfi';
 import { VscPinned } from 'react-icons/vsc';
 
@@ -52,6 +53,7 @@ export const ICON_LIST = {
     burgerMenu: AiOutlineMenu,
     home: AiOutlineHome,
     userAdd: AiOutlineUserAdd,
+    search: AiOutlineSearch,
 
     //Md
     email: MdOutlineEmail,
@@ -86,7 +88,9 @@ export const ICON_LIST = {
 
     //Tb
     charSpacing: TbLetterSpacing,
+    world: TbWorldWww,
 
     //Lu
     quote: LuTextQuote,
+    pencil: LuPencil,
 };

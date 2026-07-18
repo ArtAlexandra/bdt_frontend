@@ -6,16 +6,14 @@ export type TArticle = {
     id: string;
     title: string;
     slug: string;
-    description?: string;
-    seoTitle?: string;
-    image?: string;
+    images: string[];
     content?: string;
-    tags: string[];
     path: ArticleType;
     status: ArticleStatus;
     authorId: string;
     author: TUser;
     publishedAt?: string;
+    isPinned: boolean;
     createdAt: string;
     updatedAt: string;
 };
@@ -24,14 +22,12 @@ export type TAdminArticlesQueryParams = {
     page: number;
     limit: number;
     path?: ArticleType;
-    status?: ArticleStatus,
+    status?: string,
     search?: string;
-    email?: string;
 }
 
 export type TPublicArticlesQueryParams = {
     path: ArticleType;
     page: number;
     limit: number;
-    tags?: string;
 }

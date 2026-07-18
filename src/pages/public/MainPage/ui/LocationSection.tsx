@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import useCopyToClipboard from '@bdt/shared/hooks/useCopyToClipboard';
 
-import { BDT_EMAIL, BDT_PHONE, BDT_VK_URL } from '@bdt/shared/config/AppEnvironment';
+import { BDT_EMAIL, BDT_PHONE, BDT_VK_URL, VK_LOGO_URL } from '@bdt/shared/config/AppEnvironment';
 
 import Icon from '@bdt/shared/ui/Icon';
 
@@ -38,7 +38,7 @@ function LocationSection() {
                         </div>
                     </div>
 
-                    <Link href={BDT_VK_URL} aria-label="Перейти в группу ВКонтакте" target="_blank" rel="noopener noreferrer"><Image src="/image/vk_logo.png" alt="Логотип ВКонтакте" width={25} height={25} /></Link>
+                    <Link href={BDT_VK_URL} aria-label="Перейти в группу ВКонтакте" target="_blank" rel="noopener noreferrer"><Image src={VK_LOGO_URL} alt="Логотип ВКонтакте" width={25} height={25} /></Link>
                 </div>
 
                 <div className={style.locationSection__info}>

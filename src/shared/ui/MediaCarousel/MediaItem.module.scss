@@ -1,0 +1,77 @@
+.mediaItem {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+
+    &__imageWrapper {
+        position: relative;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        min-height: 200px;
+        background: var(--color-gray-200);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__skeletonWrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100%;
+        z-index: 5;
+
+        // Растягиваем скелетон на всю область
+        >* {
+            width: 100% !important;
+            height: 100% !important;
+            min-height: 300px;
+        }
+    }
+
+    &__image {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+        object-fit: contain;
+        max-height: 70vh;
+
+        &-loaded {
+            opacity: 1;
+        }
+    }
+
+    &__videoWrapper {
+        position: relative;
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__video {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border: none;
+        display: block;
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+        aspect-ratio: 16 / 9;
+        max-height: 70vh;
+
+        &-loaded {
+            opacity: 1;
+        }
+    }
+}

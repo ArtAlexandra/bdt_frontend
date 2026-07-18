@@ -4,26 +4,24 @@ import clsx from 'clsx';
 
 import style from './Dots.module.scss';
 
-import type { TContent } from '@bdt/entities/VK';
-
 interface IDotsProps {
     currentIndex: number;
-    media: TContent[];
+    mediaSize: number;
     className?: string;
 
-    onSetCuttentIndex: (index: number) => void;
+    onClick: (index: number) => void;
 };
 
-function Dots({ currentIndex, media, className, onSetCuttentIndex }: IDotsProps) {
+function Dots({ currentIndex, mediaSize, className, onClick }: IDotsProps) {
     return (
         <div className={clsx(style.dots, className)}>
-            { media.map((_, index) => (
+            { Array.from({ length: mediaSize }).map((_, index) => (
                 <button
                     key={index}
                     className={clsx(style.dots__dot, {
                         [style['dots__dot--active']]: index === currentIndex
                     })}
-                    onClick={() => onSetCuttentIndex(index)}
+                    onClick={() => onClick(index)}
                     aria-label={`Перейти к слайду ${index + 1}`}
                 />
             )) }

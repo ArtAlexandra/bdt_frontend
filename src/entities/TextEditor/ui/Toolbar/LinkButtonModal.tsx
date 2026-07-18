@@ -39,7 +39,7 @@ function LinkButtonModal({ isOpen, title, buttonText, onSubmit, onClose, error, 
                 <Input
                     type="text"
                     value={url}
-                    onChange={setUrl}
+                    onChange={(e) => setUrl(e.target.value)}
                     placeholder="Введите URL"
                     error={error}
                 />

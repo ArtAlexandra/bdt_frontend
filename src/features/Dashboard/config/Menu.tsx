@@ -13,13 +13,17 @@ export const MENU = [
     },
     {
         id: 'create',
-        path: ROUTES.admin.dashboard.createPost.path,
+        path: ROUTES.admin.dashboard.posts.create.path,
         icon: <Icon name="plusCircle" />,
         tooltip: 'Новый пост',
     },
     {
         id: 'posts',
-        path: ROUTES.admin.dashboard.posts.path,
+        path: ROUTES.admin.dashboard.posts.index.path,
+        activePaths: [
+            ROUTES.admin.dashboard.posts.index.path,
+            ROUTES.admin.dashboard.posts.edit.path,
+        ],
         icon: <Icon name="unorderingList" />,
         tooltip: 'Посты',
     },

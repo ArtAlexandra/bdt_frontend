@@ -11,7 +11,7 @@ import { registrationSchema, type TRegistrationSchema } from '@bdt/shared/schema
 import { ADMIN_VERIFICATION_KEY } from '@bdt/shared/config/AppEnvironment';
 
 import Button from '@bdt/shared/ui/Button';
-import Input from '@bdt/shared/ui/Input';
+import Input, { InputPassword } from '@bdt/shared/ui/Input';
 
 import { useRegisterMutation } from '@bdt/entities/Auth';
 
@@ -30,7 +30,7 @@ interface IRegistrationFormAdminProps {
 
 function RegistrationFormAdmin({ buttonTitle = 'Зарегистрироваться', className, onSubmit }: IRegistrationFormAdminProps) {
     const [registerUser, { isLoading }] = useRegisterMutation();
-    const { handleSubmit, formState: { errors }, setValue, watch, reset } = useForm<TRegistrationSchema>({
+    const { handleSubmit, formState: { errors }, setValue, watch, reset, register } = useForm<TRegistrationSchema>({
         resolver: zodResolver(registrationSchema),
         defaultValues: DEFAULT_VALUES
     });
@@ -68,14 +68,15 @@ function RegistrationFormAdmin({ buttonTitle = 'Зарегистрировать
 
     return (
         <form className={clsx(style.registrationForm, style['registrationForm--page'], className)} onSubmit={handleSubmit(handleSubmitForm)}>
-            <Input label="Имя" placeholder="Введите имя" onChange={(e) => setValue('name', e)} value={name} error={errors.name?.message} />
-            <Input label="Email" type="email" placeholder="Введите email" onChange={(e) => setValue('email', e)} value={email} error={errors.email?.message} />
-            <Input label="Пароль" type="password" placeholder="Введите пароль" onChange={(e) => setValue('password', e)} value={password} error={errors.password?.message} />
-            <Input label="Повторите пароль" type="password" placeholder="Введите пароль" onChange={(e) => setValue('confirmPassword', e)} value={confirmPassword} error={errors.confirmPassword?.message} />
+            <Input label="Имя" placeholder="Введите имя" register={register('name')} value={name} error={errors.name} />
+            <Input label="Email" type="email" placeholder="Введите email" register={register('email')} value={email} error={errors.email} />
+            <InputPassword label="Пароль" placeholder="Введите пароль" onChange={(e) => setValue('password', e)} value={password} error={errors.password?.message} />
+            <InputPassword label="Повторите пароль" placeholder="Введите пароль" onChange={(e) => setValue('confirmPassword', e)} value={confirmPassword} error={errors.confirmPassword?.message} />
             <div>
-                <Input label="Секретный код" placeholder="Введите секретный код" onChange={setAdminKey} error={adminKeyError} />
+                <Input label="Секретный код" placeholder="Введите секретный код" onChange={(e) => setAdminKey(e.target.value)} error={adminKeyError} />
                 <Button variant="primary" size="small" onClick={handleVerifyKey} className="mt-2 ml-auto">Подтвердить</Button>
             </div>
+            { isAdmin && <div>Вы будете зарегистрированы как <strong>администратор</strong></div> }
             <Button fullWidth variant="primary" type="submit" isLoading={isLoading}>{ buttonTitle }</Button>
         </form>
     );

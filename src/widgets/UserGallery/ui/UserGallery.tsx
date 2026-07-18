@@ -64,8 +64,8 @@ function UserGallery({ text, className, selectedImageUrl, initialVisibleCount = 
         if (!imageToRemove.id) return;
 
         await notifyPromise(removeImage(imageToRemove.id).unwrap(), {
-            loading: 'Удаление изображения из галереи...',
-            success: 'Изображение удалено',
+            loading: 'Удаление файла из галереи...',
+            success: 'Файл удален',
         });
 
         setIsOpenDeleteModal(false);

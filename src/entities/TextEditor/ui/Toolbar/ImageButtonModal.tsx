@@ -79,7 +79,7 @@ function ImageButtonModal({ isOpen, onSubmit, onClose, error, initialWidth, init
                             <Input
                                 type="number"
                                 value={width}
-                                onChange={setWidth}
+                                onChange={(e) => setWidth(e.target.value)}
                                 placeholder="auto"
                                 autoComplete="off"
                             />
@@ -95,7 +95,7 @@ function ImageButtonModal({ isOpen, onSubmit, onClose, error, initialWidth, init
                             <Input
                                 type="number"
                                 value={height}
-                                onChange={setHeight}
+                                onChange={(e) => setHeight(e.target.value)}
                                 placeholder="auto"
                                 autoComplete="off"
                             />
