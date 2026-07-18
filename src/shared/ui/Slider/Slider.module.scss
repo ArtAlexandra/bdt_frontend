@@ -1,0 +1,11 @@
+.slider {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    max-width: 350px;
+
+    :global(.ant-slider) {
+        min-width: 100px;
+        flex: 1;
+    }
+}

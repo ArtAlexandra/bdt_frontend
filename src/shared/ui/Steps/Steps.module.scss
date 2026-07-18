@@ -1,0 +1,25 @@
+.steps {
+    padding-top: 4px;
+
+    :global(.ant-steps-item-title) {
+        font-size: 16px !important;
+    }
+
+    :global(.ant-steps-item-description) {
+        font-size: 12px !important;
+    }
+
+    :global(.ant-steps-item-disabled:not(.ant-steps-item-active)) {
+        opacity: 0.55;
+    }
+
+    :global(.ant-steps-item-active) {
+        :global(.ant-steps-item-icon) {
+            background-color: var(--color-primary) !important;
+
+            :global(.ant-steps-icon) {
+                color: var(--color-light) !important;
+            }
+        }
+    }
+}

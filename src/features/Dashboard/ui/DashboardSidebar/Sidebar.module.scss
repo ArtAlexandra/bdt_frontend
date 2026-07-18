@@ -1,0 +1,21 @@
+@use "@bdt/shared/styles/breakpoints" as breakpoints;
+
+.sidebar {
+    padding: 20px 0;
+    flex-direction: column;
+    z-index: 5;
+    width: 60px;
+    align-items: center;
+    display: none;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @include breakpoints.breakpoint-min('lg') {
+        display: flex;
+    }
+}

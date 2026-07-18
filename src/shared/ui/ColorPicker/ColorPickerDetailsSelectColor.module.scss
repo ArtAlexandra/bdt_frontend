@@ -1,0 +1,82 @@
+.colorPickerDetailsSelectColor {
+    //превращаем первый квадрат в круг
+    padding: 0 !important;
+    border-radius: 50% !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 28px !important;
+    min-height: 28px !important;
+
+    // Стили для основного цветового блока
+    :global(.ant-color-picker-color-block) {
+        width: 28px !important;
+        height: 28px !important;
+        border-radius: 50% !important;
+        min-width: 28px !important;
+        min-height: 28px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    // Убираем тень у основного цветового блока
+    :global(.ant-color-picker-color-block-inner) {
+        box-shadow: none !important;
+    }
+
+    // Размеры слайдера
+    :global(.ant-color-picker-slider) {
+        height: 16px !important;
+        margin-bottom: 10px !important;
+    }
+
+    // Размеры круга в слайдере
+    :global(.ant-color-picker-slider-rail) {
+        height: 16px !important;
+        border-radius: 0 !important;
+    }
+
+    :global(.ant-slider-step) {
+        height: 16px !important;
+    }
+
+    // Размеры круга в слайдере
+    :global(.ant-slider-handle:focus::after) {
+        width: 16px !important;
+        height: 16px !important;
+        border-radius: 50% !important;
+    }
+
+    :global(.ant-color-picker-slider-handle) {
+        width: 16px !important;
+        height: 16px !important;
+        border-radius: 50% !important;
+    }
+
+    :global(.ant-color-picker-slider-handle:after) {
+        width: 16px !important;
+        height: 16px !important;
+        top: 0px !important;
+        inset-inline-start: 0px !important;
+        border-radius: 50% !important;
+    }
+
+    //убираю круг внутри окна
+    :global(.ant-color-picker-slider-container) {
+        :global(.ant-color-picker-color-block) {
+            display: none !important;
+        }
+
+        :global(.ant-color-picker-color-block-inner) {
+            display: none !important;
+        }
+    }
+
+    // Скрываем input если он disabled
+    &__input {
+        &_disabled {
+            :global(.ant-color-picker-input-container) {
+                display: none !important;
+            }
+        }
+    }
+}

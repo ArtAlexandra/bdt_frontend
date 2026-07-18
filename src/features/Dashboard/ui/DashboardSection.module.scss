@@ -1,0 +1,20 @@
+@use '@bdt/shared/styles/breakpoints.scss' as breakpoints;
+
+.section {
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    background-color: var(--color-white);
+    position: relative;
+    min-height: 100px;
+
+    @include breakpoints.breakpoint-min('lg') {
+        padding: 40px;
+        border-radius: 30px;
+    }
+}
+
+.section_highlight {
+    background-color: var(--color-highlight-background);
+    border: 1px solid var(--color-highlight-border);
+}

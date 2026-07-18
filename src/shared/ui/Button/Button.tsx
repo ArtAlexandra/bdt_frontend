@@ -13,6 +13,8 @@ export enum BUTTON_VARIANT {
     secondaryOutline = 'secondaryOutline',
     link = 'link',
     primary = 'primary',
+    secondary = 'secondary',
+    danger = 'danger',
 };
 
 export enum BUTTON_SIZE {
@@ -67,6 +69,8 @@ function Button({
         [style.button_light]: variant === BUTTON_VARIANT.light,
         [style.button_transparent]: variant === BUTTON_VARIANT.transparent,
         [style.button_secondaryOutline]: variant === BUTTON_VARIANT.secondaryOutline,
+        [style.button_secondary]: variant === BUTTON_VARIANT.secondary,
+        [style.button_danger]: variant === BUTTON_VARIANT.danger,
         [style.button_link]: variant === BUTTON_VARIANT.link,
         [style.button_small]: size === BUTTON_SIZE.small,
         [style.button_medium]: size === BUTTON_SIZE.medium,

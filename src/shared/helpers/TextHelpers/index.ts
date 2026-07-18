@@ -1,0 +1,1 @@
+export { getNormalizeSlug } from './getNormalizeSlug';

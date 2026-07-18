@@ -1,0 +1,10 @@
+.textPreview {
+    &__contentEditable {
+        width: 100%;
+        font-size: var(--size-input-font);
+        line-height: var(--size-input-line-height);
+        outline: none;
+        color: var(--color-input-text);
+        transition: border 0.3s ease;
+    }
+}

@@ -1,0 +1,44 @@
+.colorPicker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid var(--color-gray-200);
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: border 0.2s, box-shadow 0.2s;
+
+    &:hover,
+    &_active {
+        border-color: var(--color-blue-500);
+        box-shadow: 0 0 0 2px rgba(5, 145, 255, 0.1);
+        outline: 0;
+    }
+
+    &_empty {
+        background: var(--color-white) !important;
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(to bottom right,
+                    transparent calc(50% - 1px),
+                    #cc2222 calc(50% - 1px),
+                    #cc2222 calc(50% + 1px),
+                    transparent calc(50% + 1px));
+        }
+    }
+}
+
+.colorPickerPopover {
+    display: grid;
+    gap: 20px;
+    padding: 12px;
+
+    &__circles {
+        margin-bottom: 10px;
+    }
+}

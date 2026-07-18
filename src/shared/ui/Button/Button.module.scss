@@ -56,6 +56,24 @@
         }
     }
 
+    &_secondary {
+        background-color: var(--color-button-secondary);
+        border: 1px solid var(--color-button-secondary);
+
+        &:hover {
+            background-color: var(--color-button-secondary-hover);
+        }
+    }
+
+    &_danger {
+        background-color: var(--color-button-danger);
+        border: 1px solid var(--color-button-danger);
+
+        &:hover {
+            background-color: var(--color-button-danger-hover);
+        }
+    }
+
     &_light {
         background-color: var(--color-button-light);
         color: var(--color-button-light-text);

@@ -1,0 +1,54 @@
+.select {
+    &__field {
+        width: 100%;
+
+        :global(.ant-select) {
+            width: 100%;
+            height: var(--size-input-height);
+
+            > :global(.ant-select-selector) {
+                border-radius: var(--size-input-border-radius);
+                font-size: var(--size-input-font);
+                line-height: var(--size-input-line-height);
+                color: var(--color-input-text);
+                border: 1px solid var(--color-input-border) !important;
+                padding-left: var(--size-input-padding-left) !important;
+
+                &:active,
+                &:hover {
+                    border-color: var(--color-input-border-hover) !important;
+                }
+            }
+        }
+
+        &_autoHeight {
+            :global(.ant-select) {
+                min-height: max-content !important;
+
+                > :global(.ant-select-selector) {
+                    min-height: inherit !important;
+                }
+            }
+        }
+
+        &_error {
+            :global(.ant-select) {
+                > :global(.ant-select-selector) {
+                    border-color: var(--color-input-error) !important;
+                }
+            }
+        }
+
+        &_small {
+            :global(.ant-select) {
+                height: 22px;
+
+                > :global(.ant-select-selector) {
+                    font-size: 12px;
+                    line-height: 12px;
+                    padding-left: 6px !important;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+.status {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    display: flex;
+    gap: 5px;
+    line-height: 1.2;
+    align-items: center;
+
+    &__icon {
+        font-size: 7px;
+    }
+
+    &_published {
+        .status__icon {
+            color: var(--color-green);
+        }
+    }
+
+    &_archived {
+        .status__icon {
+            color: var(--color-gray-400);
+        }
+    }
+}

@@ -4,38 +4,34 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import clsx from 'clsx';
 
-import { AuthStorage } from '@bdt/shared/lib/AuthStorage';
 import { notifyPromise } from '@bdt/shared/lib/Notifications';
 import { registrationSchema, type TRegistrationSchema } from '@bdt/shared/schemas/Auth';
 
 import Button from '@bdt/shared/ui/Button';
-import Input from '@bdt/shared/ui/Input';
+import Checkbox from '@bdt/shared/ui/Checkbox';
+import Input, { InputPassword } from '@bdt/shared/ui/Input';
+import Label from '@bdt/shared/ui/Label';
 
 import { useRegisterMutation } from '@bdt/entities/Auth';
 
-import AdminVerification from './AdminVerification';
+import { DEFAULT_VALUES } from '../config/DefaultValues';
 
 import style from './RegistrationForm.module.scss';
 
-const DEFAULT_VALUES: TRegistrationSchema = {
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    isAdmin: false
-};
+import type { TAuthResponse } from '@bdt/shared/api/Auth';
 
 interface IRegistrationFormProps {
     buttonTitle?: string;
     isPageVariant?: boolean;
     className?: string;
 
-    onSubmit?: () => void;
+    onClose: () => void;
+    onSubmit: (response: TAuthResponse) => void;
 };
 
-function RegistrationForm({ buttonTitle = 'Зарегистрироваться', isPageVariant = false, className, onSubmit }: IRegistrationFormProps) {
+function RegistrationForm({ buttonTitle = 'Зарегистрироваться', isPageVariant = false, className, onClose, onSubmit }: IRegistrationFormProps) {
     const [registerUser, { isLoading }] = useRegisterMutation();
-    const { handleSubmit, formState: { errors }, setValue, watch, reset } = useForm<TRegistrationSchema>({
+    const { handleSubmit, formState: { errors }, setValue, watch, reset, register } = useForm<TRegistrationSchema>({
         resolver: zodResolver(registrationSchema),
         defaultValues: DEFAULT_VALUES
     });
@@ -44,7 +40,6 @@ function RegistrationForm({ buttonTitle = 'Зарегистрироваться'
     const email = watch('email');
     const password = watch('password');
     const confirmPassword = watch('confirmPassword');
-    const isAdminVerified = watch('isAdmin');
 
     const handleSubmitForm = async (data: TRegistrationSchema) => {
         const response = await notifyPromise(registerUser(data).unwrap(), {
@@ -52,21 +47,21 @@ function RegistrationForm({ buttonTitle = 'Зарегистрироваться'
             success: 'Аккаунт успешно создан!',
         });
 
-        AuthStorage.setToken(response.accessToken);
-        AuthStorage.setRefreshToken(response.refreshToken);
-
         reset(DEFAULT_VALUES);
-        onSubmit?.();
+        onSubmit?.(response);
     };
 
     return (
         <form className={clsx(style.registrationForm, className, { [style['registrationForm--page']]: isPageVariant })} onSubmit={handleSubmit(handleSubmitForm)}>
-            <Input label="Имя" placeholder="Введите имя" onChange={(e) => setValue('name', e)} value={name} error={errors.name?.message} />
-            <Input label="Email" type="email" placeholder="Введите email" onChange={(e) => setValue('email', e)} value={email} error={errors.email?.message} />
-            <Input label="Пароль" type="password" placeholder="Введите пароль" onChange={(e) => setValue('password', e)} value={password} error={errors.password?.message} />
-            <Input label="Повторите пароль" type="password" placeholder="Введите пароль" onChange={(e) => setValue('confirmPassword', e)} value={confirmPassword} error={errors.confirmPassword?.message} />
-            <AdminVerification isAdminVerified={isAdminVerified} onChangeAdmin={(e) => setValue('isAdmin', e)} />
-            <Button fullWidth variant="primary" type="submit" isLoading={isLoading}>{ buttonTitle }</Button>
+            <Input label="Имя" placeholder="Введите имя" register={register('name')} value={name} error={errors.name} />
+            <Input label="Email" type="email" placeholder="Введите email" register={register('email')} value={email} error={errors.email} />
+            <InputPassword label="Пароль" placeholder="Введите пароль" onChange={(e) => setValue('password', e)} value={password} error={errors.password?.message} />
+            <InputPassword label="Повторите пароль" placeholder="Введите пароль" onChange={(e) => setValue('confirmPassword', e)} value={confirmPassword} error={errors.confirmPassword?.message} />
+            <Checkbox onChange={(e) => setValue('isAdmin', e)}><Label text="Сделать пользователя админом?" /></Checkbox>
+            <div className="flex justify-end gap-2">
+                <Button variant="secondary" onClick={onClose}>Отмена</Button>
+                <Button fullWidth variant="primary" type="submit" isLoading={isLoading}>{ buttonTitle }</Button>
+            </div>
         </form>
     );
 }
