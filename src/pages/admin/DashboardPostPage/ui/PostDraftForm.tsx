@@ -51,7 +51,7 @@ function PostDraftForm({ post, onSuccess }: IPostDraftFormProps) {
             <Checkbox className="mb-4" checked={isPinned} onChange={setIsPinned}>Закрепить пост?</Checkbox>
             <Button variant="primary" onClick={() => setIsOpenPublishModal(true)}>Опубликовать</Button>
 
-            <Modal title={`Публикация поста "${post.title}"`} isOpen={isOpenPublishModal} onCancel={handleCloseArchivedModal}>
+            <Modal title={`Публикация поста "${post.title}"`} isOpen={isOpenPublishModal} onCancel={handleCloseArchivedModal} onClose={handleCloseArchivedModal}>
                 <p className="mb-4">Вы уверены, что хотите опубликовать пост?</p>
                 <div className="flex justify-end gap-3">
                     <Button variant="secondary" onClick={handleCloseArchivedModal}>Отмена</Button>

@@ -14,6 +14,7 @@ export const API_TAGS = {
 
     //User
     USER: 'User',
+    USER_GALLERY: 'UserGallery',
 
     //Article
     ARTICLE: 'Article',
