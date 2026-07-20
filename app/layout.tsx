@@ -2,6 +2,8 @@ import React from 'react';
 import { Comfortaa, Open_Sans, Playfair_Display, Righteous } from 'next/font/google';
 import clsx from 'clsx';
 
+import AuthGuardProvider from '@bdt/shared/providers/AuthGuardProvider';
+
 import Toaster from '@bdt/shared/ui/Toaster';
 
 import StoreProvider from '@bdt/app/StoreProvider';
@@ -41,8 +43,10 @@ export default function RootLayout({ children }: IRootLayoutProps) {
         <body className={clsx(openSans.variable, righteous.variable, comfortaa.variable, playfairDisplay.variable)}>
             <React.Suspense>
                 <StoreProvider>
-                    { children }
-                    <Toaster />
+                    <AuthGuardProvider>
+                        { children }
+                        <Toaster />
+                    </AuthGuardProvider>
                 </StoreProvider>
             </React.Suspense>
         </body>

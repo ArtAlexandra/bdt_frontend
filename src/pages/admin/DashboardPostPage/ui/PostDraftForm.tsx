@@ -29,8 +29,6 @@ function PostDraftForm({ post, onSuccess }: IPostDraftFormProps) {
     const handleCloseArchivedModal = () => setIsOpenPublishModal(false);
 
     const handleUpdate = async () => {
-        if (isPinned === post.isPinned) return;
-
         const data: TUpdateArticleSchema = {
             ...post,
             publishedAt: new Date(),
