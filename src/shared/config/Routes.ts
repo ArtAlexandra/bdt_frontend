@@ -44,11 +44,11 @@ export const ROUTES = {
     admin: {
         login: {
             path: '/login',
-            access: RouteAccessType.PROTECTED_ADMIN,
+            access: RouteAccessType.PUBLIC,
         },
         registration: {
             path: '/registration',
-            access: RouteAccessType.PROTECTED_ADMIN,
+            access: RouteAccessType.PUBLIC,
         },
         dashboard: {
             index: {
