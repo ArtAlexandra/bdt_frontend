@@ -8,5 +8,5 @@ export {
 export {
     userApi,
     useGetUserQuery,
-    useLogoutUserMutation,
+    useEditUserMutation,
 } from './api/UserApi';

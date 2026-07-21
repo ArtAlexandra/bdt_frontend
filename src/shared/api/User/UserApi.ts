@@ -1,11 +1,12 @@
-import api, { type TMessage } from '@bdt/shared/helpers/FetchHelpers';
+import api from '@bdt/shared/helpers/FetchHelpers';
 
+import type { TEditUserSchema } from '@bdt/shared/schemas/User';
 import type { TUser } from './UserTypes';
 
 export const getUser = (): Promise<TUser> => {
     return api.get('/user/get-my-info');
 };
 
-export const logout = (data: { refreshToken: string }): Promise<TMessage> => {
-    return api.post('/auth/logout', data);
+export const editUser = (id: string, data: TEditUserSchema): Promise<TUser> => {
+    return api.put(`/user/edit/${id}`, data);
 };

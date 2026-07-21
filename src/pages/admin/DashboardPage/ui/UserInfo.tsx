@@ -2,17 +2,14 @@
 
 import Icon from '@bdt/shared/ui/Icon';
 
-import { useGetUserQuery } from '@bdt/entities/User';
+import type { TUser } from '@bdt/shared/api/User';
 
 interface IUserInfoProps {
+    user: TUser;
     className?: string;
 };
 
-function UserInfo({ className }: IUserInfoProps) {
-    const { data: user } = useGetUserQuery();
-
-    if (!user) return;
-
+function UserInfo({ user, className }: IUserInfoProps) {
     return (
         <div className={className}>
             <h2 className="font-bold mb-3">Информация о владельце аккаунта</h2>

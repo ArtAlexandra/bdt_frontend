@@ -1,5 +1,8 @@
-import { login, register, type TAuthResponse, type TLogin, type TRegister } from '@bdt/shared/api/Auth';
+import { login, logout, register, type TAuthResponse, type TLogin, type TRegister } from '@bdt/shared/api/Auth';
 import { API_TAGS, baseRtkQueryApi, createQueryFn } from '@bdt/shared/helpers/RtkQueryHelpers';
+import { AuthStorage } from '@bdt/shared/lib/AuthStorage';
+
+import type { TMessage } from '@bdt/shared/helpers/FetchHelpers';
 
 export const authApi = baseRtkQueryApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -11,9 +14,15 @@ export const authApi = baseRtkQueryApi.injectEndpoints({
             invalidatesTags: [API_TAGS.AUTH],
             queryFn: createQueryFn(register),
         }),
-
+        logoutUser: builder.mutation<TMessage, void>({
+            queryFn: createQueryFn(() => {
+                const token = AuthStorage.getRefreshToken();
+                if (!token) throw new Error('No refresh token');
+                return logout({ refreshToken: token });
+            }),
+        }),
     }),
     overrideExisting: true,
 });
 
-export const { useLoginMutation, useRegisterMutation, } = authApi;
+export const { useLoginMutation, useRegisterMutation, useLogoutUserMutation, } = authApi;

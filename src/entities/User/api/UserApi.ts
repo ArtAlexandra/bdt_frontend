@@ -1,8 +1,8 @@
-import { getUser, logout, type TUser } from '@bdt/shared/api/User';
+import { getUser, type TUser } from '@bdt/shared/api/User';
+import { editUser } from '@bdt/shared/api/User/UserApi';
 import { API_TAGS, baseRtkQueryApi, createQueryFn } from '@bdt/shared/helpers/RtkQueryHelpers';
-import { AuthStorage } from '@bdt/shared/lib/AuthStorage';
 
-import type { TMessage } from '@bdt/shared/helpers/FetchHelpers';
+import type { TEditUserSchema } from '@bdt/shared/schemas/User';
 
 export const userApi = baseRtkQueryApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -10,12 +10,9 @@ export const userApi = baseRtkQueryApi.injectEndpoints({
             providesTags: [API_TAGS.USER],
             queryFn: createQueryFn(getUser),
         }),
-        logoutUser: builder.mutation<TMessage, void>({
-            queryFn: createQueryFn(() => {
-                const token = AuthStorage.getRefreshToken();
-                if (!token) throw new Error('No refresh token');
-                return logout({ refreshToken: token });
-            }),
+        editUser: builder.mutation<TUser, { id: string, data: TEditUserSchema }>({
+            invalidatesTags: (_result, _error, { id }) => [{ type: API_TAGS.USER, id }],
+            queryFn: createQueryFn(({ id, data }) => editUser(id, data)),
         }),
     }),
     overrideExisting: true,
@@ -23,5 +20,5 @@ export const userApi = baseRtkQueryApi.injectEndpoints({
 
 export const {
     useGetUserQuery,
-    useLogoutUserMutation,
+    useEditUserMutation,
 } = userApi;
