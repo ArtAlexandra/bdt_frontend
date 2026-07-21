@@ -1,0 +1,38 @@
+@use '@bdt/shared/styles/breakpoints' as breakpoints;
+
+.draftPostList {
+    display: grid;
+    justify-items: center;
+    gap: 30px;
+    margin-top: 40px;
+
+    &__title {
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        justify-items: center;
+    }
+}
+
+@include breakpoints.breakpoint-min('lg') {
+    .draftPostList {
+        &__content {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+    }
+}
+
+@include breakpoints.breakpoint-min('xl') {
+    .draftPostList {
+        &__content {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}

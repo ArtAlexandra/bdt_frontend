@@ -24,7 +24,7 @@ function EditUser({ user, className }: IEditUserProps) {
             <Modal title="Изменение личных данных" isOpen={isOpenEditModal} onCancel={handleCloseEditModal} onClose={handleCloseEditModal}>
                 <EditUserForm user={user} onCancel={handleCloseEditModal} />
             </Modal>
-            <Button variant="secondary" size="medium" className={className} onClick={() => setIsOpenEditModal(true)}>Изменить личные данные</Button>
+            <Button variant="secondary" className={className} onClick={() => setIsOpenEditModal(true)}>Изменить личные данные</Button>
         </>
     );
 }

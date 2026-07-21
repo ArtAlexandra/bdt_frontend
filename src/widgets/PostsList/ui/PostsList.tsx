@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
+import { useUpdateUrlParams } from '@bdt/shared/helpers/URL';
 import { usePagination } from '@bdt/shared/hooks/usePagination';
 
-import { ArticleType } from '@bdt/shared/config/ApiConstants';
+import { ArticleStatus, ArticleType } from '@bdt/shared/config/ApiConstants';
 import { ROUTES } from '@bdt/shared/config/Routes';
 
 import Alert from '@bdt/shared/ui/Alert';
@@ -22,8 +24,12 @@ import { COLUMNS } from '../config/TableSettings';
 import type { TAdminArticlesQueryParams } from '@bdt/shared/api/Article';
 
 function PostsList() {
+    const searchParams = useSearchParams();
+    const statusParams = searchParams?.get('status');
+    const status = statusParams ? statusParams as ArticleStatus : undefined;
+    const updateUrlParams = useUpdateUrlParams();
     const { pageSize, currentPage, handleChangePage, getTotalPages } = usePagination();
-    const [params, setParams] = useState<TAdminArticlesQueryParams>({ limit: pageSize, page: currentPage, path: ArticleType.POST });
+    const [params, setParams] = useState<TAdminArticlesQueryParams>({ limit: pageSize, page: currentPage, path: ArticleType.POST, ...{ status } });
 
     const { data: response, error, isLoading } = useGetAdminArticlesQuery(params);
     const posts = response?.items ?? [];
@@ -31,6 +37,8 @@ function PostsList() {
     const totalPages = getTotalPages(total);
 
     const handleChangeStatus = (value: string) => {
+        updateUrlParams({ params: { status: value } });
+
         setParams((prev) => {
             const newParams = { ...prev };
             newParams.page = 1;
@@ -63,7 +71,7 @@ function PostsList() {
 
             <div className="flex flex-col md:flex-row gap-4 mb-4">
                 <Input placeholder="Поиск по названию" onChange={handleSearchChange} iconName="search" />
-                <Select options={sortedOptions} onChange={handleChangeStatus} defaultValue={sortedOptions[0].value} popupMatchSelectWidth={false} />
+                <Select options={sortedOptions} onChange={handleChangeStatus} defaultValue={status ?? sortedOptions[0].value} popupMatchSelectWidth={false} />
                 <Button className="md:ml-auto mb-4" variant="primary" href={ROUTES.admin.dashboard.posts.create.path}>Создать</Button>
             </div>
 

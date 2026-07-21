@@ -7,6 +7,7 @@ import clsx from 'clsx';
 
 import { VK_LOGO_URL } from '@bdt/shared/config/AppEnvironment';
 
+import Badge from '@bdt/shared/ui/Badge';
 import Button from '@bdt/shared/ui/Button';
 import ExpandableText from '@bdt/shared/ui/ExpandableText';
 import Icon from '@bdt/shared/ui/Icon';
@@ -74,17 +75,11 @@ function Card({ imageSrc, videoSrc, date, title, href, isPinned, isRepost, onCli
                     />
                 </div>
             ) }
-            { isPinned && (
-                <div className={style.card__badge}>
-                    <Icon name="pinned" />
-                </div>
-            ) }
 
-            { isRepost && (
-                <div className={style.card__badge}>
-                    <Icon name="repost" />
-                </div>
-            ) }
+            <div className={style.card__badgeContainer}>
+                { isPinned && <Badge iconName="pinned" /> }
+                { isRepost && <Badge iconName="repost" /> }
+            </div>
 
             <div className={style.card__content}>
                 <div className={style.card__header}>

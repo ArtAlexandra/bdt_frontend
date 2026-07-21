@@ -1,0 +1,12 @@
+.userInfo {
+    margin-bottom: 20px;
+    justify-items: center;
+    display: grid;
+    gap: 10px;
+
+    &__title {
+        font-weight: 700;
+        font-size: 18px;
+        text-align: center;
+    }
+}

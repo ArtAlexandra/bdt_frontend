@@ -38,7 +38,7 @@ function Logout({ className }: ILogoutProps) {
                     <Button variant="danger" onClick={handleLogout}>Выйти</Button>
                 </div>
             </Modal>
-            <Button variant="danger" size="medium" onClick={() => setIsOpenLogoutModal(true)}>Выйти из аккаунта</Button>
+            <Button variant="danger" onClick={() => setIsOpenLogoutModal(true)}>Выйти из аккаунта</Button>
         </div>
     );
 }
