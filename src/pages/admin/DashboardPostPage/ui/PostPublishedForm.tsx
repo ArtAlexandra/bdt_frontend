@@ -64,7 +64,7 @@ function PostPublishedForm({ post, onSuccess }: IPostPublishedFormProps) {
                 <Button variant="primary" disabled={isPinned === post.isPinned} onClick={handleUpdate}>Обновить</Button>
             </div>
 
-            <Modal title={`Архивирование поста "${post.title}"`} isOpen={isOpenArchivedModal} onCancel={handleCloseArchivedModal}>
+            <Modal title={`Архивирование поста "${post.title}"`} isOpen={isOpenArchivedModal} onCancel={handleCloseArchivedModal} onClose={handleCloseArchivedModal}>
                 <p className="mb-4">Вы уверены, что хотите архивировать пост?</p>
                 <div className="flex justify-end gap-3">
                     <Button variant="secondary" onClick={handleCloseArchivedModal}>Отмена</Button>

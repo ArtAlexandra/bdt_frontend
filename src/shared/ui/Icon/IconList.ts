@@ -3,6 +3,7 @@
  */
 
 import {
+    AiOutlineCheckCircle,
     AiOutlineClose,
     AiOutlineDelete,
     AiOutlineDown,
@@ -28,11 +29,12 @@ import {
     MdFormatStrikethrough,
     MdOutlineEmail,
     MdOutlineFormatListBulleted,
+    MdOutlineMail,
     MdPhone,
 } from 'react-icons/md';
 import { PiArrowArcLeft, PiMagicWand, PiTextAlignCenter, PiTextAlignJustify, PiTextAlignLeft, PiTextAlignRight } from 'react-icons/pi';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { TbLetterSpacing, TbWorldWww } from 'react-icons/tb';
+import { TbLetterSpacing, TbUser, TbWorldWww } from 'react-icons/tb';
 import { TfiArrowCircleLeft, TfiArrowCircleRight } from 'react-icons/tfi';
 import { VscPinned } from 'react-icons/vsc';
 
@@ -54,6 +56,7 @@ export const ICON_LIST = {
     home: AiOutlineHome,
     userAdd: AiOutlineUserAdd,
     search: AiOutlineSearch,
+    checkCircle: AiOutlineCheckCircle,
 
     //Md
     email: MdOutlineEmail,
@@ -63,6 +66,7 @@ export const ICON_LIST = {
     orderingList: MdFormatListNumbered,
     strikethrough: MdFormatStrikethrough,
     circle: MdCircle,
+    mailOutline: MdOutlineMail,
 
     //Rx
     burger: RxHamburgerMenu,
@@ -89,6 +93,7 @@ export const ICON_LIST = {
     //Tb
     charSpacing: TbLetterSpacing,
     world: TbWorldWww,
+    user: TbUser,
 
     //Lu
     quote: LuTextQuote,

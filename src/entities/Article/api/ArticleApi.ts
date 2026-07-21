@@ -21,7 +21,7 @@ export const articleApi = baseRtkQueryApi.injectEndpoints({
             queryFn: createQueryFn(createAdminArticle),
         }),
         updateAdminArticleById: builder.mutation<TArticle, { id: string, data: TUpdateArticleSchema }>({
-            invalidatesTags: (_result, _error, { id }) => [{ type: API_TAGS.ARTICLE, id }],
+            invalidatesTags: [API_TAGS.ARTICLE],
             queryFn: createQueryFn(({ id, data }) => updateAdminArticleById(id, data)),
         }),
         updateAdminArticleStatusById: builder.mutation<TArticle, { id: string, data: { status: ArticleStatus } }>({

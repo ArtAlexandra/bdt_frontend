@@ -1,0 +1,24 @@
+@use '@bdt/shared/styles/breakpoints' as breakpoints;
+
+.dashboardPage {
+    &__userBlock {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__buttons {
+        display: grid;
+        gap: 10px;
+        justify-items: center;
+    }
+}
+
+@include breakpoints.breakpoint-min('md') {
+    .dashboardPage {
+        &__buttons {
+            display: flex;
+            gap: 20px;
+        }
+    }
+}

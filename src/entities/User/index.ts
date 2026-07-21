@@ -4,3 +4,9 @@ export {
     useGetImagesGalleryQuery,
     useRemoveImageGalleryMutation,
 } from './api/UserGalleryApi';
+
+export {
+    userApi,
+    useGetUserQuery,
+    useEditUserMutation,
+} from './api/UserApi';

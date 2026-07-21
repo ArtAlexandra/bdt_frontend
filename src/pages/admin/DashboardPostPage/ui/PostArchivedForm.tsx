@@ -41,7 +41,7 @@ function PostArchivedForm({ post, onSuccess }: IPostArchivedFormProps) {
         <>
             <Button variant="danger" onClick={() => setIsOpenDeleteModal(true)}>Удалить</Button>
 
-            <Modal title={`Обновление статуса поста "${post.title}"`} isOpen={isOpenDeleteModal} onCancel={handleCloseDeleteModal}>
+            <Modal title={`Обновление статуса поста "${post.title}"`} isOpen={isOpenDeleteModal} onCancel={handleCloseDeleteModal} onClose={handleCloseDeleteModal}>
                 <p className="mb-4">Вы уверены, что хотите удалить пост?</p>
                 <div className="flex justify-end gap-3">
                     <Button variant="secondary" onClick={handleCloseDeleteModal}>Отмена</Button>

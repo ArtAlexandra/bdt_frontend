@@ -19,3 +19,4 @@ export const ADMIN_SECRET_KEY = process.env.NEXT_PUBLIC_ADMIN_SECRET_KEY ?? 'tes
 export const ADMIN_VERIFICATION_KEY = process.env.NEXT_PUBLIC_ADMIN_VERIFICATION_KEY ?? 'test';
 
 export const VK_LOGO_URL = '/image/vk_logo.png';
+export const LOGO_COLOR_URL = '/image/logo-color.jpg';
