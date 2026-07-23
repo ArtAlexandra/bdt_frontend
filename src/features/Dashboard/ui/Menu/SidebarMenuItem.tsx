@@ -9,15 +9,21 @@ interface ISidebarMenuItemProps {
     icon: React.ReactNode;
     tooltip: React.ReactNode;
     isActive?: boolean;
+    disabled?: boolean;
     path?: string;
 };
 
-function SidebarMenuItem({ icon, tooltip, path = '#', isActive }: ISidebarMenuItemProps) {
+function SidebarMenuItem({ icon, tooltip, path = '#', isActive, disabled = false }: ISidebarMenuItemProps) {
     return (
         <Tooltip title={tooltip} placement="right" pointAtCenter>
-            <Link className={clsx(style.item, { [style.active]: isActive })} href={path} >
-                { icon }
-            </Link>
+            { disabled
+                ? <span className={clsx(style.item, style.disabled)} aria-disabled="true">
+                    { icon }
+                </span>
+                : <Link className={clsx(style.item, { [style.active]: isActive })} href={path}>
+                    { icon }
+                </Link>
+            }
         </Tooltip>
     );
 }

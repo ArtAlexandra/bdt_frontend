@@ -9,4 +9,6 @@ export {
     userApi,
     useGetUserQuery,
     useEditUserMutation,
+    useGetUsersQuery,
+    useDeleteUserMutation,
 } from './api/UserApi';

@@ -1,3 +1,3 @@
 export { AuthStorage } from './AuthStorage';
 
-export { isProtectedAdminRoute } from './isProtectedRoute';
+export { isProtectedAdminRoute, isProtectedRoute } from './isProtectedRoute';

@@ -6,7 +6,7 @@ import clsx from 'clsx';
 
 import { formatDate } from '@bdt/shared/helpers/Date';
 
-import { VK_LOGO_URL } from '@bdt/shared/config/AppEnvironment';
+import { LOGO_COLOR_URL } from '@bdt/shared/config/AppEnvironment';
 import { ROUTES } from '@bdt/shared/config/Routes';
 
 import Badge from '@bdt/shared/ui/Badge';
@@ -39,7 +39,7 @@ function SitePostViewer({ post, id, isTextFirst = false, className }: ISitePostV
             })}
             id={id}
         >
-            <MediaCarousel media={media} defaultImageUrl={VK_LOGO_URL} className={style.sitePostViewer__media} />
+            <MediaCarousel media={media} defaultImageUrl={LOGO_COLOR_URL} className={style.sitePostViewer__media} />
 
             <div className={style.sitePostViewer__textBlock}>
                 <div className="flex gap-4">

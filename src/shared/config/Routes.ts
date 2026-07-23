@@ -1,5 +1,6 @@
 export enum RouteAccessType {
     PUBLIC = 'public',
+    PROTECTED = 'protected',
     PROTECTED_ADMIN = 'protected_admin',
 };
 
@@ -53,22 +54,26 @@ export const ROUTES = {
         dashboard: {
             index: {
                 path: '/dashboard',
-                access: RouteAccessType.PROTECTED_ADMIN,
+                access: RouteAccessType.PROTECTED,
             },
             posts: {
                 index: {
                     path: '/dashboard/posts',
-                    access: RouteAccessType.PROTECTED_ADMIN,
+                    access: RouteAccessType.PROTECTED,
                 },
                 create: {
                     path: '/dashboard/create-post',
-                    access: RouteAccessType.PROTECTED_ADMIN,
+                    access: RouteAccessType.PROTECTED,
                 },
                 edit: {
                     path: '/dashboard/post/:id',
-                    access: RouteAccessType.PROTECTED_ADMIN,
+                    access: RouteAccessType.PROTECTED,
                     generatePath: (id: string | number) => `/dashboard/post/${id}`,
                 },
+            },
+            users: {
+                path: '/dashboard/users',
+                access: RouteAccessType.PROTECTED_ADMIN,
             },
         }
     },

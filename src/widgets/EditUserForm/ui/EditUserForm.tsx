@@ -111,7 +111,7 @@ function EditUserForm({ user, className, onCancel }: IEditUserFormProps) {
                     <Button variant="primary" size="small" onClick={handleVerifyKey} className="mt-2 ml-auto">Подтвердить</Button>
                 </div> }
 
-            { isAdmin && !user.isAdmin && <div>После сохранения у Вас будет роль <strong>Администратор</strong></div> }
+            { isAdmin && !user.isAdmin && <div>После сохранения будет роль <strong>Администратор</strong></div> }
 
             <div className="flex justify-end gap-2">
                 <Button variant="secondary" onClick={onCancel}>Отмена</Button>

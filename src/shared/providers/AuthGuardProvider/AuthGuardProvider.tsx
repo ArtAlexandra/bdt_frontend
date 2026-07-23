@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { AuthStorage, isProtectedAdminRoute } from '@bdt/shared/lib/AuthStorage';
+import { AuthStorage, isProtectedAdminRoute, isProtectedRoute } from '@bdt/shared/lib/AuthStorage';
 import { storage } from '@bdt/shared/lib/SessionStorage';
 
 import { ROUTES } from '@bdt/shared/config/Routes';
@@ -22,10 +22,11 @@ function AuthGuardProvider({ children }: IAuthGuardProviderProps) {
 
     useEffect(() => {
         const checkAuth = () => {
-            const isProtected = isProtectedAdminRoute(pathname);
+            const isProtectedAdmin = isProtectedAdminRoute(pathname);
+            const isProtected = isProtectedRoute(pathname);
 
             // Если маршрут не защищен
-            if (!isProtected) {
+            if (!isProtectedAdmin && !isProtected) {
                 setIsAuthorized(true);
                 setIsLoading(false);
                 return;
