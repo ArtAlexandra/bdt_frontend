@@ -2,6 +2,8 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import Icon from '@bdt/shared/ui/Icon';
 
+import { useGetUserQuery } from '@bdt/entities/User';
+
 import { MENU } from '../../config/Menu';
 
 import MobileMenuItem from './MobileMenuItem';
@@ -15,6 +17,7 @@ interface IMobileMenuProps {
 function MobileMenu({ onClose }: IMobileMenuProps) {
     const router = useRouter();
     const currentPath = usePathname();
+    const { data: user } = useGetUserQuery();
 
     const isActivePath = (path: string) => currentPath === path;
 
@@ -30,6 +33,7 @@ function MobileMenu({ onClose }: IMobileMenuProps) {
 
                 <div className={style.content__items}>
                     { MENU.map((item) => {
+                        const disabled = item.isAdmin ? !user?.isAdmin : false;
                         return (
                             <MobileMenuItem
                                 key={`mobile-menu-item-${item.id}`}
@@ -37,6 +41,7 @@ function MobileMenu({ onClose }: IMobileMenuProps) {
                                 tooltip={item.tooltip}
                                 onClick={() => handleChoosingItem(item.path)}
                                 isActive={isActivePath(item.path)}
+                                disabled={disabled}
                             />
                         );
                     }) }

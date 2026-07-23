@@ -27,4 +27,11 @@ export const MENU = [
         icon: <Icon name="unorderingList" />,
         tooltip: 'Посты',
     },
+    {
+        id: 'users',
+        path: ROUTES.admin.dashboard.users.path,
+        icon: <Icon name="user" />,
+        tooltip: 'Пользователи',
+        isAdmin: true,
+    },
 ];

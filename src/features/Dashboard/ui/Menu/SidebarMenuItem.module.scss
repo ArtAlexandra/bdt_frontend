@@ -29,4 +29,9 @@
         background-color: var(--color-pink);
         color: var(--color-white);
     }
+
+    &.disabled {
+        opacity: 0.5;
+        background-color: var(--color-gray-200);
+    }
 }

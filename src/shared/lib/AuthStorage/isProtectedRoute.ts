@@ -29,3 +29,11 @@ export const isProtectedAdminRoute = (path: string | null): boolean => {
 
     return routeConfig?.access === RouteAccessType.PROTECTED_ADMIN;
 };
+
+export const isProtectedRoute = (path: string | null): boolean => {
+    if (!path) return false;
+
+    const routeConfig = findRouteConfig(ROUTES, path);
+
+    return routeConfig?.access === RouteAccessType.PROTECTED;
+};

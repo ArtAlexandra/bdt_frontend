@@ -11,7 +11,7 @@ export const authApi = baseRtkQueryApi.injectEndpoints({
             queryFn: createQueryFn(login),
         }),
         register: builder.mutation<TAuthResponse, TRegister>({
-            invalidatesTags: [API_TAGS.AUTH],
+            invalidatesTags: [API_TAGS.AUTH, API_TAGS.USER],
             queryFn: createQueryFn(register),
         }),
         logoutUser: builder.mutation<TMessage, void>({
