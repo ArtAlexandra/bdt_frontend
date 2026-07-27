@@ -4,7 +4,7 @@ import { BDT_VK_DOMAIN, VK_SERVICE_KEY, VK_VERSION } from '@bdt/shared/config/Ap
 
 import type { TVKWallQueryParams, TVKWallResponse } from './VKApiTypes';
 
-//https://dev.vk.com/ru/method/wall.getById
+//https://dev.vk.com/ru/method/wall.get
 export async function getVKWallServer(params: TVKWallQueryParams): Promise<TVKWallResponse | null> {
     const fullParams = {
         ...params,

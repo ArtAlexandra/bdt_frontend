@@ -10,3 +10,5 @@ export {
 
 export { default as Status } from './ui/Status';
 export { default as Card } from './ui/Card';
+
+export { mapArticlesToPublic, mapArticleToPublic } from './model/mapArticlesToPublic';

@@ -1,21 +1,11 @@
-import { getVKWallServer } from '@bdt/shared/api/VKServer';
-
-import { getPostsByVK, type TPost } from '@bdt/entities/VK';
+import { getPosts } from '@bdt/features/News';
 
 import MainPage from '@bdt/pages/public/MainPage';
 
-export default async function Page() {
-    const data = await getVKWallServer({ count: 6 });
-    let posts: TPost[] = [];
+const COUNT_POSTS_IN_PAGE = 16;
 
-    if (data && data.response) {
-        try {
-            posts = getPostsByVK(data.response.items);
-        } catch (error) {
-            console.error('Error processing posts:', error);
-            posts = [];
-        }
-    }
+export default async function Page() {
+    const { posts } = await getPosts(COUNT_POSTS_IN_PAGE);
 
     return (
         <>

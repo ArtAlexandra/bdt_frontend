@@ -12,10 +12,10 @@ import PublicHeader from '@bdt/widgets/PublicHeader';
 
 import style from './NewsPage.module.scss';
 
-import type { TPost } from '@bdt/entities/VK';
+import type { TPublicArticle } from '@bdt/shared/helpers/PublicArticle';
 
 interface INewsPageProps {
-    posts: TPost[];
+    posts: TPublicArticle[];
     currentPage?: number;
     totalPages?: number;
 };

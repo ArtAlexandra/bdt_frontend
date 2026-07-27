@@ -5,7 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
 
-import { VK_LOGO_URL } from '@bdt/shared/config/AppEnvironment';
+import { formatDate } from '@bdt/shared/helpers/Date';
+import { PublicArticleType, type TPublicArticle } from '@bdt/shared/helpers/PublicArticle';
+
+import { LOGO_COLOR_URL, VK_LOGO_URL } from '@bdt/shared/config/AppEnvironment';
 
 import Badge from '@bdt/shared/ui/Badge';
 import Button from '@bdt/shared/ui/Button';
@@ -16,20 +19,19 @@ import Skeleton, { SkeletonType } from '@bdt/shared/ui/Skeleton';
 import style from './Card.module.scss';
 
 interface ICardProps {
-    imageSrc?: string;
-    videoSrc?: string;
-    date: string;
-    title: string;
-    href: string;
-    isPinned: boolean;
-    isRepost: boolean;
+    post: TPublicArticle;
 
     onClick: () => void;
 };
 
-function Card({ imageSrc, videoSrc, date, title, href, isPinned, isRepost, onClick }: ICardProps) {
-    const [mediaLoaded, setMediaLoaded] = useState<boolean>(false);
+function Card({ post, onClick }: ICardProps) {
+    const { date, title, href, isPinned, isRepost, type } = post;
+    const isPostFromSite = type === PublicArticleType.SITE;
+    const [mediaLoaded, setMediaLoaded] = useState<boolean>(isPostFromSite ? true : false);
+    const imageSrc = post.media?.length && post.media[0].isPhoto ? post.media[0].link : LOGO_COLOR_URL;
+    const videoSrc = post.media?.length && !post.media[0].isPhoto ? post.media[0].link : undefined;
     const showImage = imageSrc && !videoSrc;
+    const formateDate = formatDate(date, 'DD.MM.YYYY');
 
     return (
         <div className={style.card}>
@@ -62,17 +64,30 @@ function Card({ imageSrc, videoSrc, date, title, href, isPinned, isRepost, onCli
                         </div>
                     ) }
 
-                    <iframe
-                        src={videoSrc}
-                        loading="lazy"
-                        title={title}
-                        height="250"
-                        width="500"
-                        allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
-                        className={style.card__video}
-                        allowFullScreen
-                        onLoad={() => setMediaLoaded(true)}
-                    />
+                    { isPostFromSite ?
+                        <video
+                            src={videoSrc}
+                            muted
+                            loop
+                            playsInline
+                            autoPlay
+                            preload="metadata"
+                            className={style.card__video}
+                        />
+                        :
+                        <iframe
+                            src={videoSrc}
+                            loading="lazy"
+                            title={title}
+                            height="250"
+                            width="500"
+                            allow="autoplay; encrypted-media; fullscreen; picture-in-picture; screen-wake-lock;"
+                            className={style.card__video}
+                            allowFullScreen
+                            onLoad={() => setMediaLoaded(true)}
+                        />
+                    }
+
                 </div>
             ) }
 
@@ -83,23 +98,22 @@ function Card({ imageSrc, videoSrc, date, title, href, isPinned, isRepost, onCli
 
             <div className={style.card__content}>
                 <div className={style.card__header}>
-                    <p className={style.card__date}>{ date }</p>
+                    <p className={style.card__date}>{ formateDate }</p>
                     <Link
                         href={href}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={style.card__link}
                     >
-                        <Image
-                            src={VK_LOGO_URL}
-                            alt="Логотип ВКонтакте"
-                            width={25}
-                            height={25}
-                        />
+                        { isPostFromSite ?
+                            <Icon name="world" className="text-[25px]" />
+                            :
+                            <Image src={VK_LOGO_URL} alt="Логотип ВК" width={25} height={25} />
+                        }
                     </Link>
                 </div>
 
-                <ExpandableText text={title} className={style.card__title} maxLines={2} />
+                <ExpandableText className={style.card__title}>{ title }</ExpandableText>
 
                 <Button onClick={onClick} variant="light" className={style.card__button}><Icon name="arrowCircleRight" />Подробнее</Button>
             </div>

@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 export const useLineCount = () => {
     const ref = useRef<HTMLDivElement>(null);
     const [lineCount, setLineCount] = useState(1);
+    const [contentHeight, setContentHeight] = useState(0);
 
     const calculateLineCount = useCallback(() => {
         if (!ref.current) return;
@@ -24,6 +25,7 @@ export const useLineCount = () => {
         const contentHeight = elementHeight - paddingTop - paddingBottom;
         const calculatedLineCount = Math.round(contentHeight / lineHeight);
 
+        setContentHeight(contentHeight);
         setLineCount(calculatedLineCount > 0 ? calculatedLineCount : 1);
     }, []);
 
@@ -56,5 +58,5 @@ export const useLineCount = () => {
         return () => clearTimeout(timeout);
     });
 
-    return { ref, lineCount };
+    return { ref, lineCount, contentHeight };
 };

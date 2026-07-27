@@ -45,7 +45,7 @@ function Card({ post, href }: ICardProps) {
                 }
             </div>
             <div className={style.card__content}>
-                <ExpandableText text={post.title} className={style.card__title} maxLines={2} />
+                <ExpandableText className={style.card__title}>{ post.title }</ExpandableText>
                 <Button href={href} variant="secondary" fullWidth className={style.card__button}>Редактировать</Button>
             </div>
         </div>
