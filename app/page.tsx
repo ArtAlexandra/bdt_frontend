@@ -2,7 +2,7 @@ import { getPosts } from '@bdt/features/News';
 
 import MainPage from '@bdt/pages/public/MainPage';
 
-const COUNT_POSTS_IN_PAGE = 6;
+const COUNT_POSTS_IN_PAGE = 16;
 
 export default async function Page() {
     const { posts } = await getPosts(COUNT_POSTS_IN_PAGE);
