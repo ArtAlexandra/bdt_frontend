@@ -5,17 +5,16 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { ROUTES } from '@bdt/shared/config/Routes';
 
-import Button from '@bdt/shared/ui/Button';
 import Steps, { type IStep } from '@bdt/shared/ui/Steps';
 
 import { useGetAdminArticleByIdQuery } from '@bdt/entities/Article';
 
 import { DashboardHead, DashboardSection, DashboardSectionSuperstructure } from '@bdt/features/Dashboard';
-import SitePostViewer from '@bdt/features/SitePostViewer';
 
 import { AdminPostUpdateForm } from '@bdt/widgets/AdminPostForm';
 import UserGallery from '@bdt/widgets/UserGallery';
 
+import PreviewSection from './PreviewSection';
 import PublicationSection from './PublicationSection';
 
 const STEPS = {
@@ -62,12 +61,7 @@ function DashboardPostPage({ postId }: IDashboardPostPageProps) {
             <DashboardSection>
                 { post && current === STEPS.description && <AdminPostUpdateForm post={post} GalleryComponent={UserGallery} buttonSecondaryText="Продолжить" onSuccess={() => handleStepChange(STEPS.preview)} onSubmit={() => handleStepChange(STEPS.preview, true)} /> }
 
-                { post && current === STEPS.preview &&
-                    <>
-                        <SitePostViewer post={post} id={post.id} className="max-w-[900px]" />
-                        <Button variant="primary" onClick={() => handleStepChange(STEPS.publication)} className="ml-auto">Продолжить</Button>
-                    </>
-                }
+                { post && current === STEPS.preview && <PreviewSection article={post} onClick={() => handleStepChange(STEPS.publication)} /> }
 
                 { post && current === STEPS.publication && <PublicationSection post={post} onSuccess={refetch} /> }
             </DashboardSection>

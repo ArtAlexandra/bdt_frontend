@@ -6,10 +6,10 @@ import HeroSection from './HeroSection';
 import LocationSection from './LocationSection';
 import VKWallSection from './VKWallSection';
 
-import type { TPost } from '@bdt/entities/VK';
+import type { TPublicArticle } from '@bdt/shared/helpers/PublicArticle/PublicArticleTypes';
 
 interface IMainPageProps {
-    posts: TPost[];
+    posts: TPublicArticle[];
 };
 
 function MainPage({ posts }: IMainPageProps) {
@@ -17,7 +17,7 @@ function MainPage({ posts }: IMainPageProps) {
         <>
             <PublicHeader />
             <HeroSection />
-            <VKWallSection posts={posts} />
+            { posts.length > 0 && <VKWallSection posts={posts} /> }
             <LocationSection />
         </>
     );

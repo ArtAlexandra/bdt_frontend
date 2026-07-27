@@ -1,20 +1,29 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import { ROUTES } from '@bdt/shared/config/Routes';
 
 import Button from '@bdt/shared/ui/Button';
-
-import VKCard from './VKCard';
+import Card from '@bdt/shared/ui/Card';
 
 import style from './VKWallSection.module.scss';
 
-import type { TPost } from '@bdt/entities/VK';
+import type { TPublicArticle } from '@bdt/shared/helpers/PublicArticle/PublicArticleTypes';
 
 interface IVKWallSectionProps {
-    posts: TPost[];
+    posts: TPublicArticle[];
 };
 
 function VKWallSection({ posts }: IVKWallSectionProps) {
+    const router = useRouter();
+
+    const handleReadMore = (id: string | number) => {
+        router.forward();
+        const url = `${ROUTES.public.news.path}#post-${id}`;
+        router.push(url);
+    };
+
     return (
         <div className={style.vkWallSection}>
             <h2 className={style.vkWallSection__title}>Новости</h2>
@@ -22,7 +31,7 @@ function VKWallSection({ posts }: IVKWallSectionProps) {
             <div className={style.vkWallSection__content}>
                 { posts.map((post, index) => {
                     return (
-                        <VKCard post={post} key={`vk_post_${index}`} />
+                        <Card post={post} onClick={() => handleReadMore(post.id)} key={`post_${index}`} />
                     );
                 }) }
             </div>
