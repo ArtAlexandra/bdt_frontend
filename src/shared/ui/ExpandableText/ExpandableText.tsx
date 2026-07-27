@@ -10,22 +10,22 @@ import Button from '@bdt/shared/ui/Button';
 import style from './ExpandableText.module.scss';
 
 interface IExpandableTextProps {
-    text: string;
-    maxLines?: number;
+    children: React.ReactNode;
+    maxHeight?: number;
     isShowButton?: boolean;
     className?: string;
 };
 
-function ExpandableText({ text, maxLines = 2, isShowButton = false, className }: IExpandableTextProps) {
-    const { ref, lineCount } = useLineCount();
+function ExpandableText({ children, maxHeight = 100, isShowButton = true, className }: IExpandableTextProps) {
+    const { ref, contentHeight } = useLineCount();
     const [isExpanded, setIsExpanded] = useState(false);
 
     return (
         <div className={className}>
-            <div ref={ref} className={clsx(style.expandableText, { [style['expandableText-full']]: isExpanded })} style={{ '--max-lines': maxLines } as React.CSSProperties}>
-                { text }
+            <div ref={ref} className={clsx(style.expandableText, { [style['expandableText-full']]: isExpanded })} style={{ '--max-height': `${maxHeight}px` } as React.CSSProperties}>
+                { children }
             </div>
-            { lineCount > maxLines && isShowButton && <Button onClick={() => setIsExpanded(!isExpanded)} variant="link" size="small" className="mt-1"> { isExpanded ? 'Свернуть' : 'Раскрыть' }</Button> }
+            { contentHeight >= maxHeight && isShowButton && <Button onClick={() => setIsExpanded(!isExpanded)} variant="link" size="small" className="mt-1">{ isExpanded ? 'Свернуть' : 'Показать ещё' }</Button> }
         </div>
     );
 };

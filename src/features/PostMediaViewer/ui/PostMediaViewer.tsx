@@ -46,11 +46,7 @@ function PostMediaViewer({ post, id, isTextFirst = false, className }: IPostMedi
                     { post.isRepost && <Badge iconName="repost" /> }
                 </div>
 
-                { post.content &&
-                    (post.type === PublicArticleType.VK ?
-                        <ExpandableText text={post.content} maxLines={5} isShowButton />
-                        : <TextPreview data={post.content} />
-                    ) }
+                { post.content && <ExpandableText isShowButton>{ post.type === PublicArticleType.VK ? post.content : <TextPreview data={post.content} /> }</ExpandableText> }
 
                 <div className={style.postMediaViewer__details}>
                     <Link

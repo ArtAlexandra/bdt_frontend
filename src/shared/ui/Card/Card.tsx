@@ -113,7 +113,7 @@ function Card({ post, onClick }: ICardProps) {
                     </Link>
                 </div>
 
-                <ExpandableText text={title} className={style.card__title} maxLines={2} />
+                <ExpandableText className={style.card__title}>{ title }</ExpandableText>
 
                 <Button onClick={onClick} variant="light" className={style.card__button}><Icon name="arrowCircleRight" />Подробнее</Button>
             </div>

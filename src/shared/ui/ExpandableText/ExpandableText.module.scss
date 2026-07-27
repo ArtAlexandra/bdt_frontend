@@ -1,18 +1,12 @@
 .expandableText {
-    display: flex;
-    align-items: center;
-    color: var(--color-text-info);
-
-    // Многострочное обрезание с троеточием
-    display: -webkit-box;
-    -webkit-line-clamp: var(--max-lines, 2);
-    -webkit-box-orient: vertical;
+    height: auto;
+    max-height: var(--max-height);
     overflow: hidden;
+    padding-top: 5px; // чтобы не обрезался вверх у TextPreview
 
     &-full {
-        -webkit-line-clamp: unset;
-        display: block;
+        max-height: none;
         overflow: visible;
-        height: auto;
+        max-height: none;
     }
 }
