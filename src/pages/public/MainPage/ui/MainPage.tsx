@@ -6,7 +6,7 @@ import HeroSection from './HeroSection';
 import LocationSection from './LocationSection';
 import VKWallSection from './VKWallSection';
 
-import type { TPublicArticle } from '@bdt/shared/helpers/PublicArticle/PublicArticleTypes';
+import type { TPublicArticle } from '@bdt/shared/helpers/PublicArticle';
 
 interface IMainPageProps {
     posts: TPublicArticle[];

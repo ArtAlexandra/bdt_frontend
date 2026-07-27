@@ -88,7 +88,6 @@ const mapVKPostToPublic = (post: TVKPost): TPublicArticle | null => {
 
         if (!content.length) return null;
 
-        // firstLink, firstFrame нужны для отображения в карточках
         const isFirstShortVideo = content[0].type === VKAttachmentType.SHORT_VIDEO;
         const defaultTitle = isFirstShortVideo ? DEFAULT_TITLE_SHORT_VIDEO : DEFAULT_TITLE_POST;
         const href = getPostHref(postOwerId, id);

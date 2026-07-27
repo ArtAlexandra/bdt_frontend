@@ -9,7 +9,7 @@ import Card from '@bdt/shared/ui/Card';
 
 import style from './VKWallSection.module.scss';
 
-import type { TPublicArticle } from '@bdt/shared/helpers/PublicArticle/PublicArticleTypes';
+import type { TPublicArticle } from '@bdt/shared/helpers/PublicArticle';
 
 interface IVKWallSectionProps {
     posts: TPublicArticle[];
