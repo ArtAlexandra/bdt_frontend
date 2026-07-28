@@ -38,6 +38,7 @@ function MediaItem({ isPhoto, mediaLoaded, index, link, isVK, onLoad }: IMediaIt
                         sizes="100vw"
                         style={{ width: '100%', height: 'auto' }}
                         onLoad={onLoad}
+                        loading="eager"
                     />
                 </div>
             ) : (

@@ -1,7 +1,6 @@
 'use client';
 
 import { memo, useCallback, useState } from 'react';
-import Image from 'next/image';
 import clsx from 'clsx';
 
 import Button from '@bdt/shared/ui/Button';
@@ -38,20 +37,7 @@ function MediaCarousel({ media, defaultImageUrl, isVK = false, className }: IMed
         setMediaLoaded(false);
     }, [media.length]);
 
-    if (media.length === 0) {
-        return (
-            <Image
-                src={defaultImageUrl}
-                alt="Картинка к посту"
-                width={0}
-                height={0}
-                sizes="100vw"
-                className={className}
-                style={{ width: '100%', height: 'auto' }}
-            />
-        );
-    }
-    const currentMedia = media[currentIndex];
+    const currentMedia = media.length ? media[currentIndex] : { isPhoto: true, link: defaultImageUrl };
 
     return (
         <div className={clsx(style.mediaCarousel, className)}>
