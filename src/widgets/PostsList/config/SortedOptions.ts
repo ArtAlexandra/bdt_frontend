@@ -2,7 +2,7 @@ import { ArticleStatus } from '@bdt/shared/config/ApiConstants';
 
 export const sortedOptions = [
     {
-        label: 'Все посты',
+        label: 'Все',
         value: ''
     },
     {

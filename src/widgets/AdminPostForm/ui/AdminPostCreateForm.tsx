@@ -20,17 +20,18 @@ import MediaGallery from '@bdt/features/MediaGallery';
 import type { TArticle } from '@bdt/shared/api/Article';
 
 interface IAdminPostCreateFormProps {
+    path: ArticleType;
     className?: string;
     GalleryComponent: TGalleryComponent;
 
     onSubmit?: (article: TArticle) => void;
 };
 
-function AdminPostCreateForm({ className, GalleryComponent, onSubmit }: IAdminPostCreateFormProps) {
+function AdminPostCreateForm({ path, className, GalleryComponent, onSubmit }: IAdminPostCreateFormProps) {
     const { handleSubmit, formState: { errors, isSubmitting }, setValue, watch, reset, register } = useForm<TCreateArticleSchema>({
         resolver: zodResolver(createArticleSchema),
         defaultValues: {
-            path: ArticleType.POST,
+            path,
         },
     });
 

@@ -34,4 +34,20 @@ export const MENU = [
         tooltip: 'Пользователи',
         isAdmin: true,
     },
+    {
+        id: 'create-article',
+        path: ROUTES.admin.dashboard.articles.create.path,
+        icon: <Icon name="pencil" />,
+        tooltip: 'Новая статья',
+    },
+    {
+        id: 'articles',
+        path: ROUTES.admin.dashboard.articles.index.path,
+        activePaths: [
+            ROUTES.admin.dashboard.articles.index.path,
+            ROUTES.admin.dashboard.articles.edit.path,
+        ],
+        icon: <Icon name="emptyBox" />,
+        tooltip: 'Статьи',
+    },
 ];

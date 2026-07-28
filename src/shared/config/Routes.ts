@@ -75,6 +75,21 @@ export const ROUTES = {
                 path: '/dashboard/users',
                 access: RouteAccessType.PROTECTED_ADMIN,
             },
+            articles: {
+                index: {
+                    path: '/dashboard/articles',
+                    access: RouteAccessType.PROTECTED,
+                },
+                create: {
+                    path: '/dashboard/create-article',
+                    access: RouteAccessType.PROTECTED,
+                },
+                edit: {
+                    path: '/dashboard/article/:id',
+                    access: RouteAccessType.PROTECTED,
+                    generatePath: (id: string | number) => `/dashboard/article/${id}`,
+                },
+            },
         }
     },
     /**

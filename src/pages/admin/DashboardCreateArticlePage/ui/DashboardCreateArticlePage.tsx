@@ -14,35 +14,35 @@ import UserGallery from '@bdt/widgets/UserGallery';
 
 import type { TArticle } from '@bdt/shared/api/Article';
 
-const CreatePostSteps: IStep[] = [
-    { title: 'Создание', content: 'Напишите пост' },
-    { title: 'Превью', content: 'Проверьте правильность написания поста' },
-    { title: 'Публикация', content: 'Сделайте пост доступным' }
+const CreateArticleSteps: IStep[] = [
+    { title: 'Создание', content: 'Напишите статью' },
+    { title: 'Превью', content: 'Проверьте правильность написания статьи' },
+    { title: 'Публикация', content: 'Сделайте статью доступной' }
 ];
 
-function DashboardCreatePostPage() {
+function DashboardCreateArticlePage() {
     const router = useRouter();
 
     const handleSubmit = (post?: TArticle) => {
         if (!post) return;
-        const path = ROUTES.admin.dashboard.posts.edit.generatePath(post.id);
+        const path = ROUTES.admin.dashboard.articles.edit.generatePath(post.id);
 
         router.push(`${path}?step=1`);
     };
 
     return (
         <>
-            <DashboardHead title="Создание нового поста" />
+            <DashboardHead title="Создание новой статьи" />
 
             <DashboardSectionSuperstructure>
-                <Steps data={CreatePostSteps} current={0} />
+                <Steps data={CreateArticleSteps} current={0} />
             </DashboardSectionSuperstructure>
 
             <DashboardSection>
-                <AdminPostCreateForm path={ArticleType.POST} GalleryComponent={UserGallery} onSubmit={handleSubmit} />
+                <AdminPostCreateForm path={ArticleType.ARTICLE} GalleryComponent={UserGallery} onSubmit={handleSubmit} />
             </DashboardSection>
         </>
     );
 }
 
-export default DashboardCreatePostPage;
+export default DashboardCreateArticlePage;
