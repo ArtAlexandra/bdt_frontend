@@ -9,22 +9,22 @@ import { Card, useGetAdminArticlesQuery } from '@bdt/entities/Article';
 
 import style from './DraftPostList.module.scss';
 
-function DraftPostList() {
-    const { data: response } = useGetAdminArticlesQuery({ limit: 6, page: 1, path: ArticleType.POST, status: ArticleStatus.DRAFT });
+function DraftArticleList() {
+    const { data: response } = useGetAdminArticlesQuery({ limit: 6, page: 1, path: ArticleType.ARTICLE, status: ArticleStatus.DRAFT });
     const posts = response?.items || [];
-    const manyDraftPosts = `${ROUTES.admin.dashboard.posts.index.path}?status=${ArticleStatus.DRAFT}`;
+    const manyDraftPosts = `${ROUTES.admin.dashboard.articles.index.path}?status=${ArticleStatus.DRAFT}`;
 
     if (posts.length === 0) return;
 
     return (
         <div className={style.draftPostList}>
-            <h2 className={style.draftPostList__title}>Черновики постов</h2>
+            <h2 className={style.draftPostList__title}>Черновики статей</h2>
 
             <div className={style.draftPostList__content}>
                 { posts.map((post, index) => {
-                    const href = ROUTES.admin.dashboard.posts.edit.generatePath(post.id);
+                    const href = ROUTES.admin.dashboard.articles.edit.generatePath(post.id);
 
-                    return <Card post={post} key={`post_draft_${index}`} href={href} />;
+                    return <Card post={post} key={`article_draft_${index}`} href={href} />;
                 }) }
             </div>
 
@@ -33,4 +33,4 @@ function DraftPostList() {
     );
 }
 
-export default DraftPostList;
+export default DraftArticleList;
