@@ -1,5 +1,7 @@
 'use client';
 
+import { ArticleType } from '@bdt/shared/config/ApiConstants';
+
 import { DashboardHead, DashboardSection } from '@bdt/features/Dashboard';
 
 import PostsList from '@bdt/widgets/PostsList/ui/PostsList';
@@ -10,7 +12,7 @@ function DashboardPostsPage() {
             <DashboardHead title="Управление постами" />
 
             <DashboardSection>
-                <PostsList />
+                <PostsList path={ArticleType.POST} />
             </DashboardSection>
         </>
     );

@@ -12,3 +12,4 @@ export { default as Status } from './ui/Status';
 export { default as Card } from './ui/Card';
 
 export { mapArticlesToPublic, mapArticleToPublic } from './model/mapArticlesToPublic';
+export { getMedia } from './model/getMedia';

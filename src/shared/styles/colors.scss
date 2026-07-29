@@ -31,6 +31,17 @@
     --color-danger: var(--color-red);
     --color-light: var(--color-white);
 
+    /* Text colors */
+    --color-text-primary: var(--color-gray-800);
+    --color-text-secondary: var(--color-gray-600);
+    --color-text-info: var(--color-gray-400);
+    --color-text-danger: var(--color-red);
+    --color-text-success: var(--color-green);
+    --color-text-warning: var(--color-orange);
+    --color-text-light: var(--color-white);
+    --color-text-link: var(--color-blue-500);
+    --color-text-link-hover: var(--color-blue-700);
+
     /* Input colors */
     --color-input-text: var(--color-gray-800);
     --color-input-error: var(--color-red);
@@ -66,4 +77,9 @@
 
     /* Dashboard colors */
     --color-dashboard-background: var(--color-blue-200);
+
+    /* Text Editor */
+    --color-toolbar-link-text: var(--color-blue-500);
+    --color-toolbar-placeholder-text: var(--color-gray-400);
+    --color-toolbar-colors-primary-text: var(--color-gray-800);
 }

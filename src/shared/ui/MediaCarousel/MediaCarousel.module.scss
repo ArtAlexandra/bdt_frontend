@@ -1,6 +1,14 @@
+@use '@bdt/shared/styles/breakpoints.scss' as breakpoints;
+
 .mediaCarousel {
     width: 100%;
     min-width: 250px;
+
+    &-big {
+        @include breakpoints.breakpoint-min('md') {
+            width: 50vw;
+        }
+    }
 
     &__container {
         position: relative;

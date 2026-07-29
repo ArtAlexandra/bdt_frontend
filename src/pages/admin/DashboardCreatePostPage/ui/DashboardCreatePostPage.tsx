@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
+import { ArticleType } from '@bdt/shared/config/ApiConstants';
 import { ROUTES } from '@bdt/shared/config/Routes';
 
 import Steps, { type IStep } from '@bdt/shared/ui/Steps';
@@ -38,7 +39,7 @@ function DashboardCreatePostPage() {
             </DashboardSectionSuperstructure>
 
             <DashboardSection>
-                <AdminPostCreateForm GalleryComponent={UserGallery} onSubmit={handleSubmit} />
+                <AdminPostCreateForm path={ArticleType.POST} GalleryComponent={UserGallery} onSubmit={handleSubmit} />
             </DashboardSection>
         </>
     );

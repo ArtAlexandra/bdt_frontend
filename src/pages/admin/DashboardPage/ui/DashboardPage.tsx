@@ -4,6 +4,7 @@ import { useGetUserQuery } from '@bdt/entities/User';
 
 import { DashboardHead, DashboardSection } from '@bdt/features/Dashboard';
 
+import DraftArticleList from './DraftArticleList';
 import DraftPostList from './DraftPostList';
 import EditUser from './EditUser';
 import Logout from './Logout';
@@ -29,6 +30,7 @@ function DashboardPage() {
                     </div>
                 }
                 <DraftPostList />
+                <DraftArticleList />
             </DashboardSection>
         </div>
     );

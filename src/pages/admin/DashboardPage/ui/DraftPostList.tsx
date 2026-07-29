@@ -24,7 +24,7 @@ function DraftPostList() {
                 { posts.map((post, index) => {
                     const href = ROUTES.admin.dashboard.posts.edit.generatePath(post.id);
 
-                    return <Card post={post} key={`article_draft_${index}`} href={href} />;
+                    return <Card post={post} key={`post_draft_${index}`} href={href} />;
                 }) }
             </div>
 

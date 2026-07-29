@@ -1,0 +1,17 @@
+@use '@bdt/shared/styles/breakpoints.scss' as breakpoints;
+
+.section {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px;
+    min-height: 300px;
+
+    @include breakpoints.breakpoint-min('sm') {
+        padding: 40px;
+    }
+
+    @include breakpoints.breakpoint-min('xl') {
+        padding: 40px 80px;
+    }
+}

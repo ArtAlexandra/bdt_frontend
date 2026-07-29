@@ -73,7 +73,9 @@ const nextConfig: NextConfig = {
         typescript: { ignoreBuildErrors: true },
         eslint: { ignoreDuringBuilds: true },
     } : {}),
-    distDir: 'out',
+    ...(process.env.NODE_ENV === 'production' ? {
+        distDir: 'out',
+    } : {}),
     images: { unoptimized: true },
     async rewrites() {
         return [

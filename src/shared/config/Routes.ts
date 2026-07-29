@@ -38,6 +38,17 @@ export const ROUTES = {
             path: '/about-us',
             access: RouteAccessType.PUBLIC,
         },
+        articles: {
+            index: {
+                path: '/articles',
+                access: RouteAccessType.PUBLIC,
+            },
+            show: {
+                path: '/articles/:id',
+                access: RouteAccessType.PUBLIC,
+                generatePath: (id: string | number) => `/articles/${id}`,
+            },
+        }
     },
     /**
      * Закрытые маршруты
@@ -74,6 +85,21 @@ export const ROUTES = {
             users: {
                 path: '/dashboard/users',
                 access: RouteAccessType.PROTECTED_ADMIN,
+            },
+            articles: {
+                index: {
+                    path: '/dashboard/articles',
+                    access: RouteAccessType.PROTECTED,
+                },
+                create: {
+                    path: '/dashboard/create-article',
+                    access: RouteAccessType.PROTECTED,
+                },
+                edit: {
+                    path: '/dashboard/article/:id',
+                    access: RouteAccessType.PROTECTED,
+                    generatePath: (id: string | number) => `/dashboard/article/${id}`,
+                },
             },
         }
     },
