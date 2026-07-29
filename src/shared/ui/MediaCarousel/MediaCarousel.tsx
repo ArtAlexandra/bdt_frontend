@@ -21,9 +21,10 @@ interface IMediaCarouselProps {
     defaultImageUrl: string;
     isVK?: boolean;
     className?: string;
+    size?: 'small' | 'big';
 };
 
-function MediaCarousel({ media, defaultImageUrl, isVK = false, className }: IMediaCarouselProps) {
+function MediaCarousel({ media, defaultImageUrl, isVK = false, className, size = 'small' }: IMediaCarouselProps) {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
     const [mediaLoaded, setMediaLoaded] = useState<boolean>(false);
 
@@ -40,9 +41,9 @@ function MediaCarousel({ media, defaultImageUrl, isVK = false, className }: IMed
     const currentMedia = media.length ? media[currentIndex] : { isPhoto: true, link: defaultImageUrl };
 
     return (
-        <div className={clsx(style.mediaCarousel, className)}>
+        <div className={clsx(style.mediaCarousel, className, { [style['mediaCarousel-big']]: size === 'big' })}>
             <div className={style.mediaCarousel__container}>
-                <MediaItem isVK={isVK} isPhoto={currentMedia.isPhoto} link={currentMedia.link} mediaLoaded={mediaLoaded} index={currentIndex} onLoad={() => setMediaLoaded(true)} />
+                <MediaItem isVK={isVK} isPhoto={currentMedia.isPhoto} link={currentMedia.link} mediaLoaded={mediaLoaded} index={currentIndex} onLoad={() => setMediaLoaded(true)} size={size} />
                 { media.length > 1 && (
                     <>
                         <Button

@@ -15,3 +15,14 @@ export async function getPublicArticleServer(params: TPublicArticleQueryParams):
 
     return fetchPublicApi<TPaginated<TArticle>>('/article/all-public', { params });
 };
+
+export async function getPublicArticleByIdServer(id: string): Promise<TArticle | null> {
+    const cached = await fetchPublicApi<TArticle>(`/article/public/${id}`, {
+        next: { revalidate: 3600 },
+        cache: 'force-cache',
+    });
+
+    if (cached) return cached;
+
+    return fetchPublicApi<TArticle>(`/article/public/${id}`);
+};

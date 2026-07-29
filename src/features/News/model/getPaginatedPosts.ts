@@ -4,6 +4,8 @@ import { getPublicArticleServer } from '@bdt/shared/api/ArticleServer';
 import { getVKWallServer } from '@bdt/shared/api/VKServer';
 import { mergeAndSortPublicPosts, type TPublicArticle } from '@bdt/shared/helpers/PublicArticle';
 
+import { ArticleType } from '@bdt/shared/config/ApiConstants';
+
 import { mapArticlesToPublic } from '@bdt/entities/Article';
 import { mapVKPostsToPublic } from '@bdt/entities/VK';
 
@@ -11,7 +13,8 @@ const POSTS_PER_PAGE = 20;
 const FETCH_OVERHEAD = 1;
 
 const getCachedSitePosts = cache(async () => {
-    const response = await getPublicArticleServer({ page: 1, limit: 100 });
+    const response = await getPublicArticleServer({ page: 1, limit: 100, path: ArticleType.POST });
+
     const posts = response?.items ? mapArticlesToPublic(response.items) : [];
     return {
         posts,

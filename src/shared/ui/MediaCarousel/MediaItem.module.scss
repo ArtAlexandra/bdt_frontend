@@ -5,18 +5,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 200px;
 
     &__imageWrapper {
         position: relative;
         width: 100%;
-        max-width: 450px;
         height: auto;
         min-height: 200px;
         background: var(--color-gray-200);
         display: flex;
         align-items: center;
         justify-content: center;
+
+        &-small {
+            max-width: 450px;
+        }
     }
 
     &__skeletonWrapper {
@@ -42,7 +44,6 @@
         transition: opacity 0.3s ease-in-out;
         opacity: 0;
         object-fit: contain;
-        max-height: 70vh;
 
         &-loaded {
             opacity: 1;
@@ -52,11 +53,14 @@
     &__videoWrapper {
         position: relative;
         width: 100%;
-        max-width: 450px;
         height: auto;
         display: flex;
         align-items: center;
         justify-content: center;
+
+        &-small {
+            max-width: 450px;
+        }
     }
 
     &__video {
@@ -68,7 +72,6 @@
         transition: opacity 0.3s ease-in-out;
         opacity: 0;
         aspect-ratio: 16 / 9;
-        max-height: 70vh;
 
         &-loaded {
             opacity: 1;

@@ -1,4 +1,5 @@
 'use client';
+
 import Image from 'next/image';
 import clsx from 'clsx';
 
@@ -12,15 +13,16 @@ interface IMediaItemProps {
     index: number;
     link: string;
     isVK: boolean;
+    size: 'small' | 'big';
 
     onLoad: () => void;
 };
 
-function MediaItem({ isPhoto, mediaLoaded, index, link, isVK, onLoad }: IMediaItemProps) {
+function MediaItem({ isPhoto, mediaLoaded, index, link, isVK, size, onLoad }: IMediaItemProps) {
     return (
         <div className={style.mediaItem}>
             { isPhoto ? (
-                <div className={style.mediaItem__imageWrapper}>
+                <div className={clsx(style.mediaItem__imageWrapper, { [style['mediaItem__imageWrapper-small']]: size === 'small' },)}>
                     { !mediaLoaded && (
                         <Skeleton active type={SkeletonType.Node} className={style.mediaItem__skeletonWrapper} />
                     ) }
@@ -42,7 +44,7 @@ function MediaItem({ isPhoto, mediaLoaded, index, link, isVK, onLoad }: IMediaIt
                     />
                 </div>
             ) : (
-                <div className={style.mediaItem__videoWrapper}>
+                <div className={clsx(style.mediaItem__videoWrapper, { [style['mediaItem__videoWrapper-small']]: size === 'small' })}>
                     { !mediaLoaded && <Skeleton active type={SkeletonType.Node} className={style.mediaItem__skeletonWrapper} /> }
                     { isVK ? (
                         <iframe

@@ -38,6 +38,17 @@ export const ROUTES = {
             path: '/about-us',
             access: RouteAccessType.PUBLIC,
         },
+        articles: {
+            index: {
+                path: '/articles',
+                access: RouteAccessType.PUBLIC,
+            },
+            show: {
+                path: '/articles/:id',
+                access: RouteAccessType.PUBLIC,
+                generatePath: (id: string | number) => `/articles/${id}`,
+            },
+        }
     },
     /**
      * Закрытые маршруты

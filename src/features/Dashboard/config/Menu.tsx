@@ -37,7 +37,7 @@ export const MENU = [
     {
         id: 'create-article',
         path: ROUTES.admin.dashboard.articles.create.path,
-        icon: <Icon name="pencil" />,
+        icon: <Icon name="magicWand" />,
         tooltip: 'Новая статья',
     },
     {

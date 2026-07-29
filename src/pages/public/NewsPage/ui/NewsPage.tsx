@@ -8,8 +8,6 @@ import Pagination from '@bdt/shared/ui/Pagination';
 
 import PostMediaViewer from '@bdt/features/PostMediaViewer';
 
-import PublicHeader from '@bdt/widgets/PublicHeader';
-
 import style from './NewsPage.module.scss';
 
 import type { TPublicArticle } from '@bdt/shared/helpers/PublicArticle';
@@ -32,23 +30,20 @@ function NewsPage({ posts, currentPage = 1, totalPages = 0 }: INewsPageProps) {
 
     return (
         <div className={style.newsPage}>
-            <PublicHeader variant="black" />
-            <div className={style.newsPage__content}>
+            <h1 className={style.newsPage__title}>Новости</h1>
 
-                <h1 className={style.newsPage__title}>Новости</h1>
-
-                <div className={style.newsPage__list}>
-                    { posts.map((post, index) => {
-                        const isTextFirst = index % 2 === 0;
-                        return (
-                            <PostMediaViewer post={post} key={`vk_post_${index}`} id={`post-${post.id}`} isTextFirst={isTextFirst} className={style['newsPage__list-card']} />
-                        );
-                    }) }
-                </div>
-
-                <Pagination currentPage={currentPage} onChangePage={handlePageSize} pageSize={posts.length} totalPages={totalPages} showSizeChanger={false} />
+            <div className={style.newsPage__list}>
+                { posts.map((post, index) => {
+                    const isTextFirst = index % 2 === 0;
+                    return (
+                        <PostMediaViewer post={post} key={`vk_post_${index}`} id={`post-${post.id}`} isTextFirst={isTextFirst} className={style['newsPage__list-card']} />
+                    );
+                }) }
             </div>
+
+            <Pagination currentPage={currentPage} onChangePage={handlePageSize} pageSize={posts.length} totalPages={totalPages} showSizeChanger={false} />
         </div>
+
     );
 }
 

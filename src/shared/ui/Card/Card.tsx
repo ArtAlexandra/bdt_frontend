@@ -12,7 +12,6 @@ import { LOGO_COLOR_URL, VK_LOGO_URL } from '@bdt/shared/config/AppEnvironment';
 
 import Badge from '@bdt/shared/ui/Badge';
 import Button from '@bdt/shared/ui/Button';
-import ExpandableText from '@bdt/shared/ui/ExpandableText';
 import Icon from '@bdt/shared/ui/Icon';
 import Skeleton, { SkeletonType } from '@bdt/shared/ui/Skeleton';
 
@@ -113,9 +112,9 @@ function Card({ post, onClick }: ICardProps) {
                     </Link>
                 </div>
 
-                <ExpandableText className={style.card__title}>{ title }</ExpandableText>
+                <div className={style.card__title}>{ title }</div>
 
-                <Button onClick={onClick} variant="light" className={style.card__button}><Icon name="arrowCircleRight" />Подробнее</Button>
+                <Button onClick={onClick} variant="light" fullWidth className={style.card__button}><Icon name="arrowCircleRight" />Подробнее</Button>
             </div>
         </div>
     );

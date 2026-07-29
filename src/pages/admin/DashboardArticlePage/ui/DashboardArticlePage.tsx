@@ -5,10 +5,12 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { ROUTES } from '@bdt/shared/config/Routes';
 
+import Button from '@bdt/shared/ui/Button';
 import Steps, { type IStep } from '@bdt/shared/ui/Steps';
 
 import { useGetAdminArticleByIdQuery } from '@bdt/entities/Article';
 
+import { ArticleReader } from '@bdt/features/Article';
 import { DashboardHead, DashboardSection, DashboardSectionSuperstructure } from '@bdt/features/Dashboard';
 
 import { AdminPostUpdateForm } from '@bdt/widgets/AdminPostForm';
@@ -59,6 +61,13 @@ function DashboardArticlePage({ articleId }: IDashboardArticlePageProps) {
 
             <DashboardSection>
                 { post && current === STEPS.description && <AdminPostUpdateForm post={post} GalleryComponent={UserGallery} buttonSecondaryText="Продолжить" onSuccess={() => handleStepChange(STEPS.preview)} onSubmit={() => handleStepChange(STEPS.preview, true)} /> }
+
+                { post && current === STEPS.preview &&
+                    <>
+                        <ArticleReader article={post} isPreview />
+                        <Button variant="primary" className="ml-auto" onClick={() => handleStepChange(STEPS.publication, false)}>Продолжить</Button>
+                    </>
+                }
 
                 { post && current === STEPS.publication && <PublicationSection post={post} onSuccess={refetch} /> }
             </DashboardSection>

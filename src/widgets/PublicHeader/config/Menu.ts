@@ -17,6 +17,11 @@ export const MENU = [
         name: 'Новости'
     },
     {
+        id: 'articles',
+        path: ROUTES.public.articles.index,
+        name: 'Статьи'
+    },
+    {
         id: 'howWeWork',
         path: ROUTES.public.howWeWork,
         name: 'Как мы работаем'
