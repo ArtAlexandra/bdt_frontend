@@ -6,9 +6,11 @@ import clsx from 'clsx';
 import { notifyPromise } from '@bdt/shared/lib/Notifications';
 
 import Button from '@bdt/shared/ui/Button';
+import Checkbox from '@bdt/shared/ui/Checkbox';
 import Icon from '@bdt/shared/ui/Icon';
 import Label from '@bdt/shared/ui/Label';
 import Loader from '@bdt/shared/ui/Loader';
+import Modal from '@bdt/shared/ui/Modal';
 import Upload from '@bdt/shared/ui/Upload';
 
 import { useAddImageGalleryMutation, useGetImagesGalleryQuery, useRemoveImageGalleryMutation } from '@bdt/entities/User';
@@ -41,17 +43,24 @@ function UserGallery({ text, className, selectedImageUrl, initialVisibleCount = 
     const displayedImages = showAll ? gallery : gallery.slice(0, initialVisibleCount);
     const hasMore = gallery.length > initialVisibleCount;
 
+    const [isOpenAddModal, setIsOpenAddModal] = useState<boolean>(false);
+    const [addWatermark, setAddWatermark] = useState<boolean>(true);
+
+    const handleCloseAddModal = () => setIsOpenAddModal(false);
+
     const handleSelectImage = async (image: File | null) => {
         if (!image) return;
 
         const formData = new FormData();
         formData.append('image', image);
+        formData.append('watermark', String(addWatermark));
 
         const data = await notifyPromise(addImage(formData).unwrap(), {
             loading: 'Добавление изображения в галерею...',
             success: 'Изображение успешно добавлено',
         });
 
+        handleCloseAddModal();
         onSelect(data.url);
     };
 
@@ -76,7 +85,7 @@ function UserGallery({ text, className, selectedImageUrl, initialVisibleCount = 
         <div className={clsx(style.userGallery, className)}>
             <div className={style.userGallery__head}>
                 <Label text={text ?? 'Галерея'} />
-                <Upload onChange={handleSelectImage} text="Загрузить" showPreview={false} />
+                <Button variant="primary" size="medium" onClick={() => setIsOpenAddModal(true)}><Icon name="upload" />Загрузить</Button>
             </div>
             { isLoadingAddImage && <Loader fullHeight /> }
 
@@ -104,6 +113,15 @@ function UserGallery({ text, className, selectedImageUrl, initialVisibleCount = 
                     </>
                 )
             }
+
+            <Modal title="Загрузка нового файла в галерею" isOpen={isOpenAddModal} onCancel={handleCloseAddModal} onClose={handleCloseAddModal}>
+                <Checkbox checked={addWatermark} onChange={setAddWatermark} className="mb-4">Добавить на картинку вотермарку?</Checkbox>
+
+                <div className="flex justify-end gap-2">
+                    <Button variant="secondary" size="medium" onClick={handleCloseAddModal} type="button">Отмена</Button>
+                    <Upload text="Загрузить" onChange={handleSelectImage} showPreview={false} />
+                </div>
+            </Modal>
 
             <ModalDeleteImage isOpen={isOpenDeleteModal} onClose={() => setIsOpenDeleteModal(false)} onConfirm={handleRemoveImage} />
         </div>
