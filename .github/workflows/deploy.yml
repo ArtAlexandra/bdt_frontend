@@ -30,44 +30,13 @@ jobs:
       - name: Prepare dist
         run: |
           mkdir -p dist
-          
-          # Копируем собранное приложение
           if [ -d "out/standalone" ]; then
             cp -r out/standalone/* dist/
-            echo "✅ Standalone copied"
-          else
-            echo "⚠️ No standalone directory, copying .next instead"
-            cp -r .next dist/ 2>/dev/null || echo "No .next directory"
           fi
-          
-          # ✅ Копируем package.json (ОБЯЗАТЕЛЬНО!)
-          if [ -f "package.json" ]; then
-            cp package.json dist/
-            echo "✅ package.json copied"
-          else
-            echo "❌ package.json not found!"
-            exit 1
-          fi
-          
-          # Копируем package-lock.json если есть
-          if [ -f "package-lock.json" ]; then
-            cp package-lock.json dist/
-            echo "✅ package-lock.json copied"
-          fi
-          
-          # Копируем deploy.sh если есть
-          if [ -f "deploy.sh" ]; then
-            cp deploy.sh dist/
-            echo "✅ deploy.sh copied"
-          fi
-          
-          # Копируем server.js если есть
-          if [ -f "server.js" ]; then
-            cp server.js dist/
-            echo "✅ server.js copied"
-          fi
-          
-          echo "📁 Dist contents:"
+          [ -f package.json ] && cp package.json dist/
+          [ -f package-lock.json ] && cp package-lock.json dist/
+          [ -f deploy.sh ] && cp deploy.sh dist/
+          [ -f server.js ] && cp server.js dist/
           ls -la dist/
 
       - name: Deploy files to Server
@@ -92,84 +61,6 @@ jobs:
           port: 2288
           script: |
             cd /home/bdt
-            
-            echo "📁 Files in directory:"
-            ls -la
-            
-            # Проверяем наличие package.json
-            if [ ! -f package.json ]; then
-              echo "❌ package.json not found on server!"
-              exit 1
-            fi
-            
-            # Устанавливаем зависимости
-            echo "📦 Installing dependencies..."
-            npm install --production --no-audit --no-fund
-            
-            # Проверяем наличие server.js
-            if [ ! -f server.js ]; then
-              echo "❌ server.js not found! Creating..."
-              cat > server.js << 'EOF'
-              const { createServer } = require('http');
-              const { parse } = require('url');
-              const next = require('next');
-              
-              const dev = false;
-              const hostname = '0.0.0.0';
-              const port = 3000;
-              
-              const app = next({ dev, hostname, port, dir: __dirname });
-              const handle = app.getRequestHandler();
-              
-              app.prepare().then(() => {
-                createServer(async (req, res) => {
-                  try {
-                    const parsedUrl = parse(req.url, true);
-                    await handle(req, res, parsedUrl);
-                  } catch (err) {
-                    console.error('Error handling request:', err);
-                    res.statusCode = 500;
-                    res.end('Internal Server Error');
-                  }
-                }).listen(port, hostname, (err) => {
-                  if (err) throw err;
-                  console.log(`✅ Server running on http://${hostname}:${port}`);
-                  console.log(`🌐 http://alexandra-prudnikova.ru`);
-                });
-              }).catch(err => {
-                console.error('Error starting server:', err);
-                process.exit(1);
-              });
-              EOF
-              echo "✅ server.js created"
-            fi
-            
-            # Собираем приложение если нет .next
-            if [ ! -d ".next" ]; then
-              echo "🔨 Building application..."
-              npm run build
-            fi
-            
-            # Запускаем приложение через PM2
-            echo "🔄 Starting application..."
-            pm2 stop bdt-test 2>/dev/null || true
-            pm2 delete bdt-test 2>/dev/null || true
-            pm2 restart bdt || pm2 start server.js --name bdt
-            pm2 save
-            
-            # Проверяем статус
-            echo "📊 PM2 status:"
-            pm2 status
-            
-            # Health check
-            echo "🔍 Health check..."
-            sleep 3
-            if curl -f http://localhost:3000 &> /dev/null; then
-              echo "✅ Health check passed"
-            else
-              echo "⚠️ Health check failed"
-              pm2 logs bdt --lines 20
-            fi
-            
-            echo "✅ Deployment completed!"
-            echo "🌐 Site: http://alexandra-prudnikova.ru"
+            chmod +x deploy.sh
+            ./deploy.sh
+  
