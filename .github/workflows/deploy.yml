@@ -24,7 +24,7 @@ jobs:
       - name: Build
         env:
           NEXT_PUBLIC_URL: http://alexandra-prudnikova.ru
-          NEXT_PUBLIC_API_URL: http://api.alexandra-prudnikova.ru
+          NEXT_PUBLIC_API_URL: http://alexandra-prudnikova.ru/api
         run: npm run build
 
       - name: Prepare standalone
