@@ -61,7 +61,7 @@ const buildCSP = () => {
         'object-src \'none\'',
         'base-uri \'self\'',
         'form-action \'self\'',
-        'upgrade-insecure-requests',
+        //'upgrade-insecure-requests', для https
     ].join('; ');
 };
 
@@ -73,9 +73,7 @@ const nextConfig: NextConfig = {
         typescript: { ignoreBuildErrors: true },
         eslint: { ignoreDuringBuilds: true },
     } : {}),
-    ...(process.env.NODE_ENV === 'production' ? {
-        distDir: 'out',
-    } : {}),
+    distDir: 'out',
     images: { unoptimized: true },
     async rewrites() {
         return [
@@ -87,21 +85,19 @@ const nextConfig: NextConfig = {
     },
     // Настройки только для production сборки
     ...(process.env.NODE_ENV === 'production' ? {
-        output: 'standalone',
+        output: 'standalone',  // Используем только standalone
         async headers() {
             return [{
                 source: '/(.*)',
                 headers: [
-                    // Базовые заголовки безопасности
                     {
                         key: 'Content-Security-Policy',
                         value: buildCSP(),
                     },
-                    // Permissions Policy для контроля доступа к API
                     {
                         key: 'Permissions-Policy',
                         value: [
-                            'autoplay=*', // для автовоспроизведения видео-рекламы
+                            'autoplay=*',
                         ].join(', ')
                     },
                     { key: 'X-Content-Type-Options', value: 'nosniff' },
