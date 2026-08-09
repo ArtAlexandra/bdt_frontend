@@ -25,6 +25,7 @@ jobs:
         env:
           NEXT_PUBLIC_URL: http://alexandra-prudnikova.ru
           NEXT_PUBLIC_API_URL: http://alexandra-prudnikova.ru/api
+          NEXT_PUBLIC_ADMIN_VERIFICATION_KEY: ${{ secrets.NEXT_PUBLIC_ADMIN_VERIFICATION_KEY }}
         run: npm run build
 
       - name: Prepare standalone
