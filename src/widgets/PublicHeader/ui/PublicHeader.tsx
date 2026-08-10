@@ -4,6 +4,7 @@ import { useState } from 'react';
 import clsx from 'clsx';
 
 import useCopyToClipboard from '@bdt/shared/hooks/useCopyToClipboard';
+import { notifySuccess } from '@bdt/shared/lib/Notifications';
 
 import { BDT_EMAIL, BDT_PHONE } from '@bdt/shared/config/AppEnvironment';
 
@@ -27,6 +28,16 @@ function PublicHeader({ variant = 'white' }: IPublicHeaderProps) {
 
     const handleCloseDrawer = () => setIsOpenDrawer(false);
 
+    const handleCopyEmail = () => {
+        notifySuccess(`Email ${BDT_EMAIL} скопирован`);
+        handleCopy(BDT_EMAIL);
+    };
+
+    const handleCopyPhone = () => {
+        notifySuccess(`Телефон ${BDT_PHONE} скопирован`);
+        handleCopy(BDT_PHONE);
+    };
+
     return (
         <>
             <Drawer onClose={handleCloseDrawer} isOpen={isOpenDrawer} />
@@ -37,11 +48,11 @@ function PublicHeader({ variant = 'white' }: IPublicHeaderProps) {
                     </Button>
 
                     <div className={style.publicHeader__items}>
-                        <Button className={style['publicHeader__items-button']} aria-label={`Copy email ${BDT_EMAIL}`} onClick={() => handleCopy(BDT_EMAIL)}>
+                        <Button className={style['publicHeader__items-button']} aria-label={`Copy email ${BDT_EMAIL}`} onClick={handleCopyEmail}>
                             <Icon name="email" />
                             { BDT_EMAIL }
                         </Button>
-                        <Button className={style['publicHeader__items-button']} aria-label={`Copy phone ${BDT_PHONE}`} onClick={() => handleCopy(BDT_PHONE)}>
+                        <Button className={style['publicHeader__items-button']} aria-label={`Copy phone ${BDT_PHONE}`} onClick={handleCopyPhone}>
                             <Icon name="phone" />
                             { BDT_PHONE }
                         </Button>

@@ -27,6 +27,7 @@ function Drawer({ isOpen, onClose }: IDrawerProps) {
 
     const handlePushToPage = (url: string) => {
         router.push(url);
+        onClose();
     };
 
     return (

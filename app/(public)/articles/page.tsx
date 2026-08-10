@@ -18,4 +18,4 @@ export default async function Page({ searchParams }: IPageProps) {
     return <ArticlesPage articles={response?.items ?? []} currentPage={page} totalPages={totalPages} />;
 }
 
-export const revalidate = 3600;
+export const revalidate = 600;

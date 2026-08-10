@@ -98,18 +98,18 @@ function Card({ post, onClick }: ICardProps) {
             <div className={style.card__content}>
                 <div className={style.card__header}>
                     <p className={style.card__date}>{ formateDate }</p>
-                    <Link
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={style.card__link}
-                    >
-                        { isPostFromSite ?
-                            <Icon name="world" className="text-[25px]" />
-                            :
+                    { isPostFromSite ?
+                        <Icon name="world" className="text-[25px]" />
+                        :
+                        <Link
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={style.card__link}
+                        >
                             <Image src={VK_LOGO_URL} alt="Логотип ВК" width={25} height={25} />
-                        }
-                    </Link>
+                        </Link>
+                    }
                 </div>
 
                 <div className={style.card__title}>{ title }</div>
