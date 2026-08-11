@@ -106,6 +106,18 @@
         }
     }
 
+    &_secondaryOutlineLight {
+        background-color: transparent;
+        border: 1px solid var(--color-button-light);
+        color: var(--color-button-light);
+
+        &:hover {
+            background-color: var(--color-button-light);
+            border-color: var(--color-button-light-hover);
+            color: var(--color-button-light-text);
+        }
+    }
+
     &_link {
         display: inline-flex;
         white-space: normal;

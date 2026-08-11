@@ -18,5 +18,6 @@ export const PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localho
 export const ADMIN_SECRET_KEY = process.env.ADMIN_SECRET_KEY ?? '';
 export const ADMIN_VERIFICATION_KEY = process.env.NEXT_PUBLIC_ADMIN_VERIFICATION_KEY ?? '';
 
-export const VK_LOGO_URL = '/image/vk_logo.png';
-export const LOGO_COLOR_URL = '/image/logo-color.jpg';
+export const VK_LOGO_URL = 'https://s3.firstvds.ru/bdt/vk_logo.png';
+export const LOGO_COLOR_URL = 'https://s3.firstvds.ru/bdt/logo-color.jpg';
+export const LOGO_TRANSPARENT_URL = 'https://s3.firstvds.ru/bdt/bdt-logo.svg';
