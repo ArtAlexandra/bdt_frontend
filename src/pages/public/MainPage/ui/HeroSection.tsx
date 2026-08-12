@@ -1,8 +1,10 @@
 'use client';
 
 import Image from 'next/image';
+import BackgroundVideo from 'next-video/background-video';
+import heroVideo from '@bdt/videos/bdt_hero.mp4';
 
-import { LOGO_TRANSPARENT_URL } from '@bdt/shared/config/AppEnvironment';
+import { LOGO_TRANSPARENT_URL, POSTER_HERO_URL } from '@bdt/shared/config/AppEnvironment';
 
 import Button from '@bdt/shared/ui/Button';
 import Icon from '@bdt/shared/ui/Icon';
@@ -22,9 +24,7 @@ function HeroSection() {
     return (
         <div className={style.heroSection}>
             <div className={style.heroSection__videoContainer}>
-                <video className={style.heroSection__videoBg} autoPlay loop muted playsInline preload="metadata">
-                    <source src="https://s3.firstvds.ru/bdt/bdt_hero.mp4" type="video/mp4" />
-                </video>
+                <BackgroundVideo src={heroVideo} poster={POSTER_HERO_URL} className={style.heroSection__videoBg} autoPlay loop muted playsInline />
             </div>
 
             <div className={style.heroSection__container}>

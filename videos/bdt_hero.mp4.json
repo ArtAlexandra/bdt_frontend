@@ -1,0 +1,1 @@
+{"status":"ready","originalFilePath":"videos/bdt_hero.mp4","provider":"amazon-s3","providerMetadata":{"amazon-s3":{"endpoint":"https://s3.firstvds.ru","bucket":"static-media","key":"videos/bdt_hero.mp4"}},"createdAt":1786531759246,"updatedAt":1786531760676,"size":9086781,"sources":[{"src":"https://static-media.s3.firstvds.ru/videos/bdt_hero.mp4"}]}
