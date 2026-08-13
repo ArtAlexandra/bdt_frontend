@@ -92,6 +92,12 @@ function TextEditor({ placeholder = 'Начните писать...', data, erro
                             <ContentEditable
                                 ref={contentEditableRef}
                                 className={clsx(className, style.textEditor__contentEditable, ToolbarTheme.colors.primary)}
+                                // Отключаем автокоррекцию и связанные функции
+                                autoCorrect="off"
+                                autoCapitalize="off"
+                                autoComplete="off"
+                                // Дополнительно (помогает на некоторых Android)
+                                inputMode="text"
                             />
                         }
                         placeholder={<Placeholder placeholder={placeholder} />}

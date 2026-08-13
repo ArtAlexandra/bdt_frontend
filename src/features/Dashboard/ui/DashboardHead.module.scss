@@ -1,26 +1,26 @@
 @use '@bdt/shared/styles/breakpoints.scss' as breakpoints;
 
 .dashboardHead {
-    min-height: 80px;
+    min-height: 100px;
     position: relative;
     padding: 20px 0;
 
     &__title {
         font-size: 26px;
-        line-height: 40px;
+        line-height: 60px;
     }
 
     &__backLink {
         display: flex;
-        height: 40px !important;
-        width: 40px !important;
+        height: 60px !important;
+        width: 60px !important;
         justify-content: center;
         align-items: center;
         float: left;
     }
 
     @include breakpoints.breakpoint-min('lg') {
-        padding: 20px 180px 20px 40px;
+        padding: 20px 180px 20px 60px;
 
         &__title {
             font-size: 30px;
