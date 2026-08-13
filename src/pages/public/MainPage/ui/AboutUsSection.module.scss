@@ -1,0 +1,10 @@
+.aboutUsSection {
+    display: grid;
+    gap: 30px;
+
+    &__title {
+        font-weight: 800;
+        font-size: 24px;
+        text-align: center;
+    }
+}

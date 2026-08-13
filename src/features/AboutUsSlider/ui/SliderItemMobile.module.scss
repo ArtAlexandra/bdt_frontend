@@ -1,0 +1,53 @@
+.sliderItemMobile {
+    position: relative;
+    height: 250px;
+    width: 100%;
+    color: var(--color-white);
+    overflow: hidden;
+    cursor: pointer;
+
+    &__imageWrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    &__image {
+        object-fit: cover;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    &__content {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 10px;
+        flex-shrink: 0;
+        z-index: 1;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    &__icon {
+        transition: transform 0.4s ease;
+        object-fit: contain;
+        z-index: 1;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    }
+}

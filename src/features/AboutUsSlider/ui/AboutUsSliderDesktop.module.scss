@@ -1,0 +1,34 @@
+.aboutUsSliderDesktop {
+    position: relative;
+    display: flex;
+    gap: 5px;
+    height: 70vh;
+    width: 100%;
+    overflow: hidden;
+
+    &__imageWrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    &__image {
+        object-fit: cover;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    &__content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        gap: 15px;
+        padding: 20px;
+        width: 100%;
+        height: 100%;
+        align-items: flex-end;
+    }
+}
