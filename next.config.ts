@@ -1,3 +1,5 @@
+import { withNextVideo } from 'next-video/process';
+
 import { PUBLIC_API_URL, PUBLIC_URL, VK_API_PUBLIC_URL, VK_API_URL } from '@bdt/shared/config/AppEnvironment';
 
 import type { NextConfig } from 'next';
@@ -110,5 +112,19 @@ const nextConfig: NextConfig = {
         },
     } : {}),
 };
+
+withNextVideo(nextConfig, {
+    provider: 'amazon-s3',
+    folder: './videos',
+    providerConfig: {
+        'amazon-s3': {
+            endpoint: process.env.S3_ENDPOINT || '',
+            bucket: process.env.S3_BUCKET || '',
+            accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+            secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
+            region: process.env.S3_REGION || '',
+        },
+    },
+});
 
 export default nextConfig;

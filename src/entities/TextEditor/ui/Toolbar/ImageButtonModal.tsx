@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
+import { isImageUrl } from '@bdt/shared/helpers/isImageUrl';
+
 import Button from '@bdt/shared/ui/Button';
 import Error from '@bdt/shared/ui/Error';
 import Input from '@bdt/shared/ui/Input';
@@ -32,6 +34,7 @@ function ImageButtonModal({ isOpen, onSubmit, onClose, error, initialWidth, init
     const [widthUnit, setWidthUnit] = useState<TUnit>('px');
     const [heightUnit, setHeightUnit] = useState<TUnit>('px');
     const [url, setUrl] = useState<string | null>(null);
+    const isImage = url ? isImageUrl(url) : false;
 
     useEffect(() => {
         if (isOpen) {
@@ -65,7 +68,11 @@ function ImageButtonModal({ isOpen, onSubmit, onClose, error, initialWidth, init
             { url
                 ? <>
                     <div className={style.imagePreview}>
-                        <Image src={url} alt="Выбранное изображение" fill className={style.imagePreview__image} sizes="(max-width: 768px) 100vw, 640px" />
+                        { isImage ?
+                            <Image src={url} alt="Выбранное изображение" fill className={style.imagePreview__image} sizes="(max-width: 768px) 100vw, 640px" />
+                            :
+                            <video src={url} className={style.imagePreview__image} muted loop autoPlay playsInline preload="metadata" />
+                        }
                     </div>
                     <div className="grid grid-cols-2 gap-4 mb-4">
                         <div>

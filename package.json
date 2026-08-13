@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev & npx next-video sync -w",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -24,6 +24,7 @@
     "lexical": "^0.47.0",
     "lodash": "^4.18.1",
     "next": "16.2.7",
+    "next-video": "^2.8.1",
     "path-to-regexp": "^8.4.2",
     "postcss": "^8.5.15",
     "rc-select": "^14.16.8",
