@@ -4,6 +4,7 @@ import PublicHeader from '@bdt/widgets/PublicHeader';
 
 import HeroSection from './HeroSection';
 import LocationSection from './LocationSection';
+import TeamSection from './TeamSection';
 import VKWallSection from './VKWallSection';
 
 import type { TPublicArticle } from '@bdt/shared/helpers/PublicArticle';
@@ -18,6 +19,7 @@ function MainPage({ posts }: IMainPageProps) {
             <PublicHeader />
             <HeroSection />
             { posts.length > 0 && <VKWallSection posts={posts} /> }
+            <TeamSection />
             <LocationSection />
         </>
     );

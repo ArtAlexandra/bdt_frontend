@@ -21,3 +21,4 @@ export const ADMIN_VERIFICATION_KEY = process.env.NEXT_PUBLIC_ADMIN_VERIFICATION
 export const VK_LOGO_URL = 'https://s3.firstvds.ru/bdt/vk_logo.png';
 export const LOGO_COLOR_URL = 'https://s3.firstvds.ru/bdt/logo-color.jpg';
 export const LOGO_TRANSPARENT_URL = 'https://s3.firstvds.ru/bdt/bdt-logo.svg';
+export const TEAM_PHOTO = 'https://bdt.s3.firstvds.ru/team.png';
