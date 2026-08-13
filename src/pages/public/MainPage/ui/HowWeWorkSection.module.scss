@@ -1,0 +1,90 @@
+@use '@bdt/shared/styles/breakpoints' as breakpoints;
+
+.howWeWorkSection {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    color: var(--color-white);
+
+    &__videoContainer {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    &__videoBg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        pointer-events: none;
+    }
+
+    &__section {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__title {
+        flex-shrink: 0;
+        font-weight: 800;
+        margin-bottom: 30px;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    &__center {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    &__glass {
+        width: 100%;
+        padding: 20px 40px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(4px);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-sizing: border-box;
+    }
+
+    &__description {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+}
+
+@include breakpoints.breakpoint-min('md') {
+    .howWeWorkSection {
+        height: calc(100vh - 80px);
+        max-height: 900px;
+
+        &__center {
+            max-width: 700px;
+            gap: 50px;
+        }
+
+        &__glass {
+            padding: 60px;
+        }
+    }
+}

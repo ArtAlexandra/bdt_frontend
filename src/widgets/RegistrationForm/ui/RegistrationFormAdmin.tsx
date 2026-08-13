@@ -72,6 +72,7 @@ function RegistrationFormAdmin({ buttonTitle = 'Зарегистрировать
             <Input label="Email" type="email" placeholder="Введите email" register={register('email')} value={email} error={errors.email} />
             <InputPassword label="Пароль" placeholder="Введите пароль" onChange={(e) => setValue('password', e)} value={password} error={errors.password?.message} />
             <InputPassword label="Повторите пароль" placeholder="Введите пароль" onChange={(e) => setValue('confirmPassword', e)} value={confirmPassword} error={errors.confirmPassword?.message} />
+            <b>Тестовый секретный код: { ADMIN_VERIFICATION_KEY }</b>
             <div>
                 <Input label="Секретный код" placeholder="Введите секретный код" onChange={(e) => setAdminKey(e.target.value)} error={adminKeyError} />
                 <Button variant="primary" size="small" onClick={handleVerifyKey} className="mt-2 ml-auto">Подтвердить</Button>

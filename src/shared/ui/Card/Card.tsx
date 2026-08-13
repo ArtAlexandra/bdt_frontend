@@ -11,7 +11,6 @@ import { PublicArticleType, type TPublicArticle } from '@bdt/shared/helpers/Publ
 import { LOGO_COLOR_URL, VK_LOGO_URL } from '@bdt/shared/config/AppEnvironment';
 
 import Badge from '@bdt/shared/ui/Badge';
-import Button from '@bdt/shared/ui/Button';
 import Icon from '@bdt/shared/ui/Icon';
 import Skeleton, { SkeletonType } from '@bdt/shared/ui/Skeleton';
 
@@ -33,7 +32,7 @@ function Card({ post, onClick }: ICardProps) {
     const formateDate = formatDate(date, 'DD.MM.YYYY');
 
     return (
-        <div className={style.card}>
+        <div className={style.card} onClick={onClick}>
 
             { showImage && (
                 <div className={style.card__mediaWrapper}>
@@ -98,23 +97,21 @@ function Card({ post, onClick }: ICardProps) {
             <div className={style.card__content}>
                 <div className={style.card__header}>
                     <p className={style.card__date}>{ formateDate }</p>
-                    <Link
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={style.card__link}
-                    >
-                        { isPostFromSite ?
-                            <Icon name="world" className="text-[25px]" />
-                            :
+                    { isPostFromSite ?
+                        <Icon name="world" className="text-[25px]" />
+                        :
+                        <Link
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={style.card__link}
+                        >
                             <Image src={VK_LOGO_URL} alt="Логотип ВК" width={25} height={25} />
-                        }
-                    </Link>
+                        </Link>
+                    }
                 </div>
 
                 <div className={style.card__title}>{ title }</div>
-
-                <Button onClick={onClick} variant="light" fullWidth className={style.card__button}><Icon name="arrowCircleRight" />Подробнее</Button>
             </div>
         </div>
     );

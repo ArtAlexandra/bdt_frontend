@@ -22,4 +22,4 @@ export default async function Page({ searchParams }: IPageProps) {
     }
 }
 
-export const revalidate = 3600;
+export const revalidate = 600;

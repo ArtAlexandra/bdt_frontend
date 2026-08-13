@@ -6,11 +6,11 @@ export const MENU = [
         path: ROUTES.public.home,
         name: 'Главная'
     },
-    {
-        id: 'aboutUs',
-        path: ROUTES.public.aboutUs,
-        name: 'О нас'
-    },
+    // {
+    //     id: 'aboutUs',
+    //     path: ROUTES.public.aboutUs,
+    //     name: 'О нас'
+    // },
     {
         id: 'news',
         path: ROUTES.public.news,
@@ -21,9 +21,9 @@ export const MENU = [
         path: ROUTES.public.articles.index,
         name: 'Статьи'
     },
-    {
-        id: 'howWeWork',
-        path: ROUTES.public.howWeWork,
-        name: 'Как мы работаем'
-    },
+    // {
+    //     id: 'howWeWork',
+    //     path: ROUTES.public.howWeWork,
+    //     name: 'Как мы работаем'
+    // },
 ];
