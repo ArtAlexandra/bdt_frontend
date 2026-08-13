@@ -8,6 +8,7 @@ import Icon from '@bdt/shared/ui/Icon';
 
 import Dots from './Dots';
 import MediaItem from './MediaItem';
+import { useSwipe } from './useSwipe';
 
 import style from './MediaCarousel.module.scss';
 
@@ -38,11 +39,13 @@ function MediaCarousel({ media, defaultImageUrl, isVK = false, className, size =
         setMediaLoaded(false);
     }, [media.length]);
 
+    const { onTouchEnd, onTouchStart } = useSwipe({ enabled: media.length > 1, threshold: 50, onSwipeLeft: handleNext, onSwipeRight: handlePrevious });
+
     const currentMedia = media.length ? media[currentIndex] : { isPhoto: true, link: defaultImageUrl };
 
     return (
         <div className={clsx(style.mediaCarousel, className, { [style['mediaCarousel-big']]: size === 'big' })}>
-            <div className={style.mediaCarousel__container}>
+            <div className={style.mediaCarousel__container} onTouchEnd={onTouchEnd} onTouchStart={onTouchStart}>
                 <MediaItem isVK={isVK} isPhoto={currentMedia.isPhoto} link={currentMedia.link} mediaLoaded={mediaLoaded} index={currentIndex} onLoad={() => setMediaLoaded(true)} size={size} />
                 { media.length > 1 && (
                     <>
