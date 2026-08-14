@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import clsx from 'clsx';
 
+import { navigateWithHash } from '@bdt/shared/helpers/URL';
 import { useBodyScrollLock } from '@bdt/shared/hooks/useBodyScrollLock';
 import { useClickButton } from '@bdt/shared/hooks/useClickButton';
 
@@ -26,8 +27,8 @@ function Drawer({ isOpen, onClose }: IDrawerProps) {
     const router = useRouter();
 
     const handlePushToPage = (url: string) => {
-        router.push(url);
         onClose();
+        navigateWithHash(router, url);
     };
 
     return (
@@ -43,7 +44,7 @@ function Drawer({ isOpen, onClose }: IDrawerProps) {
 
                 <div className={style.drawer__nav}>
                     { MENU.map(((item, index) => (
-                        <div key={`menu_item_${index}`} className={style.drawer__navItem} onClick={() => handlePushToPage(item.path.path)}>
+                        <div key={`menu_item_${index}`} className={style.drawer__navItem} onClick={() => handlePushToPage(item.path)}>
                             { item.name }
                         </div>
                     ))) }
