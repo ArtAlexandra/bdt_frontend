@@ -6,12 +6,15 @@
     position: relative;
     padding: 20px;
     min-height: 300px;
+    scroll-margin-top: 20px;
 
     @include breakpoints.breakpoint-min('sm') {
         padding: 40px;
+        scroll-margin-top: 40px;
     }
 
     @include breakpoints.breakpoint-min('xl') {
         padding: 40px 80px;
+        scroll-margin-top: 80px;
     }
 }

@@ -16,7 +16,7 @@ export default async function Page() {
     const userAgent = headersList.get('user-agent') || '';
     const isMobile = isMobileDevice(userAgent);
 
-    const counts = isMobile ? COUNT_POSTS_IN_PAGE_DESKTOP : COUNT_POSTS_IN_PAGE_MOBILE;
+    const counts = isMobile ? COUNT_POSTS_IN_PAGE_MOBILE : COUNT_POSTS_IN_PAGE_DESKTOP;
     const { posts } = await getPosts(counts);
 
     return (

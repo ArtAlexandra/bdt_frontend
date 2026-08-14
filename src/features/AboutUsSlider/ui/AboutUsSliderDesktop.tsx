@@ -10,7 +10,11 @@ import SliderItem from './SliderItem';
 
 import style from './AboutUsSliderDesktop.module.scss';
 
-function AboutUsSliderDesktop() {
+interface IAboutUsSliderDesktopProps {
+    className?: string;
+};
+
+function AboutUsSliderDesktop({ className }: IAboutUsSliderDesktopProps) {
     const [currentBackgroundImage, setCurrentBackgroundImage] = useState<string>(SliderData[0].imageSrc);
     const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
 
@@ -26,7 +30,7 @@ function AboutUsSliderDesktop() {
     };
 
     return (
-        <div className={style.aboutUsSliderDesktop}>
+        <div className={clsx(style.aboutUsSliderDesktop, className)}>
             <div className={style.aboutUsSliderDesktop__imageWrapper}>
                 <Image src={currentBackgroundImage} alt="О нас" fill className={clsx(style.aboutUsSliderDesktop__image, { [style.aboutUsSliderDesktop__image_transitioning]: isTransitioning })} priority />
             </div>
