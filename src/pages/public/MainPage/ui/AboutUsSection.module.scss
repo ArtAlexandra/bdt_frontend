@@ -1,10 +1,26 @@
+@use '@bdt/shared/styles/breakpoints' as breakpoints;
+
 .aboutUsSection {
     display: grid;
     gap: 30px;
+    height: fit-content;
 
     &__title {
         font-weight: 800;
         font-size: 24px;
         text-align: center;
+    }
+}
+
+
+@include breakpoints.breakpoint-min('xl') {
+    .aboutUsSection {
+        height: calc(100vh - 80px);
+        max-height: 900px;
+
+        &__slider {
+            height: 70vh;
+            max-height: 750px;
+        }
     }
 }

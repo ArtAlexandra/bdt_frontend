@@ -9,13 +9,13 @@ import { LOGO_TRANSPARENT_URL, POSTER_HERO_URL } from '@bdt/shared/config/AppEnv
 import Button from '@bdt/shared/ui/Button';
 import Icon from '@bdt/shared/ui/Icon';
 
-import { NEWS_ID } from '../config/Config';
+import { ABOUT_US_ID } from '../config/Config';
 
 import style from './HeroSection.module.scss';
 
 function HeroSection() {
     const handleScrollToNextSection = () => {
-        const pricingSection = document.getElementById(NEWS_ID);
+        const pricingSection = document.getElementById(ABOUT_US_ID);
         if (pricingSection) {
             pricingSection.scrollIntoView({ behavior: 'smooth' });
         }
