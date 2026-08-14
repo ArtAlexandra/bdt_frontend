@@ -4,7 +4,7 @@
     display: grid;
     justify-items: center;
     gap: 30px;
-    scroll-margin-top: 95px; 
+    scroll-margin-top: 95px;
 
     &__title {
         font-weight: 800;
@@ -20,7 +20,7 @@
     }
 }
 
-@include breakpoints.breakpoint-min('md') {
+@include breakpoints.breakpoint-min('lg') {
     .vkWallSection {
         &__content {
             grid-template-columns: repeat(2, 1fr);

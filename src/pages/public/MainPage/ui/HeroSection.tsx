@@ -10,10 +10,13 @@ import Button from '@bdt/shared/ui/Button';
 import Icon from '@bdt/shared/ui/Icon';
 
 import { ABOUT_US_ID } from '../config/Config';
+import { useKeepVideoPlaying } from '../model/useKeepVideoPlaying';
 
 import style from './HeroSection.module.scss';
 
 function HeroSection() {
+    const containerRef = useKeepVideoPlaying();
+
     const handleScrollToNextSection = () => {
         const pricingSection = document.getElementById(ABOUT_US_ID);
         if (pricingSection) {
@@ -23,8 +26,8 @@ function HeroSection() {
 
     return (
         <div className={style.heroSection}>
-            <div className={style.heroSection__videoContainer}>
-                <BackgroundVideo src={heroVideo} poster={POSTER_HERO_URL} className={style.heroSection__videoBg} autoPlay loop muted playsInline />
+            <div className={style.heroSection__videoContainer} ref={containerRef}>
+                <BackgroundVideo src={heroVideo} className={style.heroSection__videoBg} blurDataURL={POSTER_HERO_URL} autoPlay loop muted playsInline />
             </div>
 
             <div className={style.heroSection__container}>
