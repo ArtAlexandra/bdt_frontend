@@ -1,0 +1,79 @@
+@use '@bdt/shared/styles/breakpoints' as breakpoints;
+
+.publicFooter {
+    padding: 40px 0;
+    background-color: var(--color-gray-700);
+    white-space: nowrap;
+    font-size: 14px;
+
+    &__container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid var(--color-gray-600);
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 25px;
+        gap: 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    &__contacts {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    &__contactLink {
+        cursor: default;
+        color: var(--color-white);
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: var(--color-gray-400);
+        }
+    }
+
+    &__copyright {
+        cursor: default;
+        color: var(--color-gray-400);
+    }
+}
+
+@include breakpoints.breakpoint-min('md') {
+    .publicFooter {
+        &__contacts {
+            justify-content: center;
+        }
+
+        &__bottom {
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        &__nav {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        &__copyright {
+            white-space: normal;
+        }
+    }
+}

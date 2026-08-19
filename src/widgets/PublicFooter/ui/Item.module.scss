@@ -1,0 +1,16 @@
+.item {
+    white-space: nowrap;
+    cursor: pointer;
+    color: var(--color-white);
+    transition: color 0.3s ease;
+
+    &:active {
+        color: var(--color-gray-400);
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            color: var(--color-gray-400);
+        }
+    }
+}
