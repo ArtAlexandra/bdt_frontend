@@ -1,0 +1,53 @@
+.notFoundPage {
+    &__container {
+        justify-items: center;
+        margin-top: 10vh;
+    }
+
+    &__content {
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 600px;
+        min-height: 500px;
+        padding-bottom: 50px;
+    }
+
+    &__imageWrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 500px;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.8;
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+
+    &__code {
+        font-size: 120px;
+        font-weight: 700;
+        z-index: 2;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        margin-bottom: -10px;
+    }
+
+    &__message {
+        font-size: 20px;
+        z-index: 2;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        max-width: 80%;
+        margin-top: -10px;
+    }
+}

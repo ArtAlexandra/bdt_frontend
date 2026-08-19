@@ -1,5 +1,6 @@
 'use client';
 
+import PublicFooter from '@bdt/widgets/PublicFooter';
 import PublicHeader from '@bdt/widgets/PublicHeader';
 
 import AboutUsSection from './AboutUsSection';
@@ -25,6 +26,7 @@ function MainPage({ posts }: IMainPageProps) {
             { posts.length > 0 && <VKWallSection posts={posts} /> }
             <TeamSection />
             <LocationSection />
+            <PublicFooter />
         </>
     );
 }

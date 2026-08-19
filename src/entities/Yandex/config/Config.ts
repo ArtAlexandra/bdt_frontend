@@ -1,0 +1,1 @@
+export const YM_MAIN_COUNTER_ID = 111756390;
