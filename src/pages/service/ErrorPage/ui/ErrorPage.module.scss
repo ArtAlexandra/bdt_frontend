@@ -1,0 +1,105 @@
+.errorPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    color: var(--color-text-primary);
+    background-color: var(--color-gray-200);
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+}
+
+.errorPage__content {
+    max-width: 600px;
+    width: 100%;
+    padding: 3rem;
+    background-color: var(--color-light);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.errorPage__icon {
+    margin-bottom: 1.5rem;
+    color: var(--color-text-danger);
+    animation: pulse 2s infinite;
+    font-size: 70px;
+    margin: auto;
+    width: 70px;
+    margin-bottom: 20px;
+}
+
+.errorPage__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.errorPage__message {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.errorPage__code {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-gray-200);
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+}
+
+.errorPage__actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.errorPage__button {
+    min-width: 140px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .errorPage__content {
+        padding: 2rem;
+    }
+
+    .errorPage__title {
+        font-size: 1.75rem;
+    }
+
+    .errorPage__message {
+        font-size: 1rem;
+    }
+}
