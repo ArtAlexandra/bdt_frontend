@@ -55,7 +55,7 @@ export default [
 
             // TypeScript правила
             ...tsPlugin.configs.recommended.rules,
-
+            'no-undef': 'off',
             // React правила (кроме react-in-jsx-scope)
             'react/react-in-jsx-scope': 'off',
             'react/jsx-uses-react': 'off',

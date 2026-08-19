@@ -5,6 +5,8 @@ import AuthGuardProvider from '@bdt/shared/providers/AuthGuardProvider';
 
 import Toaster from '@bdt/shared/ui/Toaster';
 
+import { YandexMetrika } from '@bdt/entities/Yandex';
+
 import StoreProvider from '@bdt/app/StoreProvider';
 
 import '../src/shared/styles/globals.scss';
@@ -27,6 +29,7 @@ export default function RootLayout({ children }: IRootLayoutProps) {
                     <AuthGuardProvider>
                         { children }
                         <Toaster />
+                        <YandexMetrika />
                     </AuthGuardProvider>
                 </StoreProvider>
             </React.Suspense>
