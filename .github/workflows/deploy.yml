@@ -74,12 +74,12 @@ jobs:
 
       - name: Deploy with PM2
         uses: appleboy/ssh-action@v1.0.3
-        env:
-          SERVER_DESTINATION_PATH: $HOME/bdt
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: 2288
-          envs: SERVER_DESTINATION_PATH
-          script_path: dist/deploy.sh
+          script: |
+            cd ~/bdt
+            chmod +x deploy.sh
+            bash deploy.sh
