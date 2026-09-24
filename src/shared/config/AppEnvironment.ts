@@ -18,9 +18,12 @@ export const PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localho
 export const ADMIN_SECRET_KEY = process.env.ADMIN_SECRET_KEY ?? '';
 export const ADMIN_VERIFICATION_KEY = process.env.NEXT_PUBLIC_ADMIN_VERIFICATION_KEY ?? '';
 
-export const VK_LOGO_URL = 'https://s3.firstvds.ru/bdt/vk_logo.png';
-export const LOGO_COLOR_URL = 'https://s3.firstvds.ru/bdt/logo-color.jpg';
-export const LOGO_TRANSPARENT_URL = 'https://s3.firstvds.ru/bdt/bdt-logo.svg';
-export const TEAM_PHOTO = 'https://bdt.s3.firstvds.ru/team.png';
-export const POSTER_HERO_URL = 'https://s3.firstvds.ru/bdt/poster_bdt_hero.webp';
-export const NOT_FOUND_IMAGE = 'https://s3.firstvds.ru/bdt/not-found.svg';
+export const S3_ENDPOINT = process.env.NEXT_PUBLIC_S3_ENDPOINT ?? process.env.S3_ENDPOINT ?? '';
+export const S3_BUCKET = process.env.NEXT_PUBLIC_S3_BUCKET ?? process.env.S3_BUCKET ?? '';
+
+export const VK_LOGO_URL = `${S3_ENDPOINT}/${S3_BUCKET}/vk_logo.png`;
+export const LOGO_COLOR_URL = `${S3_ENDPOINT}/${S3_BUCKET}/logo-color.jpg`;
+export const LOGO_TRANSPARENT_URL = `${S3_ENDPOINT}/${S3_BUCKET}/bdt-logo.svg`;
+export const TEAM_PHOTO = `${S3_ENDPOINT}/${S3_BUCKET}/team.png`;
+export const POSTER_HERO_URL = `${S3_ENDPOINT}/${S3_BUCKET}/poster_bdt_hero.webp`;
+export const NOT_FOUND_IMAGE = `${S3_ENDPOINT}/${S3_BUCKET}/not-found.svg`;
