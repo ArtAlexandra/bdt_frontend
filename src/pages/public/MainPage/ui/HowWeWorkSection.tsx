@@ -1,5 +1,7 @@
 'use client';
 
+import { S3_BUCKET, S3_ENDPOINT } from '@bdt/shared/config/AppEnvironment';
+
 import Button from '@bdt/shared/ui/Button';
 import { PublicSection } from '@bdt/shared/ui/Section';
 
@@ -10,7 +12,7 @@ function HowWeWorkSection() {
         <div className={style.howWeWorkSection}>
             <div className={style.howWeWorkSection__videoContainer}>
                 <video className={style.howWeWorkSection__videoBg} autoPlay loop muted playsInline preload="metadata">
-                    <source src="https://s3.firstvds.ru/bdt/fish_how_we_work.mp4" type="video/mp4" />
+                    <source src={`${S3_ENDPOINT}/${S3_BUCKET}/fish_how_we_work.mp4`} type="video/mp4" />
                 </video>
             </div>
 
