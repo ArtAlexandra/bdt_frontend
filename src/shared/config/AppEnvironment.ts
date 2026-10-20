@@ -27,3 +27,12 @@ export const LOGO_TRANSPARENT_URL = `${S3_ENDPOINT}/${S3_BUCKET}/bdt-logo.svg`;
 export const TEAM_PHOTO = `${S3_ENDPOINT}/${S3_BUCKET}/team.png`;
 export const POSTER_HERO_URL = `${S3_ENDPOINT}/${S3_BUCKET}/poster_bdt_hero.webp`;
 export const NOT_FOUND_IMAGE = `${S3_ENDPOINT}/${S3_BUCKET}/not-found.svg`;
+
+export const TEAM_PHOTO_1 = `${S3_ENDPOINT}/${S3_BUCKET}/team/team-1.jpg`;
+export const TEAM_PHOTO_2 = `${S3_ENDPOINT}/${S3_BUCKET}/team/team-2.jpg`;
+export const TEAM_PHOTO_3 = `${S3_ENDPOINT}/${S3_BUCKET}/team/team-3.jpg`;
+export const TEAM_PHOTO_4 = `${S3_ENDPOINT}/${S3_BUCKET}/team/team-4.jpg`;
+export const TEAM_PHOTO_5 = `${S3_ENDPOINT}/${S3_BUCKET}/team/team-5.jpg`;
+export const TEAM_PHOTO_6 = `${S3_ENDPOINT}/${S3_BUCKET}/team/team-6.jpg`;
+export const TEAM_PHOTO_7 = `${S3_ENDPOINT}/${S3_BUCKET}/team/team-7.jpg`;
+export const TEAM_PHOTO_8 = `${S3_ENDPOINT}/${S3_BUCKET}/team/team-8.jpg`;

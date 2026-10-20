@@ -18,7 +18,7 @@ export const SliderData: TSliderData[] = [
     {
         id: 'imported-products',
         title: 'Импортная продукция',
-        imageSrc: `${S3_ENDPOINT}/${S3_BUCKET}/aboutUs/about-us-1.png`,
+        imageSrc: `${S3_ENDPOINT}/${S3_BUCKET}/aboutUs/airplane.jpg`,
         iconSrc: `${S3_ENDPOINT}/${S3_BUCKET}/aboutUs/airplane.svg`,
         items: [
             {
@@ -38,7 +38,7 @@ export const SliderData: TSliderData[] = [
     {
         id: 'russian-products',
         title: 'Продукция РФ',
-        imageSrc: `${S3_ENDPOINT}/${S3_BUCKET}/aboutUs/about-us-2.png`,
+        imageSrc: `${S3_ENDPOINT}/${S3_BUCKET}/aboutUs/car.jpg`,
         iconSrc: `${S3_ENDPOINT}/${S3_BUCKET}/aboutUs/car.svg`,
         items: [
             {
@@ -58,7 +58,7 @@ export const SliderData: TSliderData[] = [
     {
         id: 'angelfish',
         title: 'Разведение скалярий',
-        imageSrc: `${S3_ENDPOINT}/${S3_BUCKET}/aboutUs/about-us-3.png`,
+        imageSrc: `${S3_ENDPOINT}/${S3_BUCKET}/aboutUs/angelfish.jpg`,
         iconSrc: `${S3_ENDPOINT}/${S3_BUCKET}/aboutUs/angelfish.svg`,
         items: [
             {
@@ -78,7 +78,7 @@ export const SliderData: TSliderData[] = [
     {
         id: 'apistogramma',
         title: 'Разведение апистрограмм',
-        imageSrc: `${S3_ENDPOINT}/${S3_BUCKET}/aboutUs/about-us-4.png`,
+        imageSrc: `${S3_ENDPOINT}/${S3_BUCKET}/aboutUs/apistogramma.jpg`,
         iconSrc: `${S3_ENDPOINT}/${S3_BUCKET}/aboutUs/apistogramma.svg`,
         items: [
             {

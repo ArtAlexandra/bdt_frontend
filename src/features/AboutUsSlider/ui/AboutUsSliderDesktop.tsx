@@ -32,7 +32,7 @@ function AboutUsSliderDesktop({ className }: IAboutUsSliderDesktopProps) {
     return (
         <div className={clsx(style.aboutUsSliderDesktop, className)}>
             <div className={style.aboutUsSliderDesktop__imageWrapper}>
-                <Image src={currentBackgroundImage} alt="О нас" fill className={clsx(style.aboutUsSliderDesktop__image, { [style.aboutUsSliderDesktop__image_transitioning]: isTransitioning })} priority />
+                <Image src={currentBackgroundImage} alt="О нас" fill className={style.aboutUsSliderDesktop__image} priority />
             </div>
             { SliderData.map((item, index) => {
                 return <SliderItem data={item} key={item.id} onClick={() => { }} onHover={() => handleChangeBackgroundImage(index)} />;

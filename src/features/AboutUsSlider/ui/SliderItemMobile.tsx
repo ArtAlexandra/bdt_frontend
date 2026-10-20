@@ -13,14 +13,13 @@ interface ISliderItemMobileProps {
 };
 
 function SliderItemMobile({ data, onClick }: ISliderItemMobileProps) {
-    const { title, iconSrc, imageSrc } = data;
+    const { title, imageSrc } = data;
     return (
         <div onClick={onClick} className={style.sliderItemMobile}>
             <div className={style.sliderItemMobile__imageWrapper}>
-                <Image src={imageSrc} alt={title} fill className={style.sliderItemMobile_image} priority />
+                <Image src={imageSrc} alt={title} fill className={style.sliderItemMobile__image} priority />
             </div>
             <div className={style.sliderItemMobile__content}>
-                <Image src={iconSrc} alt={title} width={64} height={64} priority className={style.sliderItemMobile__icon} />
                 <div className={style.sliderItemMobile__title}>{ title }</div>
             </div>
         </div>
